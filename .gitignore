@@ -1,9 +1,0 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
-
-*.duckdb
-/_site/
-/.quarto/
-**/*.quarto_ipynb
