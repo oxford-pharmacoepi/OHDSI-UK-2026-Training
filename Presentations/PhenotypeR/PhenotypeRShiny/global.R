@@ -1,0 +1,326 @@
+# ensure minimum versions
+rlang::check_installed("omopgenerics", version = "1.2.0")
+rlang::check_installed("visOmopResults", version = "1.0.0")
+rlang::check_installed("CodelistGenerator", version = "4.0.1")
+rlang::check_installed("CohortCharacteristics", version = "1.1.0")
+rlang::check_installed("IncidencePrevalence", version = "1.2.0")
+rlang::check_installed("OmopSketch", version = "1.0.0")
+rlang::check_installed("CohortSurvival", version = "1.1.0")
+rlang::check_installed("shiny", version = "1.11.1")
+
+library(bslib)
+library(omopgenerics)
+library(CodelistGenerator)
+library(CohortCharacteristics)
+library(DiagrammeR)
+library(dplyr)
+library(DT)
+library(ggplot2)
+library(gt)
+library(here)
+library(IncidencePrevalence)
+library(OmopSketch)
+library(readr)
+library(shiny)
+library(sortable)
+library(visOmopResults)
+library(shinycssloaders)
+library(shinyWidgets)
+library(plotly)
+library(tidyr)
+library(reactable)
+library(stringr)
+library(qs2)
+library(lubridate)
+library(systemfonts)
+library(jsonlite)
+library(jsonvalidate)
+
+source(here::here("scripts", "functions.R"))
+
+preprocess_again <- function(){
+  if (yesno("Would you like to preprocess the data again?")) {
+    return(invisible())
+  }
+  cli::cli_inform("Preprocessing data from data/raw")
+  source(here::here("scripts", "preprocess.R"))
+  cli::cli_alert_success("Data processed")
+}
+
+if(file.exists(here::here("data", "appData.qs")) &&
+   rlang::is_interactive()){
+  preprocess_again()
+}
+
+# if data does not exist (or we are not in interactive)
+if(!file.exists(here::here("data", "appData.qs"))){
+  cli::cli_inform("Preprocessing data from data/raw")
+  source(here::here("scripts", "preprocess.R"))
+  cli::cli_alert_success("Data processed")
+}
+
+cli::cli_inform("Loading data")
+qs2::qs_readm(here::here("data", "appData.qs"))
+cli::cli_inform("Data loaded")
+
+plotComparedLsc <- function(lsc, cohorts, imputeMissings, colour = NULL, facet = NULL){
+  plot_data <- lsc |>
+    filter(group_level %in% c(cohorts)) |>
+    filter(estimate_name == "percentage") |>
+    tidy() |>
+    select(dplyr::any_of(c(
+      "database" = "cdm_name",
+      "cohort_name",
+      "variable_name",
+      "time_window" = "variable_level",
+      "concept_id",
+      "source_concept_name",
+      "source_concept_id",
+      "table" = "table_name",
+      "percentage"))) |>
+    mutate(percentage = if_else(percentage == "-",
+                                NA, percentage)) |>
+    mutate(percentage = as.numeric(percentage)/100) |>
+    pivot_wider(names_from = cohort_name,
+                values_from = percentage)
+
+  missing_target_col <- setdiff(cohorts[1], colnames(plot_data))
+  if(length(missing_target_col)>0){
+    plot_data[missing_target_col] <- NA_integer_
+  }
+  missing_comparator_col <- setdiff(cohorts[2], colnames(plot_data))
+  if(length(missing_comparator_col)>0){
+    plot_data[missing_comparator_col] <- NA_integer_
+  }
+
+  if(isTRUE(imputeMissings)){
+    plot_data <- plot_data |>
+      mutate(across(c(cohorts[1], cohorts[2]), ~if_else(is.na(.x), 0, .x)))
+  }
+
+  plot_data <- plot_data |>
+    mutate(smd = (!!sym(cohorts[1]) - !!sym(cohorts[2]))/sqrt((!!sym(cohorts[1])*(1-!!sym(cohorts[1])) + !!sym(cohorts[2])*(1-!!sym(cohorts[2])))/2)) |>
+    mutate(smd = round(smd, 2))
+  if("source_concept_id" %in% colnames(plot_data)){
+    plot_data <- plot_data |>
+      mutate("Details" = paste("<br>Database:", database,
+                               "<br>Concept:", variable_name,
+                               "<br>Concept ID:", concept_id,
+                               "<br>Source concept:", source_concept_name,
+                               "<br>Source concept ID:", source_concept_id,
+                               "<br>Time window:", time_window,
+                               "<br>Table:", table,
+                               "<br>SMD:", smd,
+                               "<br>Cohorts: ",
+                               "<br> - ", cohorts[1],": ", !!sym(cohorts[1]),
+                               "<br> - ", cohorts[2],": ", !!sym(cohorts[2])))
+  } else {
+    plot_data <- plot_data |>
+      mutate("Details" = paste("<br>Database:", database,
+                               "<br>Concept:", variable_name,
+                               "<br>Concept ID:", concept_id,
+                               "<br>Time window:", time_window,
+                               "<br>Table:", table,
+                               "<br>SMD:", smd,
+                               "<br>Cohorts: ",
+                               "<br> - ", cohorts[1],": ", !!sym(cohorts[1]),
+                               "<br> - ", cohorts[2],": ", !!sym(cohorts[2])))
+  }
+
+
+  plot <- plot_data |>
+    visOmopResults::scatterPlot(x = cohorts[1],
+                                y = cohorts[2],
+                                colour = colour,
+                                facet  = facet,
+                                ribbon = FALSE,
+                                line   = FALSE,
+                                point  = TRUE,
+                                label  = "Details") +
+    annotate("segment", x = 0, y = 0, xend = 1, yend = 1,
+             color = "grey30", linetype = "dashed") +
+    theme_bw() +
+    xlab(paste0(stringr::str_to_sentence(gsub("_"," ", cohorts[1])), " (%)")) +
+    ylab(paste0(stringr::str_to_sentence(gsub("_"," ", cohorts[2])), " (%)"))+
+    scale_x_continuous(limits = c(0, NA)) +
+    scale_y_continuous(limits = c(0, NA))
+
+  return(plot)
+}
+
+
+plotAgeDensity <- function(summarise_table, summarise_characteristics, show_interquantile_range){
+
+  data <- summarise_table |>
+    filter(variable_name == "age") |>
+    pivot_wider(names_from = "estimate_name", values_from = "estimate_value") |>
+    mutate(density_x = as.numeric(density_x),
+           density_y = as.numeric(density_y)) |>
+    splitStrata() |>
+    mutate(density_y = if_else(sex == "Female", -density_y, density_y)) |>
+    filter(!is.na(density_x),
+           !is.na(density_y))
+
+  if (nrow(data) == 0) {
+    validate("No results found for age density")
+  }
+
+  max_density <- max(data$density_y, na.rm = TRUE)
+  min_age <- (floor((data$density_x |> min(na.rm = TRUE))/5))*5
+  max_age <- (ceiling((data$density_x |> max(na.rm = TRUE))/5))*5
+
+  iqr <- summarise_characteristics |>
+    filter(variable_name == "Age",
+           strata_level %in% c("Female","Male"),
+           estimate_name %in% c("q25", "median", "q75")) |>
+    mutate(estimate_value_round = as.numeric(estimate_value)) |>
+    select(-"estimate_value") |>
+    left_join(
+      data |>
+        select("cdm_name", "group_level", "strata_level" = "sex", "estimate_value" = "density_x", "density_y") |>
+        arrange(cdm_name, strata_level, estimate_value, density_y) |>
+        mutate(estimate_value_round = round(estimate_value)) |>
+        mutate(estimate_value_diff = estimate_value - estimate_value_round) |>
+        group_by(cdm_name, group_level, strata_level, estimate_value_round) |>
+        filter(estimate_value_diff == min(estimate_value_diff)) |>
+        ungroup(),
+      by = c("cdm_name", "group_level", "strata_level", "estimate_value_round")
+    ) |>
+    rename("sex" = "strata_level")
+
+  # keep only estimates for cohorts with density
+  iqr <- iqr |>
+    inner_join(data |>
+                 select(group_level) |> distinct())
+
+  data <- data |>
+    dplyr::filter(sex %in% c("Female", "Male"))
+
+  plot <-  data |>
+    ggplot(aes(y = density_x, fill = sex)) +
+    geom_ribbon(aes(xmin = 0, xmax = density_y), alpha = 0.8) +
+    facet_wrap(vars(group_level, cdm_name)) +
+    scale_x_continuous(labels = abs) +
+    geom_vline(xintercept = 0, color = "grey50", linewidth = 0.5) +
+    labs(
+      y = "Age",
+      x = "Density",
+      fill = "Sex"
+    ) +
+    themeVisOmop() +
+    theme(
+      axis.text.x = element_text(),
+      axis.title.x = ggplot2::element_blank(),
+      panel.grid.major.x = element_line(color = "grey90"),
+      panel.grid.major.y = element_line(color = "grey90"),
+      legend.box = "horizontal",
+      axis.title.y = ggplot2::element_blank(),
+      legend.position = "bottom",
+      legend.title = ggplot2::element_blank(),
+      panel.background = ggplot2::element_blank()
+    ) +
+    scale_fill_manual(values = list("Male" = "#77A9B4","Female" = "#E1B12D"))
+
+  if(show_interquantile_range){
+    plot <- plot +
+      geom_segment(
+        data = iqr |> filter(estimate_name == "median"),
+        aes(
+          y = estimate_value,
+          yend = estimate_value,
+          x = 0,
+          xend = density_y
+        ),
+        color = "black",
+        linetype = "solid",
+        linewidth = 0.7,
+        show.legend = FALSE
+      ) +
+      geom_segment(
+        data = iqr |> filter(estimate_name == "q25"),
+        aes(
+          y = estimate_value,
+          yend = estimate_value,
+          x = 0,
+          xend = density_y
+        ),
+        color = "black",
+        linetype = "dashed",
+        linewidth = 0.7,
+        show.legend = FALSE
+      )+
+      geom_segment(
+        data = iqr |> filter(estimate_name == "q75"),
+        aes(
+          y = estimate_value,
+          yend = estimate_value,
+          x = 0,
+          xend = density_y
+        ),
+        color = "black",
+        linetype = "dashed",
+        linewidth = 0.7,
+        show.legend = FALSE
+      ) +
+      labs(subtitle = "The solid line represents the median, while the dotted lines indicate the interquartile range. Notice that these may not appear if in the cohort there are less than the minimum cell count specified. Please be aware that statistics are calculated by record, not by subject. Records with missing sex do not appear in the figure.")
+  }else{
+    plot <- plot +
+      labs(subtitle = "Please be aware that statistics are calculated by record, not by subject. Records with missing sex do not appear in the figure.")
+  }
+
+  return(plot)
+}
+
+getColsForTbl <- function(tbl, sortNALast = TRUE, names = c("Standard concept ID", "Source Concept ID")){
+
+  cols <- list()
+  for(i in seq_along(names(tbl))){
+    working_col <- names(tbl)[i]
+
+    if(working_col %in% c(names)){
+
+      cols[[working_col]] <- colDef(name = working_col,
+                                    sortNALast = sortNALast,
+                                    cell = function(value){
+                                      if(!is.na(value) && !grepl("^NA$", value)) {
+                                        url <- sprintf("https://athena.ohdsi.org/search-terms/terms/%s", value)
+                                        htmltools::tags$a(href = url, target = "_blank", as.character(value))
+                                      }else{
+                                        "-"
+                                      }
+                                    }
+      )
+
+    }else{
+      cols[[working_col]] <- colDef(name = working_col,
+                                    sortNALast = sortNALast,
+                                    format = colFormat(separators = TRUE))
+    }
+  }
+
+  return(cols)
+}
+
+validateFilteredResult <- function(result){
+  if (nrow(result) == 0) {
+    validate("No results found for selected inputs")
+  }
+}
+
+validateExpectations <- function(expectations){
+  if (nrow(expectations) == 0) {
+    validate("No expectations results found")
+  }
+}
+
+validateExpectationSections <- function(table){
+  section_names <- table |>
+    dplyr::pull("diagnostics") |>
+    unique()
+
+  if(!all(section_names %in% c("cohort_count", "cohort_characteristics",  "large_scale_characteristics", "compare_large_scale_characteristics",
+                               "compare_cohorts", "cohort_survival"))){
+    validate("diagnostics column must contain any of the following values: cohort_count, cohort_characteristics, large_scale_characteristics, compare_large_scale_characteristics,
+             compare_cohorts, cohort_survival")
+  }
+}

@@ -1,0 +1,37 @@
+---
+title: "PDF Downloads"
+---
+
+# PDF Downloads
+
+[Download all presentations](pdfs/all-presentations.pdf){.btn .btn-primary download="all-presentations.pdf"}
+
+## Monday
+
+| Presentation | Slides | PDF |
+| --- | --- | --- |
+| Welcome | [Open](welcome.qmd) | [Download](pdfs/01-welcome.pdf){.btn .btn-outline-primary .btn-sm download="01-welcome.pdf"} |
+| Introduction | [Open](Introduction/index.qmd) | [Download](pdfs/02-introduction.pdf){.btn .btn-outline-primary .btn-sm download="02-introduction.pdf"} |
+| OmopSketch | [Open](OmopSketch/index.qmd) | [Download](pdfs/03-omop-sketch.pdf){.btn .btn-outline-primary .btn-sm download="03-omop-sketch.pdf"} |
+
+## Tuesday
+
+| Presentation | Slides | PDF |
+| --- | --- | --- |
+| CohortConstructor | [Open](CohortConstructor/index.qmd) | [Download](pdfs/04-cohort-constructor.pdf){.btn .btn-outline-primary .btn-sm download="04-cohort-constructor.pdf"} |
+| PhenotypeR | [Open](PhenotypeR/index.qmd) | [Download](pdfs/05-phenotype-r.pdf){.btn .btn-outline-primary .btn-sm download="05-phenotype-r.pdf"} |
+
+## Wednesday
+
+| Presentation | Slides | PDF |
+| --- | --- | --- |
+| PatientProfiles | [Open](PatientProfiles/index.qmd) | [Download](pdfs/06-patient-profiles.pdf){.btn .btn-outline-primary .btn-sm download="06-patient-profiles.pdf"} |
+| CohortCharacteristics | [Open](CohortCharacteristics/index.qmd) | [Download](pdfs/07-cohort-characteristics.pdf){.btn .btn-outline-primary .btn-sm download="07-cohort-characteristics.pdf"} |
+
+## Thursday
+
+| Presentation | Slides | PDF |
+| --- | --- | --- |
+| DrugUtilisation | [Open](DrugUtilisation/index.qmd) | [Download](pdfs/08-drug-utilisation.pdf){.btn .btn-outline-primary .btn-sm download="08-drug-utilisation.pdf"} |
+| IncidencePrevalence | [Open](IncidencePrevalence/index.qmd) | [Download](pdfs/09-incidence-prevalence.pdf){.btn .btn-outline-primary .btn-sm download="09-incidence-prevalence.pdf"} |
+| Final remarks | [Open](final_remarks.qmd) | [Download](pdfs/10-final-remarks.pdf){.btn .btn-outline-primary .btn-sm download="10-final-remarks.pdf"} |

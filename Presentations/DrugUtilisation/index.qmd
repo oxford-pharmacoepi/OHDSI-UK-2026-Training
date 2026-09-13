@@ -1,0 +1,656 @@
+---
+title: "DrugUtilisation"
+subtitle: "Conduct Drug Utilisation Studies in OMOP CDM"
+format:
+  revealjs: 
+    theme: [simple, ../../styleSS25.scss]
+    incremental: true   
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    margin: 0.07
+    code-link: true
+    code-line-numbers: false
+    height: 900
+    width: 1600
+    footer: |
+      <div style="position: relative; width: 100%;">
+        <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2026</div>
+        <div style="position: fixed; top: 20px; right: 20px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Presentations</a></div>
+      </div>
+execute:
+  echo: true
+  eval: true
+editor: visual
+---
+
+## Introduction
+
+```{r, echo = FALSE}
+options(width = 120)
+```
+
+Drug utilisation studies (DUS) were defined by the World Health Organization as studying the marketing, distribution, prescription, and use of medicinal products in a society, with special emphasis on the resulting medical and socioeconomic consequences (WHO, 2003).
+
+. . .
+
+This package aims to standardise and provide the tools to conduct Drug Utilisation studies as of the Darwin-EU Catalogue of Standard Analytics.
+
+![](https://www.darwin-eu.org/templates/rt_horizon/custom/images/darwin-eu-logo.png){fig-align="center" width="45%"}
+
+## The package
+
+<br>
+
+```{r, eval=FALSE}
+install.packages("DrugUtilisation")
+```
+
+<br>
+
+-   [v1.2.0](https://cran.r-project.org/package=DrugUtilisation) on cran.
+
+-   [package website](https://darwin-eu-dev.github.io/DrugUtilisation/)
+
+-   [Report an issue/Feature request](https://github.com/darwin-eu-dev/DrugUtilisation/issues/new)
+
+## Create a reference to a cdm object
+
+For this example we are going to use a synthetic test database:
+
+```{r}
+library(duckdb)
+library(CDMConnector)
+library(dplyr)
+library(CodelistGenerator)
+library(DrugUtilisation)
+library(CohortConstructor)
+library(here)
+
+con <- dbConnect(drv = duckdb(dbdir = here("Databases", "delphi.duckdb")))
+```
+
+```{r, echo=FALSE}
+dbExecute(con, "SET memory_limit = '2GB'")
+```
+
+```{r}
+cdm <- cdmFromCon(
+  con = con,
+  cdmSchema = "main",
+  writeSchema = "results",
+  writePrefix = "os_"
+)
+```
+
+## Add some random quantities
+
+```{r}
+cdm$drug_exposure <- cdm$drug_exposure |>
+  mutate(quantity = as.numeric(sql("[1, 5, 10, 30, 100][floor(random() * 5)::INTEGER + 1]")))
+```
+
+## Generate a drug cohort
+
+For this example we are going to use all records of `acteaminophen`:
+
+. . .
+
+```{r}
+codelistPara <- getDrugIngredientCodes(cdm = cdm, name = "acetaminophen", nameStyle = "{concept_name}") |>
+  subsetOnDoseUnit(cdm = cdm, doseUnit = "milligram") |>
+  excludeConcepts(cdm = cdm, concepts = 1125315L, codelistName = "acetaminophen")
+```
+
+```{r, message=FALSE}
+cdm$dus_cohort <- conceptCohort(
+  cdm = cdm,
+  name = "dus_cohort",
+  conceptSet = codelistPara
+)
+```
+
+. . .
+
+The results is the cdm object with the new cohort instantiated.
+
+. . .
+
+```{r, message=TRUE}
+cdm
+```
+
+## Cohort objects
+
+The cohort objects have some attributes:
+
+```{r}
+class(cdm$dus_cohort)
+```
+
+. . .
+
+```{r}
+names(attributes(cdm$dus_cohort))
+```
+
+. . .
+
+-   Settings
+-   Counts
+-   Attrition
+-   Codelist
+
+## Cohort attributes
+
+**Settings**:
+
+```{r}
+settings(cdm$dus_cohort)
+```
+
+. . .
+
+**Cohort counts**:
+
+```{r}
+cohortCount(cdm$dus_cohort)
+```
+
+## Cohort attributes
+
+**Cohort attrition**:
+
+```{r}
+attrition(cdm$dus_cohort)
+```
+
+. . .
+
+**Cohort codelist**:
+
+```{r}
+cohortCodelist(cdm$dus_cohort, cohortId = 1)
+```
+
+## gapEra parameter
+
+`gapEra` parameter can be used to concatenate different records.
+
+. . .
+
+```         
+Number of days between two continuous exposures to be considered in the same era. Records that have fewer days between them than this gap will be concatenated into the same cohort record.
+```
+
+## gapEra parameter
+
+```{r, echo=FALSE}
+x1 <- dplyr::tibble(
+  id = 1:10L,
+  y = c(1, 0.9, 0.8, 0.7, 0, 0, 0, -0.5, -0.5, -1),
+  color = factor(c("Records", "Records", "Records", "Records", "gapEra = 0", "gapEra = 0", "gapEra = 0",  "1 <= gapEra <= 6", "1 <= gapEra <= 6", "gapEra <= 7"), c("Records", "gapEra = 0",  "1 <= gapEra <= 6", "gapEra <= 7")),
+  x_start = c(1, 15, 31, 45, 1, 31, 45, 1, 45, 1),
+  x_end = c(20, 30, 38, 55, 30, 38, 55, 38, 55, 55)
+) |>
+  tidyr::pivot_longer(cols = c("x_start", "x_end"))
+x2 <- dplyr::tibble(
+  group = 1:8,
+  x = c(1, 15, 20, 30, 31, 38, 45, 55),
+  y_min = -1,
+  y_max = c(1, 0.9, 1, 0.9, 0.8, 0.8, 0.7, 0.7)
+) |>
+  tidyr::pivot_longer(cols = c("y_min", "y_max"))
+x2 |>
+  ggplot2::ggplot(ggplot2::aes(x = x, y = value, group = group)) +
+  ggplot2::geom_line(linetype="dotted") +
+  ggplot2::geom_line(data = x1, mapping = ggplot2::aes(x = value, y = y, group = id, colour = color)) +
+  ggplot2::geom_point(data = x1, mapping = ggplot2::aes(x = value, y = y, group = id, colour = color)) +
+  ggplot2::scale_x_continuous(breaks = c(1, 15, 20, 30, 31, 38, 45, 55)) +
+  ggplot2::scale_y_continuous(breaks = c(), limits = c(-1.3, 1.3), name = "")
+```
+
+## Generate a drug cohort
+
+. . .
+
+```{r, message=FALSE}
+cdm$dus_cohort <- cdm$dus_cohort |>
+  collapseCohorts(gap = 30)
+```
+
+## Generate a drug cohort
+
+```{r}
+cohortCount(cdm$dus_cohort)
+```
+
+```{r}
+attrition(cdm$dus_cohort)
+```
+
+## Inclusion criteria
+
+Four functions to add inclusion criteria to our cohort:
+
+-   Washout `requirePriorDrugWashout()` (`requireConceptIntersect`)
+-   First observation `requireIsFirstDrugEntry()` (`requireIsFirstEntry`)
+-   Prior observation `requireObservationBeforeDrug()` (`requirePriorObservation`)
+-   Date range `requireDrugInDateRange()` (`requireInDateRange`)
+
+## Important considerations
+
+Not all inclusion criteria are commutable operations (A + B != B + A):
+
+Not commutable:
+
+-   `prior washout` + `prior observation` != `prior observation` + `prior washout`
+-   `prior washout` + `first` != `first` + `prior washout`
+-   `prior washout` + `date range` != `date range` + `prior washout`
+-   `first` + `prior observation` != `prior observation` + `first`
+-   `first` + `date range` != `date range` + `first`
+
+. . .
+
+Commutable:
+
+-   `date range` + `prior observation` == `prior observation` + `date range`
+
+## Recommended order
+
+Having all this into account the recommended order to apply criteria would be:
+
+1.  Require a prior drug washout or require first drug entry (particular case).
+
+2.  Require a prior observation before the drug episode.
+
+3.  Require the drugs to be in a certain date range.
+
+## Vignette to create cohorts
+
+<https://darwin-eu-dev.github.io/DrugUtilisation/articles/create_cohorts.html>
+
+## Your turn
+
+Can you create a cohort with all the records of 'ibuprofen' concatenating records separated by 90 days or less and the following inclusion criteria:
+
+-   First record ever
+
+-   At least 365 days of prior observation
+
+-   Cohort start date between '2010-01-01' and '2021-12-31'.
+
+```{r, echo = FALSE}
+codelistIbu <- getDrugIngredientCodes(cdm = cdm, name = "ibuprofen")
+cdm$ibuprofen_cohort <- conceptCohort(
+  cdm = cdm, 
+  conceptSet = codelistIbu, 
+  name = "ibuprofen_cohort"
+) |>
+  collapseCohorts(gap = 90) |>
+  requireIsFirstEntry() |>
+  requirePriorObservation(minPriorObservation = 365) |>
+  requireInDateRange(dateRange = as.Date(c('2010-01-01', '2021-12-31')))
+cohortCount(cdm$ibuprofen_cohort)
+```
+
+<details>
+
+<summary>💡 Click to see solution</summary>
+
+```{r}
+codelistIbu <- getDrugIngredientCodes(cdm = cdm, name = "ibuprofen")
+cdm$ibuprofen_cohort <- conceptCohort(
+  cdm = cdm, 
+  conceptSet = codelistIbu, 
+  name = "ibuprofen_cohort"
+) |>
+  collapseCohorts(gap = 90) |>
+  requireIsFirstEntry() |>
+  requirePriorObservation(minPriorObservation = 365) |>
+  requireInDateRange(dateRange = as.Date(c('2010-01-01', '2021-12-31')))
+cohortCount(cdm$ibuprofen_cohort)
+```
+
+</details>
+
+## Drug usage
+
+. . .
+
+```{r}
+result <- cdm$dus_cohort |>
+  summariseDrugUtilisation(
+    ingredientConceptId = 1125315L, 
+    conceptSet = codelistPara,
+    indexDate = "cohort_start_date",
+    censorDate = "cohort_end_date", 
+    restrictIncident = TRUE, 
+    gapEra = 30, 
+    numberExposures = TRUE, 
+    numberEras = TRUE,
+    daysExposed = TRUE,
+    daysPrescribed = TRUE,
+    timeToExposure = FALSE, 
+    initialQuantity = TRUE, 
+    cumulativeQuantity = TRUE, 
+    initialDailyDose = TRUE, 
+    cumulativeDose = TRUE,
+    estimates = c("q25", "median", "q75")
+  )
+```
+
+## Drug usage
+
+```{r}
+result |>
+  suppress(minCellCount = 5) |>
+  tableDrugUtilisation()
+```
+
+## Indications
+
+`summariseIndication()`:
+
+-   To summarise **mutually exclusive** indications.
+
+-   Define a window respect to the 'cohort_start_date'.
+
+-   Indications must be instantiated beforehand as cohorts.
+
+-   Unknown indication (check a table to see if there is a record).
+
+## Indications
+
+Let's instantiate the cohorts of interest:
+
+```{r}
+cdm$indications <- conceptCohort(
+  cdm = cdm,
+  conceptSet = list(
+    osteoarthritis = 4014829L, 
+    fever = 4019097L, 
+    pain = c(35953849L, 35947730L, 40231906L)
+  ),
+  name = "indications"
+)
+```
+
+## Indciations
+
+```{r}
+result <- cdm$dus_cohort |>
+  summariseIndication(
+    indicationCohortName = "indications", 
+    indicationWindow = list(c(0, 0), c(-30, 7)), 
+    unknownIndicationTable = "condition_occurrence"
+  )
+result |>
+  glimpse()
+```
+
+## Indications
+
+```{r}
+result |>
+  suppress() |>
+  tableIndication()
+```
+
+## Indications
+
+```{r}
+plotIndication(result)
+```
+
+## Indications
+
+Output of ploting functions are **ggplot2** objects.
+
+. . .
+
+```{r}
+plotIndication(result) +
+  ggplot2::theme(legend.position = "none")
+```
+
+## Indications
+
+Currently considering to add support for **plotly**.
+
+. . .
+
+```{r, eval=FALSE}
+plotIndication(result) |>
+  plotly::ggplotly()
+```
+
+## Indciations (Mutually exclusive FALSE)
+
+```{r}
+result <- cdm$dus_cohort |>
+  summariseIndication(
+    indicationCohortName = "indications", 
+    indicationWindow = list(c(0, 0), c(-30, 7)), 
+    mutuallyExclusive = FALSE,
+    unknownIndicationTable = "condition_occurrence"
+  )
+plotIndication(result = result)
+```
+
+## Treatment persistence
+
+To analyse treatment persistence and adherence there are two standard pipelines:
+
+-   Survival analysis
+
+-   Proportion of patients covered
+
+## Survival discontinuation
+
+```{r}
+result <- cdm$dus_cohort |>
+  summariseDiscontinuationAsSurvival(followUpDays = 90)
+```
+
+## Survival discontinuation
+
+```{r}
+plotDiscontinuationAsSurvival(result = result)
+```
+
+
+## Proportion of patients covered
+
+Proportion of treated individuals between index date and `followUpDays`. Percentages will be reported daily.
+
+```{r}
+result <- cdm$dus_cohort |>
+  summariseProportionOfPatientsCovered(followUpDays = 90)
+```
+
+## Proportion of patients covered
+
+```{r}
+plotProportionOfPatientsCovered(result)
+```
+
+. . .
+
+`gapEra` parameter can have a big impact in survival analysis, whereas it does not have such big impact on proportion of patients covered.
+
+## Your turn
+
+Can you create a cohort of a certain ingredient and analyse its persistence in the following year?
+
+*suggestions: 'fluorouracil', 'prednisolone', 'telbivudine', 'ciprofloxacin', 'ibuprofen' are common ingredients in this database*
+
+```{r, echo=FALSE}
+codelist <- getDrugIngredientCodes(
+  cdm = cdm, 
+  name = c('fluorouracil', 'prednisolone', 'telbivudine', 'ciprofloxacin', 'ibuprofen'),
+  nameStyle = "{concept_name}"
+)
+cdm$persistence <- conceptCohort(
+  cdm = cdm, 
+  name = "persistence",
+  conceptSet = codelist
+)
+result <- summariseProportionOfPatientsCovered(cohort = cdm$persistence, followUpDays = 365)
+plotProportionOfPatientsCovered(result = result, colour = "cohort_name")
+```
+
+## Solution
+
+<details>
+
+<summary>💡 Click to see solution</summary>
+
+```{r}
+codelist <- getDrugIngredientCodes(
+  cdm = cdm, 
+  name = c('fluorouracil', 'prednisolone', 'telbivudine', 'ciprofloxacin', 'ibuprofen'),
+  nameStyle = "{concept_name}"
+)
+cdm$persistence <- conceptCohort(
+  cdm = cdm, 
+  name = "persistence",
+  conceptSet = codelist
+)
+result <- summariseProportionOfPatientsCovered(cohort = cdm$persistence, followUpDays = 365)
+plotProportionOfPatientsCovered(result = result, colour = "cohort_name")
+```
+
+<details>
+
+## Drug restart and drug switching
+
+We have the ability to study drug restart or drug switching after a discontinuation:
+
+-   Switching cohorts must be defined in advance.
+
+-   We have to define the windows of interest.
+
+-   Index date will be the date of discontinuation.
+
+-   Reported percentages in each window will be:
+
+-   *Restart*: individuals that restarted and not switched.
+
+-   *Switch*: individuals that switched and not restarted.
+
+-   *Restart and switch*: individuals that restarted and switched.
+
+-   *Untreated*: individuals that did not restart or switch.
+
+## Drug restart and drug switching
+
+Let's define the cohorts of interest for switching:
+
+```{r}
+codelist <- getDrugIngredientCodes(
+  cdm = cdm, 
+  name = c('fluorouracil', 'prednisolone', 'telbivudine', 'ciprofloxacin', 'ibuprofen'),
+  nameStyle = "{concept_name}"
+)
+cdm$switch <- conceptCohort(
+  cdm = cdm, 
+  name = "switch",
+  conceptSet = codelist
+)
+```
+
+## Drug restart and drug switching
+
+We have to be careful with the inclusion criteria of the input cohort, as restart is derived from it.
+
+. . .
+
+```{r}
+result <- cdm$dus_cohort |>
+  summariseDrugRestart(
+    switchCohortTable = "switch", 
+    followUpDays = c(90, 180, 270, 360), 
+    restrictToFirstDiscontinuation = TRUE
+  )
+result |>
+  glimpse()
+```
+
+## Drug restart and drug switching
+
+```{r}
+tableDrugRestart(result)
+```
+
+## Drug restart and drug switching
+
+```{r}
+plotDrugRestart(result)
+```
+
+## Summarise treatments
+
+`summariseTreatment()` is a general function to analyse presence of treatments (cohorts) after an index date. This can be used with many different purposes:
+
+-   Summarise treatments after a certain condition
+
+-   Analyse comedications
+
+-   Analyse treatments after discontinuation
+
+-   ...
+
+## Summarise treatments
+
+You have to instantiate the treatments that you are interested in a cohort:
+
+```{r}
+codelist <- getDrugIngredientCodes(
+  cdm = cdm, 
+  name = c('fluorouracil', 'prednisolone', 'telbivudine', 'ciprofloxacin', 'ibuprofen'),
+  nameStyle = "{concept_name}"
+)
+cdm$treatments <- conceptCohort(
+  cdm = cdm, 
+  name = "treatments",
+  conceptSet = codelist
+)
+result <- cdm$dus_cohort |>
+  summariseTreatment(
+    window = list(c(1, 90), c(91, 180), c(181, 270), c(271, 360)), 
+    treatmentCohortName = "treatments", 
+    indexDate = "cohort_end_date", 
+    censorDate = NULL
+  )
+result |>
+  glimpse()
+```
+
+## Summarise treatments
+
+```{r}
+tableTreatment(result)
+```
+
+## Summarise treatments
+
+```{r}
+plotTreatment(result)
+```
+
+## DrugUtilisation
+
+::::: {style="display: flex; align-items: center; justify-content: space-between;"}
+::: {style="flex: 1;"}
+👉 [**Packages website**](https://darwin-eu.github.io/DrugUtilisation/)\
+👉 [**CRAN link**](https://cran.r-project.org/package=DrugUtilisation)\
+👉 [**Manual**](https://cran.r-project.org/web/packages/DrugUtilisation/DrugUtilisation.pdf)
+
+📧 <a href="mailto:marti.catalasabate@ndorms.ox.ac.uk">marti.catalasabate\@ndorms.ox.ac.uk</a>
+:::
+
+::: {style="flex: 1; text-align: center;"}
+<img src="https://github.com/darwin-eu/DrugUtilisation/blob/main/man/figures/logo.png?raw=true" width="600"/>
+:::
+:::::

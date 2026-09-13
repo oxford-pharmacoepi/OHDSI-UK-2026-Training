@@ -1,0 +1,989 @@
+---
+title: "PatientProfiles"
+subtitle: "Adding patient-level characteristics to OMOP CDM tables"
+format:
+  revealjs: 
+    theme: [simple, ../../styleSS25.scss]
+    incremental: true   
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    margin: 0.07
+    code-link: true
+    code-line-numbers: false
+    height: 900
+    width: 1600
+    footer: |
+      <div style="position: relative; width: 100%;">
+        <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2026</div>
+        <div style="position: fixed; top: 20px; right: 20px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Presentations</a></div>
+      </div>
+execute:
+  echo: true
+  eval: true
+  warning: false
+  message: false
+editor: visual
+---
+
+```{r, echo=FALSE}
+options(width = 110)
+```
+
+## What you will be able to do
+
+-   Add patient-level characteristics to cohort and CDM tables.
+
+-   Check whether records are inside observation and quantify lookback/follow-up time.
+
+-   Create features from intersections with cohorts, concepts, and OMOP CDM tables.
+
+## Today's workflow
+
+1.  Connect to a synthetic OMOP CDM database.
+
+2.  Create two small cohorts for live examples.
+
+3.  Add demographics and observation-period features.
+
+4.  Build intersection features.
+
+. . .
+
+<center><img src="https://github.com/darwin-eu/PatientProfiles/blob/main/man/figures/logo.png?raw=true" alt="OmopSketch logo" width="350"/></center>
+
+## Settings
+
+. . .
+
+**PatientProfiles** starts with a table that has a person identifier and, usually, an index date.
+
+. . .
+
+It returns the same table with extra columns.
+
+. . .
+
+::: callout-tip
+For cohort tables, the default index date is `cohort_start_date`. For CDM clinical tables, set the relevant date column explicitly.
+:::
+
+. . .
+
+# Setup
+
+## Load packages and create the CDM object
+
+-   Load the required packages
+
+. . .
+
+```{r}
+library(PatientProfiles)
+library(CDMConnector)
+library(CohortConstructor)
+library(duckdb)
+library(dplyr)
+library(here)
+library(omock)
+library(DBI)
+```
+
+. . .
+
+-   Create a CDM object from the **GiBleed** synthetic dataset
+
+. . .
+
+```{r, eval = TRUE}
+con <- dbConnect(drv = duckdb(dbdir = here("Databases", "GiBleed.duckdb")))
+```
+
+. . .
+
+```{r, echo=FALSE, eval = TRUE}
+x <- dbExecute(con, "SET memory_limit = '2GB'")
+```
+
+```{r, eval = TRUE}
+cdm <- cdmFromCon(
+  con = con,
+  cdmSchema = "main",
+  writeSchema = "results",
+  writePrefix = "pp_"
+)
+```
+
+. . .
+
+```{r, echo = FALSE}
+#cdm <- omock::mockCdmFromDataset(source = "duckdb", datasetName ="GiBleed" )
+```
+
+## Create a cohort
+
+Using **CohortConstructor** we will create:
+
+-   `my_cohort`: people with arthritis-related records.
+-   `medications`: people with heparin records.
+
+. . .
+
+```{r}
+cdm$my_cohort <- conceptCohort(
+  cdm = cdm,
+  conceptSet = list(arthritis = c(80180, 80809)),
+  name = "my_cohort"
+)
+
+cdm$medications <- conceptCohort(
+  cdm = cdm,
+  conceptSet = list(heparin = 1367571),
+  name = "medications"
+)
+```
+
+. . .
+
+# Add demographics
+
+. . .
+
+## addSex()
+
+. . .
+
+Use `addSex()` when the table contains `person_id` or `subject_id` and you want the person's sex as a new column:
+
+. . .
+
+```{r, echo = TRUE, eval = F}
+cdm$my_cohort |>
+  addSex(
+    sexName = "sex", # name of the new column (default = "sex")
+    missingSexValue = "None" # label for missing gender_concept_id (default = "None")
+  )
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$my_cohort |>
+  addSex(
+    sexName = "sex", # name of the new column (default = "sex")
+    missingSexValue = "None" # label for missing gender_concept_id (default = "None")
+  )
+```
+
+## addAge()
+
+. . .
+
+Use `addAge()` to calculate age at an index date. The table must contain `person_id` or `subject_id`:
+
+. . .
+
+```{r, echo = T, eval = F}
+cdm$my_cohort |>
+  addAge(
+    indexDate = "cohort_start_date", # date to compute age (default = "cohort_start_date") 
+    ageName = "age", # name of the age column (default = "age") 
+    ageMissingMonth = 1, # Month for individuals with missing month (default = 1) 
+    ageMissingDay = 1, # Day for individuals with missing day (default = 1)
+    ageImposeMonth = FALSE, # Whether to impose default month to all individuals (default = FALSE) 
+    ageImposeDay = FALSE, # Whether to impose default day to all individuals (default = FALSE)
+    ageUnit = "years" # 'years', 'months' or 'days'.
+  )
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$my_cohort |>
+  addAge(
+    indexDate = "cohort_start_date", # date to compute age (default = "cohort_start_date") 
+    ageName = "age", # name of the age column (default = "age") 
+    ageMissingMonth = 1, # Month for individuals with missing month (default = 1) 
+    ageMissingDay = 1, # Day for individuals with missing day (default = 1)
+    ageImposeMonth = FALSE, # Whether to impose default month to all individuals (default = FALSE) 
+    ageImposeDay = FALSE, # Whether to impose default day to all individuals (default = FALSE)
+    ageUnit = "years"
+  )
+```
+
+## addAge()
+
+. . .
+
+Add age groups
+
+. . .
+
+```{r, echo = TRUE, eval = F}
+cdm$drug_exposure |>
+  addAge(
+    indexDate = "drug_exposure_start_date",
+    ageGroup = list(c(0, 39), c(40, Inf))
+  ) |>
+   select("person_id",  "drug_exposure_start_date", "age", "age_group")
+```
+
+. . .
+
+```{r, echo = F}
+cdm$drug_exposure |>
+  addAge(
+    indexDate = "drug_exposure_start_date",
+    ageGroup = list(c(0, 39), c(40, Inf))
+  ) |>
+  select("person_id", "drug_exposure_start_date", "age", "age_group")
+```
+
+## addAge()
+
+You can create several labelled age-group columns in one call:
+
+. . .
+
+```{r, echo = TRUE, eval = F}
+cdm$drug_exposure |>
+  addAge(
+    indexDate = "drug_exposure_start_date",
+    ageGroup = list(
+      "age_group" = list("<40" = c(0, 39), ">=40" = c(40, Inf)),
+      "category" = list("kids" = c(0, 17), "adults" = c(18, Inf))
+    )
+  ) |>
+  select("person_id",  "drug_exposure_start_date", "age", "age_group", "category")
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$drug_exposure |>
+  addAge(
+    indexDate = "drug_exposure_start_date",
+    ageGroup = list(
+      "age_group" = list("<40" = c(0, 39), ">=40" = c(40, Inf)),
+      "category" = list("kids" = c(0, 17), "adults" = c(18, Inf))
+    )
+  ) |>
+  select("person_id", "drug_exposure_start_date",  "age", "age_group", "category")
+```
+
+## addPriorObservation()
+
+. . .
+
+How much lookback time did each person have before the index date?
+
+. . .
+
+```{r, echo = F, fig.width=14, fig.height=7, out.width="100%"}
+library(ggplot2)
+library(ggforce)
+library(dplyr)
+s <- 0.25
+r <- 0.5
+dates <- list(
+  c(2000, 2006.12),
+  c(2008.25, 2010),
+  c(2002.05, 2010),
+  c(2000, 2010),
+  c(2002.48, 2004.75),
+  c(2000, 2003.69),
+  c(2004.78, 2007.84),
+  c(2008.33, 2009.54)
+)
+individuals <- c(1, 1, 2, 3, 4, 5, 5, 4)
+getTibble <- function(dates, individuals) {
+  lapply(seq_along(dates), function(k) {
+    dplyr::tibble(
+      observation_period = c(
+        dates[[k]][1], dates[[k]][2], dates[[k]][2], dates[[k]][1]
+      ),
+      individuals = individuals[k] + c(-s, -s, +s, +s)
+    )
+  }) |>
+    dplyr::bind_rows(.id = "id")
+}
+tib <- getTibble(dates, individuals)
+xl <- seq(2000, 2010, by = 2)
+p <- ggplot(data = tib, aes(x = observation_period, y = individuals, group = id)) +
+  geom_shape(radius = unit(r, 'cm')) +
+  geom_vline(aes(xintercept = 2005), color = "gray") +
+  scale_x_continuous(
+    name ="Observation period (year)",
+    breaks = xl,
+    labels = xl
+  ) +
+  theme(legend.position = "none")
+p
+```
+
+## addPriorObservation()
+
+```{r, echo = F}
+prior <- tibble(individual = 1:5, date = 2005) |>
+  union_all(tibble(individual = 1:5, date = c(2000, 2002.05, 2000, NA, 2004.78)))
+p +
+  geom_line(
+    data = prior, 
+    aes(x = date, y = individual, group = individual),
+    color = "white",
+    arrow = arrow(length=unit(0.3,"cm"), ends="first", type = "closed"),
+    inherit.aes = FALSE
+  )
+```
+
+## addPriorObservation()
+
+```{r, echo = F}
+p +
+  geom_line(
+    data = prior, 
+    aes(x = date, y = individual, group = individual),
+    color = "white",
+    arrow = arrow(length=unit(0.3,"cm"), ends="first", type = "closed"),
+    inherit.aes = FALSE
+  ) +
+  geom_label(
+    data = tibble(x = 2005, y = 1:5, tex = c("1826", "1077", "1826", "NA", "44")), 
+    mapping = aes(x = x, y = y, label = tex, color = "white"), 
+    inherit.aes = FALSE
+  )
+```
+
+## addPriorObservation()
+
+. . .
+
+The default output is the number of days from observation start to index date:
+
+. . .
+
+```{r, echo = TRUE, eval = F}
+cdm$my_cohort |>
+  addPriorObservation()
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$my_cohort |>
+  addPriorObservation()
+```
+
+## addPriorObservation()
+
+. . .
+
+You can return the observation-period start date instead of a duration:
+
+. . .
+
+```{r, echo = TRUE, eval = F}
+cdm$condition_occurrence |>
+  addPriorObservation(
+    indexDate = "condition_start_date", 
+    priorObservationName = "start_observation", # name of the column
+    priorObservationType = "date" # default = "days"
+  ) |>
+ select("person_id", "condition_occurrence_id", "condition_concept_id", "condition_start_date", "start_observation")
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$condition_occurrence |>
+  addPriorObservation(
+    indexDate = "condition_start_date", 
+    priorObservationName = "start_observation", # name of the column
+    priorObservationType = "date" # default = "days"
+  ) |>
+  select("person_id", "condition_occurrence_id", "condition_concept_id", "condition_start_date", "start_observation")
+```
+
+## addFutureObservation()
+
+. . .
+
+How much follow-up time did each person have after the index date? . . .
+
+```{r, echo = F, fig.width=14, fig.height=7, out.width="100%"}
+p
+```
+
+## addFutureObservation()
+
+```{r, echo = F}
+future <- tibble(individual = 1:5, date = 2005) |>
+  union_all(tibble(individual = 1:5, date = c(2006.12, 2010, 2010, NA, 2007.84)))
+p +
+  geom_line(
+    data = future, 
+    aes(x = date, y = individual, group = individual),
+    color = "white",
+    arrow = arrow(length=unit(0.3,"cm"), ends="last", type = "closed"),
+    inherit.aes = FALSE
+  )
+```
+
+## addFutureObservation()
+
+```{r, echo = F}
+p +
+  geom_line(
+    data = future, 
+    aes(x = date, y = individual, group = individual),
+    color = "white",
+    arrow = arrow(length=unit(0.3,"cm"), ends="last", type = "closed"),
+    inherit.aes = FALSE
+  ) +
+  geom_label(
+    data = tibble(x = 2005, y = 1:5, tex = c("409", "1826", "1826", "NA", "1036")), 
+    mapping = aes(x = x, y = y, label = tex, color = "white"), 
+    inherit.aes = FALSE
+  )
+```
+
+## addFutureObservation()
+
+. . .
+
+```{r, echo = TRUE, eval = F}
+cdm$my_cohort |>
+  addFutureObservation()
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$my_cohort |>
+  addFutureObservation()
+```
+
+## addInObservation()
+
+. . .
+
+Is each index date inside an observation period?
+
+. . .
+
+```{r, echo = F, fig.width=14, fig.height=7, out.width="100%"}
+p
+```
+
+## addInObservation()
+
+```{r, echo = F}
+inobs <- tibble(individual = c(1:3, 5), date = 2005)
+p +
+  geom_point(
+    data = inobs, 
+    aes(x = date, y = individual, group = individual),
+    color = "white",
+    inherit.aes = FALSE
+  )
+```
+
+## addInObservation()
+
+```{r, echo = F}
+p +
+  geom_point(
+    data = inobs, 
+    aes(x = date, y = individual, group = individual),
+    color = "white",
+    inherit.aes = FALSE
+  ) +
+  geom_label(
+    data = tibble(x = 2005, y = 1:5, tex = c("1", "1", "1", "0", "1")), 
+    mapping = aes(x = x, y = y, label = tex, color = "white"), 
+    inherit.aes = FALSE
+  )
+```
+
+## addInObservation()
+
+. . .
+
+```{r, echo=TRUE, eval = F}
+cdm$condition_occurrence |>
+  addInObservation(indexDate = "condition_start_date") |>
+  filter(in_observation == 1) |>
+  select("condition_concept_id", "person_id", "condition_start_date", "in_observation")
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$condition_occurrence |>
+  addInObservation(indexDate = "condition_start_date") |>
+  filter(in_observation == 1) |>
+  select("condition_concept_id", "person_id", "condition_start_date", "in_observation")
+```
+
+## addDateOfBirth()
+
+. . .
+
+Use `addDateOfBirth()` to add subjects' date of birth.
+
+. . .
+
+```{r, echo = T, eval = F}
+cdm$my_cohort |>
+  addDateOfBirth()
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$my_cohort |>
+  addDateOfBirth()
+```
+
+## addBirthday()
+
+. . .
+
+Use `addBirthday()` to add specific birthdays of individuals, accounting for leap years and correcting the invalid dates to the next valid date
+
+. . .
+
+```{r, echo = T, eval = F}
+cdm$my_cohort |>
+  addDateOfBirth() |>
+  addBirthday(
+    birthday = 5, # default is 0
+    birthdayName = "5th_birthday"
+    )
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$my_cohort |>
+  addDateOfBirth() |>
+  addBirthday(birthday = 5, 
+              birthdayName = "5th_birthday")
+```
+
+## addDemographics()
+
+. . .
+
+`addDemographics()` is a convenience wrapper for common patient-level features.
+
+. . .
+
+```{r, echo = T, eval = F}
+cdm$my_cohort |>
+  addDemographics()
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$my_cohort |>
+  addDemographics()
+```
+
+## addDemographics()
+
+. . .
+
+```{r, echo = T, eval = F}
+cdm$my_cohort |>
+  addDemographics(
+    age = TRUE,
+    ageGroup = list("kids" = c(0, 17), "adults" = c(18, Inf)),
+    sex = FALSE,
+    priorObservation = TRUE,
+    priorObservationName = "observation_start",
+    priorObservationType = "date",
+    futureObservation = TRUE,
+    futureObservationName = "observation_end",
+    futureObservationType = "date"
+  )
+```
+
+. . .
+
+```{r, echo = F}
+cdm$my_cohort |>
+  addDemographics(
+    age = TRUE,
+    ageGroup = list("kids" = c(0, 17), "adults" = c(18, Inf)),
+    sex = FALSE,
+    priorObservation = TRUE,
+    priorObservationName = "observation_start",
+    priorObservationType = "date",
+    futureObservation = TRUE,
+    futureObservationName = "observation_end",
+    futureObservationType = "date"
+  )
+```
+
+## Your Turn
+
+. . .
+
+Starting from `cdm$my_cohort`, create a table with:
+
+-   sex
+-   age groups `<18`, `18-64`, and `65+`
+-   prior observation in days
+-   future observation in days
+
+## Your Turn
+. . .
+
+```{r, eval = FALSE}
+ cdm$my_cohort |>
+  addDemographics(
+    age = FALSE,
+    ageGroup = list(
+      "<18" = c(0, 17),
+      "18-64" = c(18, 64),
+      "65+" = c(65, Inf)
+    ), 
+    priorObservation = TRUE,
+    priorObservationType = "days",
+    futureObservation = TRUE,
+    futureObservationType = "days"
+  ) 
+```
+
+. . .
+
+```{r, echo = FALSE}
+ cdm$my_cohort |>
+  addDemographics(
+    age = FALSE,
+    ageGroup = list(
+      "<18" = c(0, 17),
+      "18-64" = c(18, 64),
+      "65+" = c(65, Inf)
+    ), 
+    priorObservation = TRUE,
+    priorObservationType = "days",
+    futureObservation = TRUE,
+    futureObservationType = "days"
+  ) 
+```
+## Choosing a characteristic helper
+
+. . .
+
+| Need                         | Helper                   |
+|------------------------------|--------------------------|
+| Sex                          | `addSex()`               |
+| Age or age groups            | `addAge()`               |
+| Lookback time                | `addPriorObservation()`  |
+| Follow-up time               | `addFutureObservation()` |
+| Date inside observation      | `addInObservation()`     |
+| Common demographics together | `addDemographics()`      |
+
+# Add intersections
+
+## The intersection functions
+
+-   Did the person have an event?
+-   How many events did they have?
+-   When was the first or last event?
+-   How many days until or since the event?
+
+## 15 functions
+::::: columns
+::: {.column width="30%"}
+-   [addCohortIntersectFlag](https://darwin-eu.github.io/PatientProfiles/reference/addCohortIntersectFlag.html)
+-   [addCohortIntersectCount](https://darwin-eu.github.io/PatientProfiles/reference/addCohortIntersectCount.html)
+-   [addCohortIntersectDays](https://darwin-eu.github.io/PatientProfiles/reference/addCohortIntersectDays.html)
+-   [addCohortIntersectDate](https://darwin-eu.github.io/PatientProfiles/reference/addCohortIntersectDate.html)
+-   [addCohortIntersectField](https://darwin-eu.github.io/PatientProfiles/reference/addCohortIntersectField.html)
+:::
+::: {.column width="5%"}
+:::
+::: {.column width="30%"}
+-   [addConceptIntersectFlag](https://darwin-eu.github.io/PatientProfiles/reference/addConceptIntersectFlag.html)
+-   [addConceptIntersectCount](https://darwin-eu.github.io/PatientProfiles/reference/addConceptIntersectCount.html)
+-   [addConceptIntersectDays](https://darwin-eu.github.io/PatientProfiles/reference/addConceptIntersectDays.html)
+-   [addConceptIntersectDate](https://darwin-eu.github.io/PatientProfiles/reference/addConceptIntersectDate.html)
+-   [addConceptIntersectField](https://darwin-eu.github.io/PatientProfiles/reference/addConceptIntersectField.html)
+:::
+::: {.column width="5%"}
+:::
+::: {.column width="30%"}
+-   [addTableIntersectFlag](https://darwin-eu.github.io/PatientProfiles/reference/addTableIntersectFlag.html)
+-   [addTableIntersectCount](https://darwin-eu.github.io/PatientProfiles/reference/addTableIntersectCount.html)
+-   [addTableIntersectDays](https://darwin-eu.github.io/PatientProfiles/reference/addTableIntersectDays.html)
+-   [addTableIntersectDate](https://darwin-eu.github.io/PatientProfiles/reference/addTableIntersectDate.html)
+-   [addTableIntersectField](https://darwin-eu.github.io/PatientProfiles/reference/addTableIntersectField.html)
+:::
+:::::
+## How to choose
+
+. . .
+
+| Source of target records | `Flag`                      |
+|--------------------------|-----------------------------|
+| Cohort table             | `addCohortIntersectFlag()`  |
+| Concept set              | `addConceptIntersectFlag()` |
+| OMOP table               | `addTableIntersectFlag()`   |
+
+. . .
+
+| Source of target records | `Count`                      |
+|--------------------------|------------------------------|
+| Cohort table             | `addCohortIntersectCount()`  |
+| Concept set              | `addConceptIntersectCount()` |
+| OMOP table               | `addTableIntersectCount()`   |
+
+## How to choose
+
+. . .
+
+| Source of target records | `Date`                      |
+|--------------------------|-----------------------------|
+| Cohort table             | `addCohortIntersectDate()`  |
+| Concept set              | `addConceptIntersectDate()` |
+| OMOP table               | `addTableIntersectDate()`   |
+
+. . .
+
+| Source of target records | `Days`                      |
+|--------------------------|-----------------------------|
+| Cohort table             | `addCohortIntersectDays()`  |
+| Concept set              | `addConceptIntersectDays()` |
+| OMOP table               | `addTableIntersectDays()`   |
+
+
+## How to choose
+
+. . .
+
+| Source of target records | `Field`                      |
+|--------------------------|-----------------------------|
+| Cohort table             | `addCohortIntersectField()`  |
+| Concept set              | `addConceptIntersectField()` |
+| OMOP table               | `addTableIntersectField()`   |
+
+
+## addCohortIntersectFlag
+
+. . .
+
+Did the person enter another cohort in the next 180 days or 181-365 days?
+
+. . .
+
+```{r, echo = T, eval = F}
+cdm$my_cohort |>
+  addCohortIntersectFlag(
+    targetCohortTable = "medications", 
+    window = list(c(1, 180), c(181, 365))
+  ) |> glimpse()
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$my_cohort |>
+  addCohortIntersectFlag(
+    targetCohortTable = "medications", 
+    window = list(c(1, 180), c(181, 365))
+  ) |> glimpse()
+```
+
+## addTableIntersectCount
+
+. . .
+
+How many drug exposure records did the person have in the year after cohort entry?
+
+. . .
+
+```{r, echo = T, eval = F}
+cdm$my_cohort |>
+  addTableIntersectCount(
+    tableName = "drug_exposure",
+    window = c(0, 365), 
+    nameStyle = "number_prescriptions", 
+    name = "my_cohort2" #Name of the new table, if NULL a temporary table is returned.
+  )
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$my_cohort |>
+  addTableIntersectCount(
+    tableName = "drug_exposure",
+    window = c(0, 365), 
+    nameStyle = "number_prescriptions", 
+    name = "my_cohort2"
+  )
+```
+
+## addCohortIntersectDate
+
+. . .
+
+When did the person first enter the medication cohort after cohort entry?
+
+. . .
+
+```{r, echo = T, eval = F}
+cdm$my_cohort |>
+  addCohortIntersectDate(
+    targetCohortTable = "medications",
+    targetCohortId = "heparin",
+    window = c(0, Inf),
+    order = "first", # date to use if there are multiple records for an individual during the window of interest
+    nameStyle = "first_{cohort_name}"
+  )
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$my_cohort |>
+  addCohortIntersectDate(
+    targetCohortTable = "medications",
+    targetCohortId = "heparin",
+    window = c(0, Inf),
+    order = "first", # date to use if there are multiple records for an individual during the window of interest
+    nameStyle = "first_{cohort_name}"
+  )
+```
+
+## addConceptIntersectDays
+
+How many days until the next record for a concept set?
+
+```{r, echo = T, eval = F}
+cdm$my_cohort |>
+  addConceptIntersectDays(
+    conceptSet = list(tramadol = 1103314),
+    window = c(0, 365),
+    inObservation = FALSE, # If TRUE only records inside an observation period will be considered.
+    nameStyle = "next_{concept_name}"
+  ) |>
+  glimpse()
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$my_cohort |>
+  addConceptIntersectDays(
+    conceptSet = list(tramadol = 1103314),
+    window = c(0, 365),
+    inObservation = FALSE, # If TRUE only records inside an observation period will be considered.
+    nameStyle = "next_{concept_name}"
+  ) |>
+  glimpse()
+```
+
+## addConceptIntersectField
+
+What is the last value of body weight recorded before index day?
+
+```{r, echo = T, eval = F}
+cdm$my_cohort |>
+  addConceptIntersectField(
+    conceptSet = list(body_weight = 3012888),
+    field = "value_as_number",
+    window = c(-Inf, 0),
+    order = "last",
+    nameStyle = "body_weight_value"
+  ) |>
+  glimpse()
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+cdm$my_cohort |>
+  addConceptIntersectField(
+    conceptSet = list(body_weight = 3012888),
+    field = "value_as_number",
+    window = c(-Inf, 0),
+    order = "last",
+    nameStyle = "body_weight_value"
+  ) |>
+  glimpse()
+```
+
+## Your Turn
+
+. . .
+
+-   Did the person have an heparin cohort entry in the year before index?
+-   How many condition occurrence records did they have in the year before index?
+
+
+## Your Turn
+
+. . .
+
+```{r, eval = FALSE}
+cdm$my_cohort |>
+  addCohortIntersectFlag(
+    targetCohortTable = "medications",
+    targetCohortId = "heparin",
+    window = list("prior_year" = c(-365, -1)),
+    nameStyle = "prior_{cohort_name}"
+  )
+
+cdm$my_cohort |>
+  addTableIntersectCount(
+    tableName = "condition_occurrence",
+    window = c(-365, -1),
+    nameStyle = "prior_conditions"
+  )
+```
+. . .
+
+```{r, eval = TRUE, echo = FALSE}
+cdm$my_cohort |>
+  addCohortIntersectFlag(
+    targetCohortTable = "medications",
+    targetCohortId = "heparin",
+    window = c(-365, -1),
+    nameStyle = "prior_{cohort_name}"
+  ) |>
+  addTableIntersectCount(
+    tableName = "condition_occurrence",
+    window = c(-365, -1),
+    nameStyle = "prior_conditions"
+  )
+```
+
+## More intersection functions in PatientProfiles
+
+-   [addDeathDate](https://darwin-eu.github.io/PatientProfiles/reference/addDeathDate.html)
+-   [addDeathFlag](https://darwin-eu.github.io/PatientProfiles/reference/addDeathFlag.html)
+-   [addDeathDays](https://darwin-eu.github.io/PatientProfiles/reference/addDeathDays.html)
+
+
+
+## Thank you!
+
+::::: {style="display: flex; align-items: center; justify-content: space-between;"}
+::: {style="flex: 1;"}
+### Resources
+
+👉 [Package website](https://darwin-eu.github.io/PatientProfiles/)\
+👉 [CRAN](https://cran.r-project.org/web/packages/PatientProfiles/)\
+👉 [PDF manual](https://cran.r-project.org/web/packages/PatientProfiles/PatientProfiles.pdf)\
+📧 <a href="mailto:cecilia.campanile@ndorms.ox.ac.uk">cecilia.campanile\@ndorms.ox.ac.uk</a>
+:::
+
+::: {style="flex: 1; text-align: center;"}
+<img src="https://github.com/darwin-eu/PatientProfiles/blob/main/man/figures/logo.png?raw=true" width="500"/>
+:::
+:::::

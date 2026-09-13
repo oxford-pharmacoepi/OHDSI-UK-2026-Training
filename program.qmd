@@ -1,0 +1,8 @@
+
+# Program
+
+| Time | Session |
+| --- | --------- |
+| 10.30 - 13.00 | • Creating a CDM reference with [CDMConnector](https://darwin-eu.github.io/CDMConnector/) <br> • Characterise the OMOP CDM instance with [OmopSketch](https://ohdsi.github.io/OmopSketch/) <br> • Writing custom queries using [PatientProfiles](https://darwin-eu.github.io/PatientProfiles/) and [dbplyr](https://dbplyr.tidyverse.org) |
+| 13.00 - 14.00 | *Lunch break (Room D)* |
+| 14:00 - 16.30 | • Creating cohorts using [CohortConstructor](https://ohdsi.github.io/CohortConstructor/) <br> • Characterise cohorts using [CohortCharacteristics](https://darwin-eu.github.io/CohortCharacteristics/) <br> • Evaluating cohorts using [PhenotypeR](https://ohdsi.github.io/PhenotypeR/) |

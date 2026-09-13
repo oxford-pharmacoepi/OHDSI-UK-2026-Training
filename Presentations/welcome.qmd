@@ -1,0 +1,152 @@
+---
+title: "Welcome to the Analytics track"
+subtitle: "Real World Evidence Summer School 2026"
+date: "2026-06-22"
+format:
+  revealjs: 
+    theme: [simple, ../styleSS25.scss]
+    incremental: true   
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    margin: 0.07
+    code-link: true
+    code-line-numbers: false
+    height: 900
+    width: 1600
+    footer: |
+      <div style="position: relative; width: 100%;">
+        <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2026</div>
+        <div style="position: fixed; top: 20px; right: 20px;"><a href="index.qmd" style="text-decoration: none;">⬅ Back to Practicals</a></div>
+      </div>
+execute:
+  echo: true
+  eval: true
+editor: visual
+---
+
+## Welcome to St Hilda's
+
+![](images/st_hildas.jpg){fig-align="center"}
+
+## Aims of the analytics track
+
+. . .
+
+By the end of the week:
+
+-   Be able to conduct descriptive analyses using R with data in the OMOP CDM format
+
+-   Understand how to approach writing bespoke code for complex studies
+
+-   Know where to look for help
+
+## What to expect
+
+. . .
+
+::: {style="text-align: center;"}
+<img src="images/programming.gif" alt="Programming gif" style="height: 600px;"/>
+:::
+
+## What to expect
+
+. . .
+
+-   Quarto presentations - most presentations correspond to an R package that works with data in the OMOP CDM format.
+
+-   "Your Turn" exercises - during presentations where you can practice using the package (solutions will be on the next slide, but first try without looking at these!)
+
+-   General practical - end of each day, which we will work on throughout the week.
+
+## Post-It notes
+
+. . .
+
+-   Green - all good, no code currently running
+
+-   Yellow - code running
+
+-   Red - help me!
+
+<br/>
+
+. . .
+
+![](images/BIEe.gif){fig-align="center" width="500"}
+
+## Set up
+
+**USB**
+
+- Contains the datasets you will need for this week
+
+- Copy the *Analytics track* folder to your laptop
+
+- Open the *Analytics track* project with RStudio
+
+- Copy the databases to the *Back up* folder
+
+- Run the `Setup.R` script in the *Your turn* folder
+
+## Schedule - Monday
+
+| Time          | Session                                       |
+|---------------|-----------------------------------------------|
+| 13.30 - 14.30 | Introduction to OMOP and **CDMConnector**     |
+| 14.30 - 15.00 | *Coffee break*                                |
+| 15.00 - 15.45 | Characterising a database with **OmopSketch** |
+| 15.45 - 16.30 | General practical                             |
+
+## Schedule - Tuesday
+
+| Time          | Session                                     |
+|---------------|---------------------------------------------|
+| 13.30 - 14.30 | Creating cohorts with **CohortConstructor** |
+| 14.30 - 15.00 | *Coffee break*                              |
+| 15.00 - 15.45 | Phenotype diagnostics with **PhenotypeR**   |
+| 15.45 - 16.30 | General practical                           |
+
+## Schedule - Wednesday
+
+| Time          | Session                                               |
+|---------------|-------------------------------------------------------|
+| 13.30 - 14.30 | Add patient level data with **PatientProfiles**       |
+| 14.30 - 15.00 | *Coffee break*                                        |
+| 15.00 - 15.45 | Characterising cohorts with **CohortCharacteristics** |
+| 15.45 - 16.30 | General practical                                     |
+
+## Schedule - Thursday
+
+| Time | Session |
+|--------------------|----------------------------------------------------|
+| 13:30 - 14:30 | Conducting Drug Utilisation studies with **DrugUtilisation** |
+| 14:30 - 15:00 | *Coffee break* |
+| 15.00 - 15.45 | Estimate incidence and prevalence with **IncidencePrevalence** |
+| 15:45 - 16:30 | General practical |
+
+## Introductions
+
+-   What's your name?
+
+-   Where do you work? What is your role?
+
+-   Have you used R before?
+
+-   Have you worked with OMOP CDM data before?
+
+-   What do you want to get from this week?
+
+## Materials
+
+You can find all the materials of the summer school in the following website: <https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2026/>
+
+::: {style="position: relative; height: 800px;"}
+<a href="https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2026/"
+     target="_blank"
+     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;"> </a> <iframe src="https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2026/"
+          width="100%" height="600px"
+          style="border:none; position: absolute; top: 0; left: 0; z-index: 1;"> </iframe>
+:::
+
+</iframe>
