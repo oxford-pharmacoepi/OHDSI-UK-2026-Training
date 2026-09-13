@@ -1,6 +1,6 @@
 ---
 title: "Welcome to the Analytics track"
-subtitle: "Real World Evidence Summer School 2026"
+subtitle: "OHDSI-UK 2026 Training"
 date: "2026-06-22"
 format:
   revealjs: 
@@ -16,7 +16,7 @@ format:
     width: 1600
     footer: |
       <div style="position: relative; width: 100%;">
-        <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2026</div>
+        <div style="text-align: center; font-weight: 500;">OHDSI-UK 2026 Training</div>
         <div style="position: fixed; top: 20px; right: 20px;"><a href="index.qmd" style="text-decoration: none;">⬅ Back to Practicals</a></div>
       </div>
 execute:
@@ -25,15 +25,13 @@ execute:
 editor: visual
 ---
 
-## Welcome to St Hilda's
-
-![](images/st_hildas.jpg){fig-align="center"}
+## Welcome to the OHDSI-UK training
 
 ## Aims of the analytics track
 
 . . .
 
-By the end of the week:
+By the end of the training:
 
 -   Be able to conduct descriptive analyses using R with data in the OMOP CDM format
 
@@ -57,7 +55,7 @@ By the end of the week:
 
 -   "Your Turn" exercises - during presentations where you can practice using the package (solutions will be on the next slide, but first try without looking at these!)
 
--   General practical - end of each day, which we will work on throughout the week.
+-   General practical - time to apply what you have learned during the training.
 
 ## Post-It notes
 
@@ -135,18 +133,8 @@ By the end of the week:
 
 -   Have you worked with OMOP CDM data before?
 
--   What do you want to get from this week?
+-   What do you want to get from this training?
 
 ## Materials
 
-You can find all the materials of the summer school in the following website: <https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2026/>
-
-::: {style="position: relative; height: 800px;"}
-<a href="https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2026/"
-     target="_blank"
-     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;"> </a> <iframe src="https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2026/"
-          width="100%" height="600px"
-          style="border:none; position: absolute; top: 0; left: 0; z-index: 1;"> </iframe>
-:::
-
-</iframe>
+All training materials are available from the [presentations](../index.qmd) and [downloadable PDFs](../downloads.qmd) on this website.

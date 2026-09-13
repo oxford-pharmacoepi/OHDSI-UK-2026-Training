@@ -1,5 +1,3 @@
-# Oxford Real World Evidence Summer School 2026
+# OHDSI-UK 2026 Training
 
-![St Hilda's](https://github.com/oxford-pharmacoepi/RealWorldEvidenceSummerSchool2026/blob/main/images/st_hilda.png?raw=true)
-
-This is the github repository used during the Real World Evidence Summer School 2026.
+This repository contains the materials used during the OHDSI-UK 2026 training sessions.
