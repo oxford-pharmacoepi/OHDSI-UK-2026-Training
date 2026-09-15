@@ -247,11 +247,11 @@ In general, OMOP databases have two schemas:
 
 You should see that in the *Database* folder there are three datasets:
 
-- **GiBleed**
+-   **GiBleed**
 
-- **Delphi**
+-   **Delphi**
 
-- **Synpuf**
+-   **Synpuf**
 
 ## Let's create our first cdm reference
 
@@ -328,102 +328,23 @@ cdmName(cdm)
 
 ## Create a new table
 
-Let's say I want to subset the `condition_occurrence` table to a certain rows and certain columns and save it so I can later access it.
-
-. . .
-
-temporary table (default):
-
-```{r}
-cdm$my_saved_table <- cdm$condition_occurrence |>
-  filter(condition_concept_id == 4112343) |>
-  select(person_id, condition_start_date) |>
-  compute()
-listSourceTables(cdm)
-```
-
-## Create a new table
-
-. . .
-
-permanent table:
-
 ```{r}
 cdm$my_saved_table <- cdm$condition_occurrence |>
   filter(condition_concept_id == 4112343) |>
   select(person_id, condition_start_date) |>
   compute(name = "my_saved_table")
-listSourceTables(cdm)
 ```
-
-## Create a new table
-
-```{r, message=TRUE}
-cdm
-cdm$my_saved_table
-```
-
-## Drop an existing table
-
-To drop an existing table:
-
--   Eliminate the table from the cdm object.
-
--   Eliminate the table from the database.
 
 . . .
 
-```{r, message=TRUE}
-cdm <- dropSourceTable(cdm = cdm, name = "my_saved_table")
-cdm
-```
-
-## Drop an existing table
-
-. . .
-
-```{r}
-listSourceTables(cdm)
-```
-
-## Drop an existing table
-
-Let's drop also the other table that we created:
-
-```{r, message=TRUE}
-cdm <- dropSourceTable(cdm = cdm, name = starts_with("og_"))
-cdm
-```
-
-## Drop an existing table
-
-```{r}
-listSourceTables(cdm)
-```
-
-## Insert a table
-
-Let's say we have a local tibble and we want to insert it in the cdm:
-
-```{r, message=TRUE}
-cdm <- insertTable(cdm = cdm, name = "my_test_table", table = cars)
-cdm
-```
-
-## Insert a table
-
-```{r}
-listSourceTables(cdm)
-cdm$my_test_table
+```{r, error = TRUE}
+cdm$my_custom_name <- cdm$person |> 
+  compute(name = "not_my_custom_name")
 ```
 
 ## Use a prefix
 
 It is **VERY IMPORTANT** that when we create the cdm object we use a prefix:
-
-```{r, echo = FALSE}
-cdm <- dropSourceTable(cdm = cdm, name = "my_test_table")
-```
 
 ```{r, message=TRUE}
 cdm <- cdmFromCon(
@@ -434,155 +355,6 @@ cdm <- cdmFromCon(
 )
 cdm
 ```
-
-## Use a prefix
-
-Now when we create a new table the prefix will be automatically added:
-
-```{r, message=TRUE}
-cdm <- insertTable(cdm = cdm, name = "my_test_table", table = cars)
-cdm
-```
-
-## Use a prefix
-
-```{r}
-listSourceTables(cdm = cdm)
-cdm$my_test_table
-```
-
-## Use a prefix
-
-**DO NOT** use the prefix to drop tables, you only care about the prefix at the connection stage!
-
-```{r, message=TRUE}
-cdm <- dropSourceTable(cdm = cdm, name = "my_prefix_my_test_table")
-listSourceTables(cdm = cdm)
-```
-
-## Use a prefix
-
-```{r, message=TRUE}
-cdm
-```
-
-## Use a prefix
-
-**DO NOT** use the prefix to drop tables, you only care about the prefix at the connection stage!
-
-```{r, message=TRUE}
-cdm <- dropSourceTable(cdm = cdm, name = "my_test_table")
-listSourceTables(cdm = cdm)
-```
-
-## Use a prefix
-
-```{r, message=TRUE}
-cdm
-```
-
-## Consistency rules
-
-We use compute() to compute the result into a temporary (temporary = TRUE) or permanent (temporary = FALSE) table.
-
-If it is a temporary table we can assign assign it to where I want for example:
-
-```{r}
-cdm$my_custom_name <- cdm$person |> 
-  compute()
-```
-
-. . .
-
-If it is a permanent table we can only assign it to the same name:
-
-error:
-
-```{r, error = TRUE}
-cdm$my_custom_name <- cdm$person |> 
-  compute(name = "not_my_custom_name")
-```
-
-. . .
-
-no error:
-
-```{r}
-cdm$my_custom_name <- cdm$person |> 
-  compute(name = "my_custom_name")
-```
-
-## Consistency rules
-
-Omop names are reserved words, e.g. we can not assign a table that is not the person table to `cdm$person`.
-
-. . .
-
-```{r, error = TRUE}
-cdm$person <- cdm$drug_exposure |> 
-  compute(name = "person", temporary = FALSE)
-```
-
-. . .
-
-```{r, error = TRUE}
-cdm$drug_exposure <- cdm$drug_exposure |> 
-  rename("my_id" = "person_id") |> 
-  compute(name = "drug_exposure", temporary = FALSE)
-```
-
-## Result model
-
-The output of our analyses has been standardised to the `<summarised_result>` object.
-
-. . .
-
-```{r}
-x <- mockSummarisedResult()
-x
-```
-
-. . .
-
-```{r}
-class(x)
-```
-
-## `<summarised_result>`
-
-The summarised result object contains 13 columns:
-
-. . .
-
-```{r}
-glimpse(x)
-```
-
-## `<summarised_result>`
-
-And have some associated settings
-
-. . .
-
-```{r}
-settings(x)
-```
-
-## tidy the result object
-
-. . .
-
-```{r}
-x |>
-  tidy() |>
-  glimpse()
-```
-
-## Other objects and classes
-
--   `<codelist>`, `<codelist_with_details>`, `<conceptSetExpression>`
--   `<cohort_table>`
--   `<achilles_table>`
 
 ## omock
 

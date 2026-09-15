@@ -82,9 +82,11 @@ By the end of the training:
 
 - Open the *Analytics track* project with RStudio
 
-- Copy the databases to the *Back up* folder
-
 - Run the `Setup.R` script in the *Your turn* folder
+
+- Run the `createDatabases.R` script in the *Databases* folder
+
+- Copy the databases to the *Back up* folder
 
 ## Schedule 
 
