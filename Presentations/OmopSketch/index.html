@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
-<meta name="dcterms.date" content="2026-09-13">
+<meta name="dcterms.date" content="2026-09-15">
 <title>OHDSI-UK 2026 Training – OmopSketch</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -212,7 +212,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2026-09-13</p>
+  <p class="date">2026-09-15</p>
 </section><section id="overview-and-motivation" class="slide level2"><h2>Overview and motivation</h2>
 <ul>
 <li class="fragment">OmopSketch is designed to <strong>summarise key information</strong> of an OMOP-mapped database.</li>
@@ -315,7 +315,7 @@ $ variable_name    &lt;chr&gt; "general", "general", "general", "cdm", "cdm", "c
 $ variable_level   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 $ estimate_name    &lt;chr&gt; "snapshot_date", "person_count", "vocabulary_version", "source_name", "version", "holder_name…
 $ estimate_type    &lt;chr&gt; "date", "integer", "character", "character", "character", "character", "character", "characte…
-$ estimate_value   &lt;chr&gt; "2026-09-13", "2694", "v5.0 18-JAN-19", "Synthea synthetic health database", "5.3", "OHDSI Co…
+$ estimate_value   &lt;chr&gt; "2026-09-15", "2694", "v5.0 18-JAN-19", "Synthea synthetic health database", "5.3", "OHDSI Co…
 $ additional_name  &lt;chr&gt; "overall", "overall", "overall", "overall", "overall", "overall", "overall", "overall", "over…
 $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "overall", "overall", "overall", "overall", "over…</code></pre>
 </div>
@@ -330,23 +330,23 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://OHDSI.github.io/OmopSketch/reference/tableOmopSnapshot.html">tableOmopSnapshot</a></span><span class="op">(</span>result <span class="op">=</span> <span class="va">snapshot</span>, type <span class="op">=</span> <span class="st">"gt"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="lvioimyatq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lvioimyatq table {
+<div id="azukhacjjo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#azukhacjjo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lvioimyatq thead, #lvioimyatq tbody, #lvioimyatq tfoot, #lvioimyatq tr, #lvioimyatq td, #lvioimyatq th {
+#azukhacjjo thead, #azukhacjjo tbody, #azukhacjjo tfoot, #azukhacjjo tr, #azukhacjjo td, #azukhacjjo th {
   border-style: none;
 }
 
-#lvioimyatq p {
+#azukhacjjo p {
   margin: 0;
   padding: 0;
 }
 
-#lvioimyatq .gt_table {
+#azukhacjjo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -372,12 +372,12 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-left-color: #F4E9EB;
 }
 
-#lvioimyatq .gt_caption {
+#azukhacjjo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lvioimyatq .gt_title {
+#azukhacjjo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -389,7 +389,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-bottom-width: 0;
 }
 
-#lvioimyatq .gt_subtitle {
+#azukhacjjo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -401,7 +401,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-top-width: 0;
 }
 
-#lvioimyatq .gt_heading {
+#azukhacjjo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -413,13 +413,13 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-right-color: #D3D3D3;
 }
 
-#lvioimyatq .gt_bottom_border {
+#azukhacjjo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lvioimyatq .gt_col_headings {
+#azukhacjjo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -434,7 +434,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-right-color: #D3D3D3;
 }
 
-#lvioimyatq .gt_col_heading {
+#azukhacjjo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -454,7 +454,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   overflow-x: hidden;
 }
 
-#lvioimyatq .gt_column_spanner_outer {
+#azukhacjjo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -466,15 +466,15 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   padding-right: 4px;
 }
 
-#lvioimyatq .gt_column_spanner_outer:first-child {
+#azukhacjjo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lvioimyatq .gt_column_spanner_outer:last-child {
+#azukhacjjo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lvioimyatq .gt_column_spanner {
+#azukhacjjo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -486,11 +486,11 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   width: 100%;
 }
 
-#lvioimyatq .gt_spanner_row {
+#azukhacjjo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lvioimyatq .gt_group_heading {
+#azukhacjjo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -516,7 +516,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   text-align: left;
 }
 
-#lvioimyatq .gt_empty_group_heading {
+#azukhacjjo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -531,15 +531,15 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   vertical-align: middle;
 }
 
-#lvioimyatq .gt_from_md > :first-child {
+#azukhacjjo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lvioimyatq .gt_from_md > :last-child {
+#azukhacjjo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lvioimyatq .gt_row {
+#azukhacjjo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -558,7 +558,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   overflow-x: hidden;
 }
 
-#lvioimyatq .gt_stub {
+#azukhacjjo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -571,7 +571,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   padding-right: 5px;
 }
 
-#lvioimyatq .gt_stub_row_group {
+#azukhacjjo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -585,15 +585,15 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   vertical-align: top;
 }
 
-#lvioimyatq .gt_row_group_first td {
+#azukhacjjo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lvioimyatq .gt_row_group_first th {
+#azukhacjjo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lvioimyatq .gt_summary_row {
+#azukhacjjo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -603,16 +603,16 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   padding-right: 5px;
 }
 
-#lvioimyatq .gt_first_summary_row {
+#azukhacjjo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lvioimyatq .gt_first_summary_row.thick {
+#azukhacjjo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lvioimyatq .gt_last_summary_row {
+#azukhacjjo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -622,7 +622,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-bottom-color: #D3D3D3;
 }
 
-#lvioimyatq .gt_grand_summary_row {
+#azukhacjjo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -632,7 +632,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   padding-right: 5px;
 }
 
-#lvioimyatq .gt_first_grand_summary_row {
+#azukhacjjo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -642,7 +642,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-top-color: #D3D3D3;
 }
 
-#lvioimyatq .gt_last_grand_summary_row_top {
+#azukhacjjo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -652,11 +652,11 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-bottom-color: #D3D3D3;
 }
 
-#lvioimyatq .gt_striped {
+#azukhacjjo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lvioimyatq .gt_table_body {
+#azukhacjjo .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #F4E9EB;
@@ -665,7 +665,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-bottom-color: #D3D3D3;
 }
 
-#lvioimyatq .gt_footnotes {
+#azukhacjjo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -679,7 +679,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-right-color: #D3D3D3;
 }
 
-#lvioimyatq .gt_footnote {
+#azukhacjjo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -688,7 +688,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   padding-right: 5px;
 }
 
-#lvioimyatq .gt_sourcenotes {
+#azukhacjjo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -702,7 +702,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-right-color: #D3D3D3;
 }
 
-#lvioimyatq .gt_sourcenote {
+#azukhacjjo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -710,72 +710,72 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   padding-right: 5px;
 }
 
-#lvioimyatq .gt_left {
+#azukhacjjo .gt_left {
   text-align: left;
 }
 
-#lvioimyatq .gt_center {
+#azukhacjjo .gt_center {
   text-align: center;
 }
 
-#lvioimyatq .gt_right {
+#azukhacjjo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lvioimyatq .gt_font_normal {
+#azukhacjjo .gt_font_normal {
   font-weight: normal;
 }
 
-#lvioimyatq .gt_font_bold {
+#azukhacjjo .gt_font_bold {
   font-weight: bold;
 }
 
-#lvioimyatq .gt_font_italic {
+#azukhacjjo .gt_font_italic {
   font-style: italic;
 }
 
-#lvioimyatq .gt_super {
+#azukhacjjo .gt_super {
   font-size: 65%;
 }
 
-#lvioimyatq .gt_footnote_marks {
+#azukhacjjo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lvioimyatq .gt_asterisk {
+#azukhacjjo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lvioimyatq .gt_indent_1 {
+#azukhacjjo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lvioimyatq .gt_indent_2 {
+#azukhacjjo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lvioimyatq .gt_indent_3 {
+#azukhacjjo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lvioimyatq .gt_indent_4 {
+#azukhacjjo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lvioimyatq .gt_indent_5 {
+#azukhacjjo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lvioimyatq .katex-display {
+#azukhacjjo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lvioimyatq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#azukhacjjo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -804,7 +804,7 @@ Database name
 <tr class="gt_row_group_first even">
 <td class="gt_row gt_left" headers="General  Estimate" style="text-align: left; border-left-width: 0.5px; border-left-style: solid; border-left-color: #E6D208; border-right-width: 0.5px; border-right-style: solid; border-right-color: #E6D208; border-top-width: 0.5px; border-top-style: solid; border-top-color: #E6D208; border-bottom-width: 0.5px; border-bottom-style: solid; border-bottom-color: #E6D208; background-color: #FFFFFF;">Snapshot date</td>
 <td class="gt_row gt_left" headers="General  [header_name]Database name
-[header_level]Synthea" style="text-align: right; background-color: #FFFFFF; border-left-width: 0.5px; border-left-style: solid; border-left-color: #E6D208; border-right-width: 0.5px; border-right-style: solid; border-right-color: #E6D208; border-top-width: 0.5px; border-top-style: solid; border-top-color: #E6D208; border-bottom-width: 0.5px; border-bottom-style: solid; border-bottom-color: #E6D208;">2026-09-13</td>
+[header_level]Synthea" style="text-align: right; background-color: #FFFFFF; border-left-width: 0.5px; border-left-style: solid; border-left-color: #E6D208; border-right-width: 0.5px; border-right-style: solid; border-right-color: #E6D208; border-top-width: 0.5px; border-top-style: solid; border-top-color: #E6D208; border-bottom-width: 0.5px; border-bottom-style: solid; border-bottom-color: #E6D208;">2026-09-15</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="General  Estimate" style="text-align: left; border-left-width: 0.5px; border-left-style: solid; border-left-color: #E6D208; border-right-width: 0.5px; border-right-style: solid; border-right-color: #E6D208; border-top-width: 0.5px; border-top-style: solid; border-top-color: #E6D208; border-bottom-width: 0.5px; border-bottom-style: solid; border-bottom-color: #E6D208; background-color: #FFFFFF;">Person count</td>
@@ -946,23 +946,23 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://OHDSI.github.io/OmopSketch/reference/tableObservationPeriod.html">tableObservationPeriod</a></span><span class="op">(</span>result <span class="op">=</span> <span class="va">obs_result</span>, type <span class="op">=</span> <span class="st">"gt"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="uilbjkjohn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uilbjkjohn table {
+<div id="wsokpouktp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wsokpouktp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uilbjkjohn thead, #uilbjkjohn tbody, #uilbjkjohn tfoot, #uilbjkjohn tr, #uilbjkjohn td, #uilbjkjohn th {
+#wsokpouktp thead, #wsokpouktp tbody, #wsokpouktp tfoot, #wsokpouktp tr, #wsokpouktp td, #wsokpouktp th {
   border-style: none;
 }
 
-#uilbjkjohn p {
+#wsokpouktp p {
   margin: 0;
   padding: 0;
 }
 
-#uilbjkjohn .gt_table {
+#wsokpouktp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -988,12 +988,12 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-left-color: #F4E9EB;
 }
 
-#uilbjkjohn .gt_caption {
+#wsokpouktp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uilbjkjohn .gt_title {
+#wsokpouktp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1005,7 +1005,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-bottom-width: 0;
 }
 
-#uilbjkjohn .gt_subtitle {
+#wsokpouktp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1017,7 +1017,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-top-width: 0;
 }
 
-#uilbjkjohn .gt_heading {
+#wsokpouktp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1029,13 +1029,13 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-right-color: #D3D3D3;
 }
 
-#uilbjkjohn .gt_bottom_border {
+#wsokpouktp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uilbjkjohn .gt_col_headings {
+#wsokpouktp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1050,7 +1050,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-right-color: #D3D3D3;
 }
 
-#uilbjkjohn .gt_col_heading {
+#wsokpouktp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1070,7 +1070,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   overflow-x: hidden;
 }
 
-#uilbjkjohn .gt_column_spanner_outer {
+#wsokpouktp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1082,15 +1082,15 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   padding-right: 4px;
 }
 
-#uilbjkjohn .gt_column_spanner_outer:first-child {
+#wsokpouktp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uilbjkjohn .gt_column_spanner_outer:last-child {
+#wsokpouktp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uilbjkjohn .gt_column_spanner {
+#wsokpouktp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1102,11 +1102,11 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   width: 100%;
 }
 
-#uilbjkjohn .gt_spanner_row {
+#wsokpouktp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uilbjkjohn .gt_group_heading {
+#wsokpouktp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1132,7 +1132,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   text-align: left;
 }
 
-#uilbjkjohn .gt_empty_group_heading {
+#wsokpouktp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1147,15 +1147,15 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   vertical-align: middle;
 }
 
-#uilbjkjohn .gt_from_md > :first-child {
+#wsokpouktp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uilbjkjohn .gt_from_md > :last-child {
+#wsokpouktp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uilbjkjohn .gt_row {
+#wsokpouktp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1174,7 +1174,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   overflow-x: hidden;
 }
 
-#uilbjkjohn .gt_stub {
+#wsokpouktp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1187,7 +1187,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   padding-right: 5px;
 }
 
-#uilbjkjohn .gt_stub_row_group {
+#wsokpouktp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1201,15 +1201,15 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   vertical-align: top;
 }
 
-#uilbjkjohn .gt_row_group_first td {
+#wsokpouktp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uilbjkjohn .gt_row_group_first th {
+#wsokpouktp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uilbjkjohn .gt_summary_row {
+#wsokpouktp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1219,16 +1219,16 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   padding-right: 5px;
 }
 
-#uilbjkjohn .gt_first_summary_row {
+#wsokpouktp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uilbjkjohn .gt_first_summary_row.thick {
+#wsokpouktp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uilbjkjohn .gt_last_summary_row {
+#wsokpouktp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1238,7 +1238,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-bottom-color: #D3D3D3;
 }
 
-#uilbjkjohn .gt_grand_summary_row {
+#wsokpouktp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1248,7 +1248,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   padding-right: 5px;
 }
 
-#uilbjkjohn .gt_first_grand_summary_row {
+#wsokpouktp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1258,7 +1258,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-top-color: #D3D3D3;
 }
 
-#uilbjkjohn .gt_last_grand_summary_row_top {
+#wsokpouktp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1268,11 +1268,11 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-bottom-color: #D3D3D3;
 }
 
-#uilbjkjohn .gt_striped {
+#wsokpouktp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uilbjkjohn .gt_table_body {
+#wsokpouktp .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #F4E9EB;
@@ -1281,7 +1281,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-bottom-color: #D3D3D3;
 }
 
-#uilbjkjohn .gt_footnotes {
+#wsokpouktp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1295,7 +1295,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-right-color: #D3D3D3;
 }
 
-#uilbjkjohn .gt_footnote {
+#wsokpouktp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1304,7 +1304,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   padding-right: 5px;
 }
 
-#uilbjkjohn .gt_sourcenotes {
+#wsokpouktp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1318,7 +1318,7 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   border-right-color: #D3D3D3;
 }
 
-#uilbjkjohn .gt_sourcenote {
+#wsokpouktp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1326,72 +1326,72 @@ $ additional_level &lt;chr&gt; "overall", "overall", "overall", "overall", "over
   padding-right: 5px;
 }
 
-#uilbjkjohn .gt_left {
+#wsokpouktp .gt_left {
   text-align: left;
 }
 
-#uilbjkjohn .gt_center {
+#wsokpouktp .gt_center {
   text-align: center;
 }
 
-#uilbjkjohn .gt_right {
+#wsokpouktp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uilbjkjohn .gt_font_normal {
+#wsokpouktp .gt_font_normal {
   font-weight: normal;
 }
 
-#uilbjkjohn .gt_font_bold {
+#wsokpouktp .gt_font_bold {
   font-weight: bold;
 }
 
-#uilbjkjohn .gt_font_italic {
+#wsokpouktp .gt_font_italic {
   font-style: italic;
 }
 
-#uilbjkjohn .gt_super {
+#wsokpouktp .gt_super {
   font-size: 65%;
 }
 
-#uilbjkjohn .gt_footnote_marks {
+#wsokpouktp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uilbjkjohn .gt_asterisk {
+#wsokpouktp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uilbjkjohn .gt_indent_1 {
+#wsokpouktp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uilbjkjohn .gt_indent_2 {
+#wsokpouktp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uilbjkjohn .gt_indent_3 {
+#wsokpouktp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uilbjkjohn .gt_indent_4 {
+#wsokpouktp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uilbjkjohn .gt_indent_5 {
+#wsokpouktp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#uilbjkjohn .katex-display {
+#wsokpouktp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#uilbjkjohn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wsokpouktp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1735,23 +1735,23 @@ Data source
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://OHDSI.github.io/OmopSketch/reference/tableClinicalRecords.html">tableClinicalRecords</a></span><span class="op">(</span>result <span class="op">=</span> <span class="va">clinical_result</span>, type <span class="op">=</span> <span class="st">"gt"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fufjimiulu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fufjimiulu table {
+<div id="xizqdnyvpy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xizqdnyvpy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fufjimiulu thead, #fufjimiulu tbody, #fufjimiulu tfoot, #fufjimiulu tr, #fufjimiulu td, #fufjimiulu th {
+#xizqdnyvpy thead, #xizqdnyvpy tbody, #xizqdnyvpy tfoot, #xizqdnyvpy tr, #xizqdnyvpy td, #xizqdnyvpy th {
   border-style: none;
 }
 
-#fufjimiulu p {
+#xizqdnyvpy p {
   margin: 0;
   padding: 0;
 }
 
-#fufjimiulu .gt_table {
+#xizqdnyvpy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1777,12 +1777,12 @@ Data source
   border-left-color: #F4E9EB;
 }
 
-#fufjimiulu .gt_caption {
+#xizqdnyvpy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fufjimiulu .gt_title {
+#xizqdnyvpy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1794,7 +1794,7 @@ Data source
   border-bottom-width: 0;
 }
 
-#fufjimiulu .gt_subtitle {
+#xizqdnyvpy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1806,7 +1806,7 @@ Data source
   border-top-width: 0;
 }
 
-#fufjimiulu .gt_heading {
+#xizqdnyvpy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1818,13 +1818,13 @@ Data source
   border-right-color: #D3D3D3;
 }
 
-#fufjimiulu .gt_bottom_border {
+#xizqdnyvpy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fufjimiulu .gt_col_headings {
+#xizqdnyvpy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1839,7 +1839,7 @@ Data source
   border-right-color: #D3D3D3;
 }
 
-#fufjimiulu .gt_col_heading {
+#xizqdnyvpy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1859,7 +1859,7 @@ Data source
   overflow-x: hidden;
 }
 
-#fufjimiulu .gt_column_spanner_outer {
+#xizqdnyvpy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1871,15 +1871,15 @@ Data source
   padding-right: 4px;
 }
 
-#fufjimiulu .gt_column_spanner_outer:first-child {
+#xizqdnyvpy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fufjimiulu .gt_column_spanner_outer:last-child {
+#xizqdnyvpy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fufjimiulu .gt_column_spanner {
+#xizqdnyvpy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1891,11 +1891,11 @@ Data source
   width: 100%;
 }
 
-#fufjimiulu .gt_spanner_row {
+#xizqdnyvpy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fufjimiulu .gt_group_heading {
+#xizqdnyvpy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1921,7 +1921,7 @@ Data source
   text-align: left;
 }
 
-#fufjimiulu .gt_empty_group_heading {
+#xizqdnyvpy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1936,15 +1936,15 @@ Data source
   vertical-align: middle;
 }
 
-#fufjimiulu .gt_from_md > :first-child {
+#xizqdnyvpy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fufjimiulu .gt_from_md > :last-child {
+#xizqdnyvpy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fufjimiulu .gt_row {
+#xizqdnyvpy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1963,7 +1963,7 @@ Data source
   overflow-x: hidden;
 }
 
-#fufjimiulu .gt_stub {
+#xizqdnyvpy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1976,7 +1976,7 @@ Data source
   padding-right: 5px;
 }
 
-#fufjimiulu .gt_stub_row_group {
+#xizqdnyvpy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1990,15 +1990,15 @@ Data source
   vertical-align: top;
 }
 
-#fufjimiulu .gt_row_group_first td {
+#xizqdnyvpy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fufjimiulu .gt_row_group_first th {
+#xizqdnyvpy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fufjimiulu .gt_summary_row {
+#xizqdnyvpy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2008,16 +2008,16 @@ Data source
   padding-right: 5px;
 }
 
-#fufjimiulu .gt_first_summary_row {
+#xizqdnyvpy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fufjimiulu .gt_first_summary_row.thick {
+#xizqdnyvpy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fufjimiulu .gt_last_summary_row {
+#xizqdnyvpy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2027,7 +2027,7 @@ Data source
   border-bottom-color: #D3D3D3;
 }
 
-#fufjimiulu .gt_grand_summary_row {
+#xizqdnyvpy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2037,7 +2037,7 @@ Data source
   padding-right: 5px;
 }
 
-#fufjimiulu .gt_first_grand_summary_row {
+#xizqdnyvpy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2047,7 +2047,7 @@ Data source
   border-top-color: #D3D3D3;
 }
 
-#fufjimiulu .gt_last_grand_summary_row_top {
+#xizqdnyvpy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2057,11 +2057,11 @@ Data source
   border-bottom-color: #D3D3D3;
 }
 
-#fufjimiulu .gt_striped {
+#xizqdnyvpy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fufjimiulu .gt_table_body {
+#xizqdnyvpy .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #F4E9EB;
@@ -2070,7 +2070,7 @@ Data source
   border-bottom-color: #D3D3D3;
 }
 
-#fufjimiulu .gt_footnotes {
+#xizqdnyvpy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2084,7 +2084,7 @@ Data source
   border-right-color: #D3D3D3;
 }
 
-#fufjimiulu .gt_footnote {
+#xizqdnyvpy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2093,7 +2093,7 @@ Data source
   padding-right: 5px;
 }
 
-#fufjimiulu .gt_sourcenotes {
+#xizqdnyvpy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2107,7 +2107,7 @@ Data source
   border-right-color: #D3D3D3;
 }
 
-#fufjimiulu .gt_sourcenote {
+#xizqdnyvpy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2115,72 +2115,72 @@ Data source
   padding-right: 5px;
 }
 
-#fufjimiulu .gt_left {
+#xizqdnyvpy .gt_left {
   text-align: left;
 }
 
-#fufjimiulu .gt_center {
+#xizqdnyvpy .gt_center {
   text-align: center;
 }
 
-#fufjimiulu .gt_right {
+#xizqdnyvpy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fufjimiulu .gt_font_normal {
+#xizqdnyvpy .gt_font_normal {
   font-weight: normal;
 }
 
-#fufjimiulu .gt_font_bold {
+#xizqdnyvpy .gt_font_bold {
   font-weight: bold;
 }
 
-#fufjimiulu .gt_font_italic {
+#xizqdnyvpy .gt_font_italic {
   font-style: italic;
 }
 
-#fufjimiulu .gt_super {
+#xizqdnyvpy .gt_super {
   font-size: 65%;
 }
 
-#fufjimiulu .gt_footnote_marks {
+#xizqdnyvpy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fufjimiulu .gt_asterisk {
+#xizqdnyvpy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fufjimiulu .gt_indent_1 {
+#xizqdnyvpy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fufjimiulu .gt_indent_2 {
+#xizqdnyvpy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fufjimiulu .gt_indent_3 {
+#xizqdnyvpy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fufjimiulu .gt_indent_4 {
+#xizqdnyvpy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fufjimiulu .gt_indent_5 {
+#xizqdnyvpy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fufjimiulu .katex-display {
+#xizqdnyvpy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fufjimiulu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xizqdnyvpy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2697,8 +2697,8 @@ $ type               &lt;chr&gt; "event"</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://OHDSI.github.io/OmopSketch/reference/tableTrend.html">tableTrend</a></span><span class="op">(</span>result <span class="op">=</span> <span class="va">trend_result</span>, type <span class="op">=</span> <span class="st">"reactable"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-2cf02897246ce9faf43c" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-2cf02897246ce9faf43c">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Type; OMOP table":["event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure"],"Variable name":["Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records"],"Time interval":["1950-01-01 to 1950-12-31","1951-01-01 to 1951-12-31","1952-01-01 to 1952-12-31","1953-01-01 to 1953-12-31","1954-01-01 to 1954-12-31","1955-01-01 to 1955-12-31","1956-01-01 to 1956-12-31","1957-01-01 to 1957-12-31","1958-01-01 to 1958-12-31","1959-01-01 to 1959-12-31","1960-01-01 to 1960-12-31","1961-01-01 to 1961-12-31","1962-01-01 to 1962-12-31","1963-01-01 to 1963-12-31","1964-01-01 to 1964-12-31","1965-01-01 to 1965-12-31","1966-01-01 to 1966-12-31","1967-01-01 to 1967-12-31","1968-01-01 to 1968-12-31","1969-01-01 to 1969-12-31","1970-01-01 to 1970-12-31","1971-01-01 to 1971-12-31","1972-01-01 to 1972-12-31","1973-01-01 to 1973-12-31","1974-01-01 to 1974-12-31","1975-01-01 to 1975-12-31","1976-01-01 to 1976-12-31","1977-01-01 to 1977-12-31","1978-01-01 to 1978-12-31","1979-01-01 to 1979-12-31","1980-01-01 to 1980-12-31","1981-01-01 to 1981-12-31","1982-01-01 to 1982-12-31","1983-01-01 to 1983-12-31","1984-01-01 to 1984-12-31","1985-01-01 to 1985-12-31","1986-01-01 to 1986-12-31","1987-01-01 to 1987-12-31","1988-01-01 to 1988-12-31","1989-01-01 to 1989-12-31","1990-01-01 to 1990-12-31","1991-01-01 to 1991-12-31","1992-01-01 to 1992-12-31","1993-01-01 to 1993-12-31","1994-01-01 to 1994-12-31","1995-01-01 to 1995-12-31","1996-01-01 to 1996-12-31","1997-01-01 to 1997-12-31","1998-01-01 to 1998-12-31","1999-01-01 to 1999-12-31","2000-01-01 to 2000-12-31","overall","1950-01-01 to 1950-12-31","1951-01-01 to 1951-12-31","1952-01-01 to 1952-12-31","1953-01-01 to 1953-12-31","1954-01-01 to 1954-12-31","1955-01-01 to 1955-12-31","1956-01-01 to 1956-12-31","1957-01-01 to 1957-12-31","1958-01-01 to 1958-12-31","1959-01-01 to 1959-12-31","1960-01-01 to 1960-12-31","1961-01-01 to 1961-12-31","1962-01-01 to 1962-12-31","1963-01-01 to 1963-12-31","1964-01-01 to 1964-12-31","1965-01-01 to 1965-12-31","1966-01-01 to 1966-12-31","1967-01-01 to 1967-12-31","1968-01-01 to 1968-12-31","1969-01-01 to 1969-12-31","1970-01-01 to 1970-12-31","1971-01-01 to 1971-12-31","1972-01-01 to 1972-12-31","1973-01-01 to 1973-12-31","1974-01-01 to 1974-12-31","1975-01-01 to 1975-12-31","1976-01-01 to 1976-12-31","1977-01-01 to 1977-12-31","1978-01-01 to 1978-12-31","1979-01-01 to 1979-12-31","1980-01-01 to 1980-12-31","1981-01-01 to 1981-12-31","1982-01-01 to 1982-12-31","1983-01-01 to 1983-12-31","1984-01-01 to 1984-12-31","1985-01-01 to 1985-12-31","1986-01-01 to 1986-12-31","1987-01-01 to 1987-12-31","1988-01-01 to 1988-12-31","1989-01-01 to 1989-12-31","1990-01-01 to 1990-12-31","1991-01-01 to 1991-12-31","1992-01-01 to 1992-12-31","1993-01-01 to 1993-12-31","1994-01-01 to 1994-12-31","1995-01-01 to 1995-12-31","1996-01-01 to 1996-12-31","1997-01-01 to 1997-12-31","1998-01-01 to 1998-12-31","1999-01-01 to 1999-12-31","2000-01-01 to 2000-12-31","overall"],"Estimate name":["N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)"],"Interval":["years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years"],"Study period end":["2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31"],"Study period start":["1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01"],"Synthea":["332 (0.77%)","334 (0.78%)","425 (0.99%)","408 (0.95%)","422 (0.98%)","458 (1.07%)","458 (1.07%)","484 (1.13%)","543 (1.26%)","557 (1.30%)","554 (1.29%)","612 (1.42%)","650 (1.51%)","649 (1.51%)","719 (1.67%)","721 (1.68%)","753 (1.75%)","805 (1.87%)","853 (1.99%)","814 (1.89%)","823 (1.92%)","883 (2.06%)","878 (2.04%)","992 (2.31%)","954 (2.22%)","978 (2.28%)","950 (2.21%)","985 (2.29%)","1,117 (2.60%)","1,089 (2.53%)","1,076 (2.50%)","1,063 (2.47%)","1,039 (2.42%)","1,040 (2.42%)","1,070 (2.49%)","1,025 (2.39%)","1,051 (2.45%)","1,053 (2.45%)","960 (2.23%)","1,022 (2.38%)","1,034 (2.41%)","989 (2.30%)","990 (2.30%)","1,054 (2.45%)","997 (2.32%)","1,077 (2.51%)","1,008 (2.35%)","1,059 (2.47%)","1,045 (2.43%)","1,055 (2.46%)","1,053 (2.45%)","42,960 (100.00%)","267 (0.61%)","248 (0.57%)","327 (0.75%)","268 (0.61%)","311 (0.71%)","1,079 (2.48%)","688 (1.58%)","601 (1.38%)","580 (1.33%)","682 (1.56%)","685 (1.57%)","738 (1.69%)","726 (1.67%)","758 (1.74%)","850 (1.95%)","748 (1.72%)","813 (1.86%)","829 (1.90%)","816 (1.87%)","838 (1.92%)","855 (1.96%)","916 (2.10%)","923 (2.12%)","942 (2.16%)","948 (2.17%)","921 (2.11%)","936 (2.15%)","1,487 (3.41%)","1,254 (2.88%)","994 (2.28%)","983 (2.25%)","1,070 (2.45%)","990 (2.27%)","968 (2.22%)","1,156 (2.65%)","819 (1.88%)","862 (1.98%)","757 (1.74%)","760 (1.74%)","819 (1.88%)","694 (1.59%)","771 (1.77%)","1,165 (2.67%)","1,142 (2.62%)","1,042 (2.39%)","1,066 (2.45%)","1,106 (2.54%)","1,204 (2.76%)","1,070 (2.45%)","1,042 (2.39%)","1,080 (2.48%)","43,594 (100.00%)"]},"columns":[{"id":"Type; OMOP table","name":"Type; OMOP table","type":"factor","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Variable name","name":"Variable name","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Time interval","name":"Time interval","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Estimate name","name":"Estimate name","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Interval","name":"Interval","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Study period end","name":"Study period end","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Study period start","name":"Study period start","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Synthea","name":"Synthea","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}}],"columnGroups":[{"headerStyle":{"textAlign":"center"},"name":"Database name","columns":["Synthea"]}],"groupBy":["Type; OMOP table"],"searchable":true,"defaultPageSize":10,"showPageSizeOptions":true,"defaultExpanded":true,"highlight":true,"striped":true,"dataKey":"1f9aaed143934507f972ca9a35eca732"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-0301f35e0e356320e152" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0301f35e0e356320e152">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Type; OMOP table":["event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; condition_occurrence","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure","event; drug_exposure"],"Variable name":["Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records","Number of records"],"Time interval":["1950-01-01 to 1950-12-31","1951-01-01 to 1951-12-31","1952-01-01 to 1952-12-31","1953-01-01 to 1953-12-31","1954-01-01 to 1954-12-31","1955-01-01 to 1955-12-31","1956-01-01 to 1956-12-31","1957-01-01 to 1957-12-31","1958-01-01 to 1958-12-31","1959-01-01 to 1959-12-31","1960-01-01 to 1960-12-31","1961-01-01 to 1961-12-31","1962-01-01 to 1962-12-31","1963-01-01 to 1963-12-31","1964-01-01 to 1964-12-31","1965-01-01 to 1965-12-31","1966-01-01 to 1966-12-31","1967-01-01 to 1967-12-31","1968-01-01 to 1968-12-31","1969-01-01 to 1969-12-31","1970-01-01 to 1970-12-31","1971-01-01 to 1971-12-31","1972-01-01 to 1972-12-31","1973-01-01 to 1973-12-31","1974-01-01 to 1974-12-31","1975-01-01 to 1975-12-31","1976-01-01 to 1976-12-31","1977-01-01 to 1977-12-31","1978-01-01 to 1978-12-31","1979-01-01 to 1979-12-31","1980-01-01 to 1980-12-31","1981-01-01 to 1981-12-31","1982-01-01 to 1982-12-31","1983-01-01 to 1983-12-31","1984-01-01 to 1984-12-31","1985-01-01 to 1985-12-31","1986-01-01 to 1986-12-31","1987-01-01 to 1987-12-31","1988-01-01 to 1988-12-31","1989-01-01 to 1989-12-31","1990-01-01 to 1990-12-31","1991-01-01 to 1991-12-31","1992-01-01 to 1992-12-31","1993-01-01 to 1993-12-31","1994-01-01 to 1994-12-31","1995-01-01 to 1995-12-31","1996-01-01 to 1996-12-31","1997-01-01 to 1997-12-31","1998-01-01 to 1998-12-31","1999-01-01 to 1999-12-31","2000-01-01 to 2000-12-31","overall","1950-01-01 to 1950-12-31","1951-01-01 to 1951-12-31","1952-01-01 to 1952-12-31","1953-01-01 to 1953-12-31","1954-01-01 to 1954-12-31","1955-01-01 to 1955-12-31","1956-01-01 to 1956-12-31","1957-01-01 to 1957-12-31","1958-01-01 to 1958-12-31","1959-01-01 to 1959-12-31","1960-01-01 to 1960-12-31","1961-01-01 to 1961-12-31","1962-01-01 to 1962-12-31","1963-01-01 to 1963-12-31","1964-01-01 to 1964-12-31","1965-01-01 to 1965-12-31","1966-01-01 to 1966-12-31","1967-01-01 to 1967-12-31","1968-01-01 to 1968-12-31","1969-01-01 to 1969-12-31","1970-01-01 to 1970-12-31","1971-01-01 to 1971-12-31","1972-01-01 to 1972-12-31","1973-01-01 to 1973-12-31","1974-01-01 to 1974-12-31","1975-01-01 to 1975-12-31","1976-01-01 to 1976-12-31","1977-01-01 to 1977-12-31","1978-01-01 to 1978-12-31","1979-01-01 to 1979-12-31","1980-01-01 to 1980-12-31","1981-01-01 to 1981-12-31","1982-01-01 to 1982-12-31","1983-01-01 to 1983-12-31","1984-01-01 to 1984-12-31","1985-01-01 to 1985-12-31","1986-01-01 to 1986-12-31","1987-01-01 to 1987-12-31","1988-01-01 to 1988-12-31","1989-01-01 to 1989-12-31","1990-01-01 to 1990-12-31","1991-01-01 to 1991-12-31","1992-01-01 to 1992-12-31","1993-01-01 to 1993-12-31","1994-01-01 to 1994-12-31","1995-01-01 to 1995-12-31","1996-01-01 to 1996-12-31","1997-01-01 to 1997-12-31","1998-01-01 to 1998-12-31","1999-01-01 to 1999-12-31","2000-01-01 to 2000-12-31","overall"],"Estimate name":["N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)","N (%)"],"Interval":["years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years"],"Study period end":["2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31","2000-12-31"],"Study period start":["1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01","1950-01-01"],"Synthea":["332 (0.77%)","334 (0.78%)","425 (0.99%)","408 (0.95%)","422 (0.98%)","458 (1.07%)","458 (1.07%)","484 (1.13%)","543 (1.26%)","557 (1.30%)","554 (1.29%)","612 (1.42%)","650 (1.51%)","649 (1.51%)","719 (1.67%)","721 (1.68%)","753 (1.75%)","805 (1.87%)","853 (1.99%)","814 (1.89%)","823 (1.92%)","883 (2.06%)","878 (2.04%)","992 (2.31%)","954 (2.22%)","978 (2.28%)","950 (2.21%)","985 (2.29%)","1,117 (2.60%)","1,089 (2.53%)","1,076 (2.50%)","1,063 (2.47%)","1,039 (2.42%)","1,040 (2.42%)","1,070 (2.49%)","1,025 (2.39%)","1,051 (2.45%)","1,053 (2.45%)","960 (2.23%)","1,022 (2.38%)","1,034 (2.41%)","989 (2.30%)","990 (2.30%)","1,054 (2.45%)","997 (2.32%)","1,077 (2.51%)","1,008 (2.35%)","1,059 (2.47%)","1,045 (2.43%)","1,055 (2.46%)","1,053 (2.45%)","42,960 (100.00%)","267 (0.61%)","248 (0.57%)","327 (0.75%)","268 (0.61%)","311 (0.71%)","1,079 (2.48%)","688 (1.58%)","601 (1.38%)","580 (1.33%)","682 (1.56%)","685 (1.57%)","738 (1.69%)","726 (1.67%)","758 (1.74%)","850 (1.95%)","748 (1.72%)","813 (1.86%)","829 (1.90%)","816 (1.87%)","838 (1.92%)","855 (1.96%)","916 (2.10%)","923 (2.12%)","942 (2.16%)","948 (2.17%)","921 (2.11%)","936 (2.15%)","1,487 (3.41%)","1,254 (2.88%)","994 (2.28%)","983 (2.25%)","1,070 (2.45%)","990 (2.27%)","968 (2.22%)","1,156 (2.65%)","819 (1.88%)","862 (1.98%)","757 (1.74%)","760 (1.74%)","819 (1.88%)","694 (1.59%)","771 (1.77%)","1,165 (2.67%)","1,142 (2.62%)","1,042 (2.39%)","1,066 (2.45%)","1,106 (2.54%)","1,204 (2.76%)","1,070 (2.45%)","1,042 (2.39%)","1,080 (2.48%)","43,594 (100.00%)"]},"columns":[{"id":"Type; OMOP table","name":"Type; OMOP table","type":"factor","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Variable name","name":"Variable name","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Time interval","name":"Time interval","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Estimate name","name":"Estimate name","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Interval","name":"Interval","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Study period end","name":"Study period end","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Study period start","name":"Study period start","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Synthea","name":"Synthea","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}}],"columnGroups":[{"headerStyle":{"textAlign":"center"},"name":"Database name","columns":["Synthea"]}],"groupBy":["Type; OMOP table"],"searchable":true,"defaultPageSize":10,"showPageSizeOptions":true,"defaultExpanded":true,"highlight":true,"striped":true,"dataKey":"1f9aaed143934507f972ca9a35eca732"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -2756,13 +2756,13 @@ $ group_name       &lt;chr&gt; "omop_table", "omop_table", "omop_table", "omop_t
 $ group_level      &lt;chr&gt; "procedure_occurrence", "procedure_occurrence", "procedure_occurrence", "procedure_occurrence…
 $ strata_name      &lt;chr&gt; "overall", "overall", "overall", "overall", "overall", "overall", "overall", "overall", "over…
 $ strata_level     &lt;chr&gt; "overall", "overall", "overall", "overall", "overall", "overall", "overall", "overall", "over…
-$ variable_name    &lt;chr&gt; "Cognitive and behavioral therapy", "Cognitive and behavioral therapy", "Sputum examination",…
-$ variable_level   &lt;chr&gt; "4043071", "4043071", "4151422", "4151422", "4010253", "4010253", "4293740", "4293740", "4252…
+$ variable_name    &lt;chr&gt; "Subcutaneous immunotherapy", "Subcutaneous immunotherapy", "Plain X-ray of clavicle", "Plain…
+$ variable_level   &lt;chr&gt; "4107731", "4107731", "4058899", "4058899", "4170947", "4170947", "4243062", "4243062", "4295…
 $ estimate_name    &lt;chr&gt; "count_records", "count_subjects", "count_records", "count_subjects", "count_records", "count…
 $ estimate_type    &lt;chr&gt; "integer", "integer", "integer", "integer", "integer", "integer", "integer", "integer", "inte…
-$ estimate_value   &lt;chr&gt; "2820", "146", "1659", "1226", "130", "125", "499", "466", "356", "330", "74", "67", "102", "…
+$ estimate_value   &lt;chr&gt; "17520", "292", "492", "449", "1789", "1278", "493", "442", "908", "53", "74", "67", "269", "…
 $ additional_name  &lt;chr&gt; "source_concept_id &amp;&amp;&amp; source_concept_name &amp;&amp;&amp; standard_vocabulary &amp;&amp;&amp; source_vocabulary", "s…
-$ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral therapy &amp;&amp;&amp; SNOMED &amp;&amp;&amp; SNOMED", "4043071 &amp;&amp;&amp; Cognitive …</code></pre>
+$ additional_level &lt;chr&gt; "4107731 &amp;&amp;&amp; Subcutaneous immunotherapy &amp;&amp;&amp; SNOMED &amp;&amp;&amp; SNOMED", "4107731 &amp;&amp;&amp; Subcutaneous imm…</code></pre>
 </div>
 </div>
 </div>
@@ -2806,8 +2806,8 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://OHDSI.github.io/OmopSketch/reference/tableConceptIdCounts.html">tableConceptIdCounts</a></span><span class="op">(</span>result <span class="op">=</span> <span class="va">concept_result</span>, display <span class="op">=</span> <span class="st">"standard"</span>, type <span class="op">=</span> <span class="st">"reactable"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-1dbdc30883b17469fe6b" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-1dbdc30883b17469fe6b">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Database":["Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea"],"OMOP table":["procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence"],"Standard concept name":["Allergy screening test","Appendectomy","Asthma screening","Bilateral tubal ligation","Bone density scan","Bone immobilization","Brief general examination","Catheter ablation of tissue of heart","Cholecystectomy","Cognitive and behavioral therapy","Coronary artery bypass graft","Direct current cardioversion","Electrocardiographic procedure","Electroencephalogram","Evaluation of psychiatric state of patient","Injection of epinephrine","Injection of tetanus antitoxin","Insertion of biventricular implantable cardioverter defibrillator","Insertion of intrauterine contraceptive device","Insertion of subcutaneous contraceptive","Intramuscular injection","Intravenous blood transfusion of packed cells","Intubation","Laparoscopic cholecystectomy","Lung volume reduction surgery","Medication reconciliation","Nasal sinus endoscopy","Pelvis x-ray","Percutaneous coronary intervention","Percutaneous mechanical thrombectomy of portal vein using fluoroscopic guidance","Plain x-ray of clavicle","Plain chest x-ray","Psychiatric follow-up","Pulmonary rehabilitation","Radiography of ankle","Radiography of humerus","Radiography of wrist","Radiologic examination of knee","Reinsertion of subcutaneous contraceptive","Removal of intrauterine device","Removal of subcutaneous contraceptive","Replacement of intrauterine contraceptive device","Review of systems","Sputum examination","Subcutaneous immunotherapy","Surgical manipulation of joint of knee","Surgical manipulation of shoulder joint","Suture open wound","Transplant of lung","Ultrasonography of abdomen, right upper quadrant and epigastrium","Vasectomy"],"Standard concept id":["4191853","4198190","4062501","4117038","4195803","4170947","4037675","4057420","4242997","4043071","4336464","4078793","4163951","4181917","4234705","4197460","4293740","40492359","4275113","4059978","4295880","4108705","4202832","4163971","4323902","4326177","4010253","4145310","4216130","4202451","4058899","4163872","4230209","4035793","4024289","4047491","4243062","4252419","44805732","4238715","4199276","4186930","4187458","4151422","4107731","44783196","4301346","4125906","4337138","42535580","4330583"],"Standard vocabulary":["Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed"],"N records":[704,157,101,12,655,1789,102,438,3,2820,74,1342,35,133,1,161,499,142,166,35,908,3,35,35,17,102,130,138,74,245,492,652,1,908,464,569,493,356,13,138,20,66,102,1659,17520,269,27,2487,21,35,61],"N subjects":[320,157,101,12,491,1278,102,236,3,146,67,134,35,79,1,116,466,138,147,31,53,3,35,35,17,102,125,132,67,224,449,574,1,63,427,510,442,330,8,138,20,55,102,1226,292,254,27,1606,21,35,61]},"columns":[{"id":"Database","name":"Database","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"OMOP table","name":"OMOP table","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Standard concept name","name":"Standard concept name","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Standard concept id","name":"Standard concept id","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Standard vocabulary","name":"Standard vocabulary","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"N records","name":"N records","type":"numeric","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"N subjects","name":"N subjects","type":"numeric","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}}],"searchable":true,"defaultPageSize":10,"showPageSizeOptions":true,"defaultExpanded":true,"highlight":true,"striped":true,"dataKey":"184b998bcf66687cee83a02431bf0bb3"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-e3cab65d271a17779752" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e3cab65d271a17779752">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Database":["Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea","Synthea"],"OMOP table":["procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence","procedure_occurrence"],"Standard concept name":["Allergy screening test","Appendectomy","Asthma screening","Bilateral tubal ligation","Bone density scan","Bone immobilization","Brief general examination","Catheter ablation of tissue of heart","Cholecystectomy","Cognitive and behavioral therapy","Coronary artery bypass graft","Direct current cardioversion","Electrocardiographic procedure","Electroencephalogram","Evaluation of psychiatric state of patient","Injection of epinephrine","Injection of tetanus antitoxin","Insertion of biventricular implantable cardioverter defibrillator","Insertion of intrauterine contraceptive device","Insertion of subcutaneous contraceptive","Intramuscular injection","Intravenous blood transfusion of packed cells","Intubation","Laparoscopic cholecystectomy","Lung volume reduction surgery","Medication reconciliation","Nasal sinus endoscopy","Pelvis x-ray","Percutaneous coronary intervention","Percutaneous mechanical thrombectomy of portal vein using fluoroscopic guidance","Plain x-ray of clavicle","Plain chest x-ray","Psychiatric follow-up","Pulmonary rehabilitation","Radiography of ankle","Radiography of humerus","Radiography of wrist","Radiologic examination of knee","Reinsertion of subcutaneous contraceptive","Removal of intrauterine device","Removal of subcutaneous contraceptive","Replacement of intrauterine contraceptive device","Review of systems","Sputum examination","Subcutaneous immunotherapy","Surgical manipulation of joint of knee","Surgical manipulation of shoulder joint","Suture open wound","Transplant of lung","Ultrasonography of abdomen, right upper quadrant and epigastrium","Vasectomy"],"Standard concept id":["4191853","4198190","4062501","4117038","4195803","4170947","4037675","4057420","4242997","4043071","4336464","4078793","4163951","4181917","4234705","4197460","4293740","40492359","4275113","4059978","4295880","4108705","4202832","4163971","4323902","4326177","4010253","4145310","4216130","4202451","4058899","4163872","4230209","4035793","4024289","4047491","4243062","4252419","44805732","4238715","4199276","4186930","4187458","4151422","4107731","44783196","4301346","4125906","4337138","42535580","4330583"],"Standard vocabulary":["Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed","Snomed"],"N records":[704,157,101,12,655,1789,102,438,3,2820,74,1342,35,133,1,161,499,142,166,35,908,3,35,35,17,102,130,138,74,245,492,652,1,908,464,569,493,356,13,138,20,66,102,1659,17520,269,27,2487,21,35,61],"N subjects":[320,157,101,12,491,1278,102,236,3,146,67,134,35,79,1,116,466,138,147,31,53,3,35,35,17,102,125,132,67,224,449,574,1,63,427,510,442,330,8,138,20,55,102,1226,292,254,27,1606,21,35,61]},"columns":[{"id":"Database","name":"Database","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"OMOP table","name":"OMOP table","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Standard concept name","name":"Standard concept name","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Standard concept id","name":"Standard concept id","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"Standard vocabulary","name":"Standard vocabulary","type":"character","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"N records","name":"N records","type":"numeric","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}},{"id":"N subjects","name":"N subjects","type":"numeric","sortable":true,"resizable":true,"filterable":true,"headerStyle":{"textAlign":"center"}}],"searchable":true,"defaultPageSize":10,"showPageSizeOptions":true,"defaultExpanded":true,"highlight":true,"striped":true,"dataKey":"184b998bcf66687cee83a02431bf0bb3"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -2816,23 +2816,23 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://OHDSI.github.io/OmopSketch/reference/tableTopConceptCounts.html">tableTopConceptCounts</a></span><span class="op">(</span>result <span class="op">=</span> <span class="va">concept_result</span>, countBy <span class="op">=</span> <span class="st">"record"</span>, top <span class="op">=</span> <span class="fl">10</span>, type <span class="op">=</span> <span class="st">"gt"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="mqixemjudi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mqixemjudi table {
+<div id="dbtovdabsd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dbtovdabsd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mqixemjudi thead, #mqixemjudi tbody, #mqixemjudi tfoot, #mqixemjudi tr, #mqixemjudi td, #mqixemjudi th {
+#dbtovdabsd thead, #dbtovdabsd tbody, #dbtovdabsd tfoot, #dbtovdabsd tr, #dbtovdabsd td, #dbtovdabsd th {
   border-style: none;
 }
 
-#mqixemjudi p {
+#dbtovdabsd p {
   margin: 0;
   padding: 0;
 }
 
-#mqixemjudi .gt_table {
+#dbtovdabsd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2858,12 +2858,12 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   border-left-color: #F4E9EB;
 }
 
-#mqixemjudi .gt_caption {
+#dbtovdabsd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mqixemjudi .gt_title {
+#dbtovdabsd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2875,7 +2875,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   border-bottom-width: 0;
 }
 
-#mqixemjudi .gt_subtitle {
+#dbtovdabsd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2887,7 +2887,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   border-top-width: 0;
 }
 
-#mqixemjudi .gt_heading {
+#dbtovdabsd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2899,13 +2899,13 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   border-right-color: #D3D3D3;
 }
 
-#mqixemjudi .gt_bottom_border {
+#dbtovdabsd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mqixemjudi .gt_col_headings {
+#dbtovdabsd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2920,7 +2920,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   border-right-color: #D3D3D3;
 }
 
-#mqixemjudi .gt_col_heading {
+#dbtovdabsd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2940,7 +2940,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   overflow-x: hidden;
 }
 
-#mqixemjudi .gt_column_spanner_outer {
+#dbtovdabsd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2952,15 +2952,15 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   padding-right: 4px;
 }
 
-#mqixemjudi .gt_column_spanner_outer:first-child {
+#dbtovdabsd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mqixemjudi .gt_column_spanner_outer:last-child {
+#dbtovdabsd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mqixemjudi .gt_column_spanner {
+#dbtovdabsd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2972,11 +2972,11 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   width: 100%;
 }
 
-#mqixemjudi .gt_spanner_row {
+#dbtovdabsd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mqixemjudi .gt_group_heading {
+#dbtovdabsd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3002,7 +3002,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   text-align: left;
 }
 
-#mqixemjudi .gt_empty_group_heading {
+#dbtovdabsd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3017,15 +3017,15 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   vertical-align: middle;
 }
 
-#mqixemjudi .gt_from_md > :first-child {
+#dbtovdabsd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mqixemjudi .gt_from_md > :last-child {
+#dbtovdabsd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mqixemjudi .gt_row {
+#dbtovdabsd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3044,7 +3044,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   overflow-x: hidden;
 }
 
-#mqixemjudi .gt_stub {
+#dbtovdabsd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3057,7 +3057,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   padding-right: 5px;
 }
 
-#mqixemjudi .gt_stub_row_group {
+#dbtovdabsd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3071,15 +3071,15 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   vertical-align: top;
 }
 
-#mqixemjudi .gt_row_group_first td {
+#dbtovdabsd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mqixemjudi .gt_row_group_first th {
+#dbtovdabsd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mqixemjudi .gt_summary_row {
+#dbtovdabsd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3089,16 +3089,16 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   padding-right: 5px;
 }
 
-#mqixemjudi .gt_first_summary_row {
+#dbtovdabsd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mqixemjudi .gt_first_summary_row.thick {
+#dbtovdabsd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mqixemjudi .gt_last_summary_row {
+#dbtovdabsd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3108,7 +3108,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   border-bottom-color: #D3D3D3;
 }
 
-#mqixemjudi .gt_grand_summary_row {
+#dbtovdabsd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3118,7 +3118,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   padding-right: 5px;
 }
 
-#mqixemjudi .gt_first_grand_summary_row {
+#dbtovdabsd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3128,7 +3128,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   border-top-color: #D3D3D3;
 }
 
-#mqixemjudi .gt_last_grand_summary_row_top {
+#dbtovdabsd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3138,11 +3138,11 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   border-bottom-color: #D3D3D3;
 }
 
-#mqixemjudi .gt_striped {
+#dbtovdabsd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mqixemjudi .gt_table_body {
+#dbtovdabsd .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #F4E9EB;
@@ -3151,7 +3151,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   border-bottom-color: #D3D3D3;
 }
 
-#mqixemjudi .gt_footnotes {
+#dbtovdabsd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3165,7 +3165,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   border-right-color: #D3D3D3;
 }
 
-#mqixemjudi .gt_footnote {
+#dbtovdabsd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3174,7 +3174,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   padding-right: 5px;
 }
 
-#mqixemjudi .gt_sourcenotes {
+#dbtovdabsd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3188,7 +3188,7 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   border-right-color: #D3D3D3;
 }
 
-#mqixemjudi .gt_sourcenote {
+#dbtovdabsd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3196,72 +3196,72 @@ $ additional_level &lt;chr&gt; "4043071 &amp;&amp;&amp; Cognitive and behavioral
   padding-right: 5px;
 }
 
-#mqixemjudi .gt_left {
+#dbtovdabsd .gt_left {
   text-align: left;
 }
 
-#mqixemjudi .gt_center {
+#dbtovdabsd .gt_center {
   text-align: center;
 }
 
-#mqixemjudi .gt_right {
+#dbtovdabsd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mqixemjudi .gt_font_normal {
+#dbtovdabsd .gt_font_normal {
   font-weight: normal;
 }
 
-#mqixemjudi .gt_font_bold {
+#dbtovdabsd .gt_font_bold {
   font-weight: bold;
 }
 
-#mqixemjudi .gt_font_italic {
+#dbtovdabsd .gt_font_italic {
   font-style: italic;
 }
 
-#mqixemjudi .gt_super {
+#dbtovdabsd .gt_super {
   font-size: 65%;
 }
 
-#mqixemjudi .gt_footnote_marks {
+#dbtovdabsd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mqixemjudi .gt_asterisk {
+#dbtovdabsd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mqixemjudi .gt_indent_1 {
+#dbtovdabsd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mqixemjudi .gt_indent_2 {
+#dbtovdabsd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mqixemjudi .gt_indent_3 {
+#dbtovdabsd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mqixemjudi .gt_indent_4 {
+#dbtovdabsd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mqixemjudi .gt_indent_5 {
+#dbtovdabsd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mqixemjudi .katex-display {
+#dbtovdabsd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mqixemjudi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dbtovdabsd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
