@@ -3,16 +3,19 @@
 
 [Download presentation PDFs](downloads.qmd){.btn .btn-primary}
 
-## First session
+## Morning session
 
 - [**Welcome**](welcome.qmd)
 - [**Introduction**](Introduction/index.qmd)
 - [**OmopSketch**](OmopSketch/index.qmd)
 - [**PatientProfiles**](PatientProfiles/index.qmd)
 
-## Second session
+## Afternoon session
 
 - [**CohortConstructor**](CohortConstructor/index.qmd)
 - [**CohortCharacteristics**](CohortCharacteristics/index.qmd)
 - [**PhenotypeR**](PhenotypeR/index.qmd)
+
+## Closing
+
 - [**Final remarks**](final_remarks.qmd)

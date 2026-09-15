@@ -3,37 +3,31 @@ presentations <- data.frame(
     "Welcome",
     "Introduction",
     "OmopSketch",
-    "CohortConstructor",
-    "PhenotypeR",
     "PatientProfiles",
+    "CohortConstructor",
     "CohortCharacteristics",
-    "DrugUtilisation",
-    "IncidencePrevalence",
+    "PhenotypeR",
     "Final remarks"
   ),
   html = c(
     "Presentations/welcome.html",
     "Presentations/Introduction/index.html",
     "Presentations/OmopSketch/index.html",
-    "Presentations/CohortConstructor/index.html",
-    "Presentations/PhenotypeR/index.html",
     "Presentations/PatientProfiles/index.html",
+    "Presentations/CohortConstructor/index.html",
     "Presentations/CohortCharacteristics/index.html",
-    "Presentations/DrugUtilisation/index.html",
-    "Presentations/IncidencePrevalence/index.html",
+    "Presentations/PhenotypeR/index.html",
     "Presentations/final_remarks.html"
   ),
   pdf = c(
     "01-welcome.pdf",
     "02-introduction.pdf",
     "03-omop-sketch.pdf",
-    "04-cohort-constructor.pdf",
-    "05-phenotype-r.pdf",
-    "06-patient-profiles.pdf",
-    "07-cohort-characteristics.pdf",
-    "08-drug-utilisation.pdf",
-    "09-incidence-prevalence.pdf",
-    "10-final-remarks.pdf"
+    "04-patient-profiles.pdf",
+    "05-cohort-constructor.pdf",
+    "06-cohort-characteristics.pdf",
+    "07-phenotype-r.pdf",
+    "08-final-remarks.pdf"
   ),
   stringsAsFactors = FALSE
 )

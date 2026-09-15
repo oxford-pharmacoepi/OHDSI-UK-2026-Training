@@ -6,32 +6,25 @@ title: "PDF Downloads"
 
 [Download all presentations](pdfs/all-presentations.pdf){.btn .btn-primary download="all-presentations.pdf"}
 
-## Monday
+## Morning session
 
 | Presentation | Slides | PDF |
 | --- | --- | --- |
 | Welcome | [Open](welcome.qmd) | [Download](pdfs/01-welcome.pdf){.btn .btn-outline-primary .btn-sm download="01-welcome.pdf"} |
 | Introduction | [Open](Introduction/index.qmd) | [Download](pdfs/02-introduction.pdf){.btn .btn-outline-primary .btn-sm download="02-introduction.pdf"} |
 | OmopSketch | [Open](OmopSketch/index.qmd) | [Download](pdfs/03-omop-sketch.pdf){.btn .btn-outline-primary .btn-sm download="03-omop-sketch.pdf"} |
+| PatientProfiles | [Open](PatientProfiles/index.qmd) | [Download](pdfs/04-patient-profiles.pdf){.btn .btn-outline-primary .btn-sm download="04-patient-profiles.pdf"} |
 
-## Tuesday
-
-| Presentation | Slides | PDF |
-| --- | --- | --- |
-| CohortConstructor | [Open](CohortConstructor/index.qmd) | [Download](pdfs/04-cohort-constructor.pdf){.btn .btn-outline-primary .btn-sm download="04-cohort-constructor.pdf"} |
-| PhenotypeR | [Open](PhenotypeR/index.qmd) | [Download](pdfs/05-phenotype-r.pdf){.btn .btn-outline-primary .btn-sm download="05-phenotype-r.pdf"} |
-
-## Wednesday
+## Afternoon session
 
 | Presentation | Slides | PDF |
 | --- | --- | --- |
-| PatientProfiles | [Open](PatientProfiles/index.qmd) | [Download](pdfs/06-patient-profiles.pdf){.btn .btn-outline-primary .btn-sm download="06-patient-profiles.pdf"} |
-| CohortCharacteristics | [Open](CohortCharacteristics/index.qmd) | [Download](pdfs/07-cohort-characteristics.pdf){.btn .btn-outline-primary .btn-sm download="07-cohort-characteristics.pdf"} |
+| CohortConstructor | [Open](CohortConstructor/index.qmd) | [Download](pdfs/05-cohort-constructor.pdf){.btn .btn-outline-primary .btn-sm download="05-cohort-constructor.pdf"} |
+| CohortCharacteristics | [Open](CohortCharacteristics/index.qmd) | [Download](pdfs/06-cohort-characteristics.pdf){.btn .btn-outline-primary .btn-sm download="06-cohort-characteristics.pdf"} |
+| PhenotypeR | [Open](PhenotypeR/index.qmd) | [Download](pdfs/07-phenotype-r.pdf){.btn .btn-outline-primary .btn-sm download="07-phenotype-r.pdf"} |
 
-## Thursday
+## Closing
 
 | Presentation | Slides | PDF |
 | --- | --- | --- |
-| DrugUtilisation | [Open](DrugUtilisation/index.qmd) | [Download](pdfs/08-drug-utilisation.pdf){.btn .btn-outline-primary .btn-sm download="08-drug-utilisation.pdf"} |
-| IncidencePrevalence | [Open](IncidencePrevalence/index.qmd) | [Download](pdfs/09-incidence-prevalence.pdf){.btn .btn-outline-primary .btn-sm download="09-incidence-prevalence.pdf"} |
-| Final remarks | [Open](final_remarks.qmd) | [Download](pdfs/10-final-remarks.pdf){.btn .btn-outline-primary .btn-sm download="10-final-remarks.pdf"} |
+| Final remarks | [Open](final_remarks.qmd) | [Download](pdfs/08-final-remarks.pdf){.btn .btn-outline-primary .btn-sm download="08-final-remarks.pdf"} |

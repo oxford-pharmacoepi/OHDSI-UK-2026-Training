@@ -3,12 +3,10 @@
 
 ## Theme
 
-During this week you will conduct a study on opiod use. We will conduct the steps of a typical study:
+During these sessions you will work through the main steps of an OMOP CDM analytics workflow:
 
-- The first day you will create and characterise the database that we are going to work with.
-- The second day you will create the codelist and cohorts of interest.
-- The third day you will characterise the cohorts of interest and calculate the incidence and prevalence of different opiods in your database.
-- The fourth day you will conduct a Drug Utilisation Study and analyse the treatment adherence of opiods.
+- In the first session you will create a CDM reference with [CDMConnector](https://darwin-eu.github.io/CDMConnector/), characterise the database with [OmopSketch](https://ohdsi.github.io/OmopSketch/), and write custom queries with [PatientProfiles](https://darwin-eu.github.io/PatientProfiles/) and [dbplyr](https://dbplyr.tidyverse.org).
+- In the second session you will create cohorts with [CohortConstructor](https://ohdsi.github.io/CohortConstructor/), characterise them with [CohortCharacteristics](https://darwin-eu.github.io/CohortCharacteristics/), and evaluate them with [PhenotypeR](https://ohdsi.github.io/PhenotypeR/).
 
 ## Project
 
