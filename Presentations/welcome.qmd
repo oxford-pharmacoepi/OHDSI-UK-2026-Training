@@ -1,7 +1,7 @@
 ---
 title: "Welcome to the Analytics track"
 subtitle: "OHDSI-UK 2026 Training"
-date: "2026-06-22"
+date: "2026-09-17"
 format:
   revealjs: 
     theme: [simple, ../styleSS25.scss]
@@ -75,11 +75,10 @@ By the end of the training:
 
 ## Set up
 
-**USB**
+[**Download the needed data**](https://github.com/oxford-pharmacoepi/AnalyticsTrack2026/archive/refs/heads/main.zip)
 
-- Contains the datasets you will need for this week
 
-- Copy the *Analytics track* folder to your laptop
+- Contains the datasets you will need for today
 
 - Open the *Analytics track* project with RStudio
 
@@ -87,41 +86,13 @@ By the end of the training:
 
 - Run the `Setup.R` script in the *Your turn* folder
 
-## Schedule - Monday
-
-| Time          | Session                                       |
-|---------------|-----------------------------------------------|
-| 13.30 - 14.30 | Introduction to OMOP and **CDMConnector**     |
-| 14.30 - 15.00 | *Coffee break*                                |
-| 15.00 - 15.45 | Characterising a database with **OmopSketch** |
-| 15.45 - 16.30 | General practical                             |
-
-## Schedule - Tuesday
-
-| Time          | Session                                     |
-|---------------|---------------------------------------------|
-| 13.30 - 14.30 | Creating cohorts with **CohortConstructor** |
-| 14.30 - 15.00 | *Coffee break*                              |
-| 15.00 - 15.45 | Phenotype diagnostics with **PhenotypeR**   |
-| 15.45 - 16.30 | General practical                           |
-
-## Schedule - Wednesday
-
-| Time          | Session                                               |
-|---------------|-------------------------------------------------------|
-| 13.30 - 14.30 | Add patient level data with **PatientProfiles**       |
-| 14.30 - 15.00 | *Coffee break*                                        |
-| 15.00 - 15.45 | Characterising cohorts with **CohortCharacteristics** |
-| 15.45 - 16.30 | General practical                                     |
-
-## Schedule - Thursday
+## Schedule 
 
 | Time | Session |
-|--------------------|----------------------------------------------------|
-| 13:30 - 14:30 | Conducting Drug Utilisation studies with **DrugUtilisation** |
-| 14:30 - 15:00 | *Coffee break* |
-| 15.00 - 15.45 | Estimate incidence and prevalence with **IncidencePrevalence** |
-| 15:45 - 16:30 | General practical |
+| --- | --------- |
+| 10.30 - 13.00 | • Creating a CDM reference with [CDMConnector](https://darwin-eu.github.io/CDMConnector/) <br> • Characterise the OMOP CDM instance with [OmopSketch](https://ohdsi.github.io/OmopSketch/) <br> • Writing custom queries using [PatientProfiles](https://darwin-eu.github.io/PatientProfiles/) and [dbplyr](https://dbplyr.tidyverse.org) |
+| 13.00 - 14.00 | *Lunch break (Room D)* |
+| 14:00 - 16.30 | • Creating cohorts using [CohortConstructor](https://ohdsi.github.io/CohortConstructor/) <br> • Characterise cohorts using [CohortCharacteristics](https://darwin-eu.github.io/CohortCharacteristics/) <br> • Evaluating cohorts using [PhenotypeR](https://ohdsi.github.io/PhenotypeR/) |
 
 ## Introductions
 

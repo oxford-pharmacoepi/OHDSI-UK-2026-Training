@@ -1,7 +1,7 @@
 ---
 title: "OMOP and CDMConnector"
 subtitle: "The OMOP Common Data Model"
-date: "2026-06-22"
+date: "2026-09-17"
 format:
   revealjs: 
     theme: [simple, ../../styleSS25.scss]
