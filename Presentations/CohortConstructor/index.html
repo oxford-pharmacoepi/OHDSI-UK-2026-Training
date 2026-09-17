@@ -231,7 +231,8 @@
 </div>
 <ul>
 <li class="fragment">Vignettes with further information can be found in the package <a href="https://ohdsi.github.io/CohortConstructor/index.html" class="link">website</a>.</li>
-</ul></section><section><section id="omop-cohorts-in-r" class="title-slide slide level1 center"><h1>OMOP Cohorts in R</h1>
+</ul></section><section id="set-up" class="slide level2"><h2>Set up</h2>
+</section><section><section id="omop-cohorts-in-r" class="title-slide slide level1 center"><h1>OMOP Cohorts in R</h1>
 
 </section><section id="omop-cohorts-in-r-1" class="slide level2"><h2>OMOP Cohorts in R</h2>
 <ul>
@@ -248,28 +249,22 @@
 </li>
 </ul></section><section id="omop-cohorts-in-r-2" class="slide level2"><h2>OMOP Cohorts in R</h2>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Download completed!</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">cohort</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">cohort</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A query:  ?? x 4
-# Database: DuckDB 1.5.5 [unknown@Linux 6.17.0-1022-azure:R 4.6.1//tmp/Rtmp6GuQrU/file20702e16b8e8.duckdb]
+# Database: DuckDB 1.5.5 [unknown@Linux 6.17.0-1022-azure:R 4.6.1//tmp/Rtmpu0okBt/file202c7a4874c0.duckdb]
    cohort_definition_id subject_id cohort_start_date cohort_end_date
                   &lt;int&gt;      &lt;int&gt; &lt;date&gt;            &lt;date&gt;         
- 1                    2       2328 1981-10-02        1981-10-09     
- 2                    2       2328 2018-04-04        2018-04-25     
- 3                    2       2630 1973-09-15        1973-10-06     
- 4                    2       2806 1962-12-04        1962-12-25     
- 5                    2       2993 1990-02-23        1990-03-16     
- 6                    2       3049 2011-12-31        2012-01-21     
- 7                    2       3413 1969-03-20        1969-03-27     
- 8                    2       3750 2008-12-10        2008-12-24     
- 9                    2       4408 1993-07-19        1993-08-09     
-10                    2       4408 1995-10-05        1995-10-12     
+ 1                    2       2343 1996-11-09        1996-11-23     
+ 2                    2       2507 1995-02-14        1995-03-07     
+ 3                    2       2849 1966-06-17        1966-07-08     
+ 4                    2       2883 1966-07-15        1966-07-29     
+ 5                    2       2906 1986-04-15        1986-04-22     
+ 6                    2       3191 2008-01-03        2008-01-17     
+ 7                    2       3789 1945-09-16        1945-09-23     
+ 8                    2       3930 1927-02-28        1927-03-14     
+ 9                    1        648 1949-11-02        1949-11-10     
+10                    1       2792 2011-02-26        2011-03-11     
 # ℹ more rows</code></pre>
 </div>
 </div>
@@ -281,7 +276,7 @@ Download completed!</code></pre>
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">settings</span><span class="op">(</span><span class="va">cdm</span><span class="op">$</span><span class="va">cohort</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">settings</span><span class="op">(</span><span class="va">cdm</span><span class="op">$</span><span class="va">cohort</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
   cohort_definition_id cohort_name       cdm_version vocabulary_version
@@ -298,7 +293,7 @@ Download completed!</code></pre>
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">attrition</span><span class="op">(</span><span class="va">cdm</span><span class="op">$</span><span class="va">cohort</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">attrition</span><span class="op">(</span><span class="va">cdm</span><span class="op">$</span><span class="va">cohort</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 7
   cohort_definition_id number_records number_subjects reason_id reason                    excluded_records excluded_subjects
@@ -321,7 +316,7 @@ Download completed!</code></pre>
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">cohortCount</span><span class="op">(</span><span class="va">cdm</span><span class="op">$</span><span class="va">cohort</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">cohortCount</span><span class="op">(</span><span class="va">cdm</span><span class="op">$</span><span class="va">cohort</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   cohort_definition_id number_records number_subjects
@@ -338,10 +333,10 @@ Download completed!</code></pre>
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">cdm</span><span class="op">$</span><span class="va">cohort</span>, <span class="st">"cohort_codelist"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">cdm</span><span class="op">$</span><span class="va">cohort</span>, <span class="st">"cohort_codelist"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A query:  ?? x 4
-# Database: DuckDB 1.5.5 [unknown@Linux 6.17.0-1022-azure:R 4.6.1//tmp/Rtmp6GuQrU/file20702e16b8e8.duckdb]
+# Database: DuckDB 1.5.5 [unknown@Linux 6.17.0-1022-azure:R 4.6.1//tmp/Rtmpu0okBt/file202c7a4874c0.duckdb]
   cohort_definition_id codelist_name     concept_id codelist_type
                  &lt;int&gt; &lt;chr&gt;                  &lt;int&gt; &lt;chr&gt;        
 1                    1 viral_pharyngitis    4112343 index event  
@@ -425,7 +420,7 @@ Download completed!</code></pre>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
-<p><strong>Transformation and Combination</strong> <em>Merging, stratifying, collapsing, matching, or intersecting cohorts.</em></p>
+<p><strong>Transformation and Combination</strong> <em>Merging, stratifying, collapsing, matching, or intersecting cohorts.</em> (Not covered today)</p>
 </div>
 </div>
 </div>
@@ -441,46 +436,29 @@ Download completed!</code></pre>
 
 </div>
 <ul>
-<li class="fragment"><code><a href="https://ohdsi.github.io/CohortConstructor/reference/demographicsCohort.html">demographicsCohort()</a></code></li>
+<li class="fragment"><code>demographicsCohort()</code></li>
 </ul>
 <div style="margin-bottom: 10px;">
 
 </div>
 <ul>
-<li class="fragment"><code><a href="https://ohdsi.github.io/CohortConstructor/reference/conceptCohort.html">conceptCohort()</a></code></li>
+<li class="fragment"><code>conceptCohort()</code></li>
 </ul>
 <div style="margin-bottom: 10px;">
 
 </div>
 <ul>
-<li class="fragment"><code><a href="https://ohdsi.github.io/CohortConstructor/reference/measurementCohort.html">measurementCohort()</a></code></li>
+<li class="fragment"><code>measurementCohort()</code></li>
 </ul>
 <div style="margin-bottom: 10px;">
 
 </div>
 <ul>
-<li class="fragment"><code><a href="https://ohdsi.github.io/CohortConstructor/reference/deathCohort.html">deathCohort()</a></code></li>
+<li class="fragment"><code>deathCohort()</code></li>
 </ul></section><section id="create-the-cdm_reference-object" class="slide level2"><h2>Create the cdm_reference object</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load relevant packages</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu.github.io/CDMConnector/">CDMConnector</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu.github.io/CodelistGenerator/">CodelistGenerator</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ohdsi.github.io/CohortConstructor/">CohortConstructor</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu.github.io/CohortCharacteristics/">CohortCharacteristics</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r.duckdb.org/">duckdb</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com">gt</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span>drv <span class="op">=</span> <span class="fu"><a href="https://r.duckdb.org/reference/duckdb.html">duckdb</a></span><span class="op">(</span>dbdir <span class="op">=</span> <span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"Databases"</span>, <span class="st">"GiBleed.duckdb"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://darwin-eu.github.io/CDMConnector/reference/cdmFromCon.html">cdmFromCon</a></span><span class="op">(</span></span>
-<span>  con <span class="op">=</span> <span class="va">con</span>,</span>
-<span>  cdmSchema <span class="op">=</span> <span class="st">"main"</span>,</span>
-<span>  writeSchema <span class="op">=</span> <span class="st">"results"</span>,</span>
-<span>  writePrefix <span class="op">=</span> <span class="st">"cc_"</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu">omock</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/omock/reference/mockCdmFromDataset.html">mockCdmFromDataset</a></span><span class="op">(</span>datasetName <span class="op">=</span> <span class="st">"GiBleed"</span>,</span>
+<span>                          source <span class="op">=</span> <span class="st">"duckdb"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="demographics-based---example" class="slide level2"><h2>Demographics based - Example</h2>
 <div style="margin-bottom: 15px;">
@@ -491,7 +469,7 @@ Download completed!</code></pre>
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">age_cohort</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/demographicsCohort.html">demographicsCohort</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">age_cohort</span> <span class="op">&lt;-</span> <span class="fu">demographicsCohort</span><span class="op">(</span></span>
 <span>  cdm <span class="op">=</span> <span class="va">cdm</span>, </span>
 <span>  ageRange <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">60</span><span class="op">)</span>, </span>
 <span>  sex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Female"</span>, <span class="st">"Male"</span><span class="op">)</span>,</span>
@@ -499,7 +477,7 @@ Download completed!</code></pre>
 <span>  name <span class="op">=</span> <span class="st">"age_cohort"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/settings.html">settings</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">age_cohort</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">settings</span><span class="op">(</span>x <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">age_cohort</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   cohort_definition_id cohort_name    age_range sex    min_prior_observation
@@ -514,7 +492,7 @@ Download completed!</code></pre>
 
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/cohortCount.html">cohortCount</a></span><span class="op">(</span>cohort <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">age_cohort</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">cohortCount</span><span class="op">(</span>cohort <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">age_cohort</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   cohort_definition_id number_records number_subjects
@@ -528,7 +506,7 @@ Download completed!</code></pre>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/attrition.html">attrition</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">age_cohort</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">attrition</span><span class="op">(</span>x <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">age_cohort</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 7
    cohort_definition_id number_records number_subjects reason_id reason                                  excluded_records excluded_subjects
@@ -554,27 +532,27 @@ Download completed!</code></pre>
 </div>
 <p>To better visualise the <strong>attrition</strong>, we can use the package <code>CohortCharacteristics</code> to create a <strong>formatted table</strong>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">age_cohort</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://darwin-eu.github.io/CohortCharacteristics/reference/summariseCohortAttrition.html">summariseCohortAttrition</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://darwin-eu.github.io/CohortCharacteristics/reference/tableCohortAttrition.html">tableCohortAttrition</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">age_cohort</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">summariseCohortAttrition</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">tableCohortAttrition</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="opcgtjhotk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#opcgtjhotk table {
+<div id="ycomoakquo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ycomoakquo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#opcgtjhotk thead, #opcgtjhotk tbody, #opcgtjhotk tfoot, #opcgtjhotk tr, #opcgtjhotk td, #opcgtjhotk th {
+#ycomoakquo thead, #ycomoakquo tbody, #ycomoakquo tfoot, #ycomoakquo tr, #ycomoakquo td, #ycomoakquo th {
   border-style: none;
 }
 
-#opcgtjhotk p {
+#ycomoakquo p {
   margin: 0;
   padding: 0;
 }
 
-#opcgtjhotk .gt_table {
+#ycomoakquo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -600,12 +578,12 @@ Download completed!</code></pre>
   border-left-color: #D9D9D9;
 }
 
-#opcgtjhotk .gt_caption {
+#ycomoakquo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#opcgtjhotk .gt_title {
+#ycomoakquo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -617,7 +595,7 @@ Download completed!</code></pre>
   border-bottom-width: 0;
 }
 
-#opcgtjhotk .gt_subtitle {
+#ycomoakquo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -629,7 +607,7 @@ Download completed!</code></pre>
   border-top-width: 0;
 }
 
-#opcgtjhotk .gt_heading {
+#ycomoakquo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -641,13 +619,13 @@ Download completed!</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#opcgtjhotk .gt_bottom_border {
+#ycomoakquo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#opcgtjhotk .gt_col_headings {
+#ycomoakquo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -662,7 +640,7 @@ Download completed!</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#opcgtjhotk .gt_col_heading {
+#ycomoakquo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -682,7 +660,7 @@ Download completed!</code></pre>
   overflow-x: hidden;
 }
 
-#opcgtjhotk .gt_column_spanner_outer {
+#ycomoakquo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -694,15 +672,15 @@ Download completed!</code></pre>
   padding-right: 4px;
 }
 
-#opcgtjhotk .gt_column_spanner_outer:first-child {
+#ycomoakquo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#opcgtjhotk .gt_column_spanner_outer:last-child {
+#ycomoakquo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#opcgtjhotk .gt_column_spanner {
+#ycomoakquo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -714,11 +692,11 @@ Download completed!</code></pre>
   width: 100%;
 }
 
-#opcgtjhotk .gt_spanner_row {
+#ycomoakquo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#opcgtjhotk .gt_group_heading {
+#ycomoakquo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -744,7 +722,7 @@ Download completed!</code></pre>
   text-align: left;
 }
 
-#opcgtjhotk .gt_empty_group_heading {
+#ycomoakquo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -759,15 +737,15 @@ Download completed!</code></pre>
   vertical-align: middle;
 }
 
-#opcgtjhotk .gt_from_md > :first-child {
+#ycomoakquo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#opcgtjhotk .gt_from_md > :last-child {
+#ycomoakquo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#opcgtjhotk .gt_row {
+#ycomoakquo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -786,7 +764,7 @@ Download completed!</code></pre>
   overflow-x: hidden;
 }
 
-#opcgtjhotk .gt_stub {
+#ycomoakquo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -799,7 +777,7 @@ Download completed!</code></pre>
   padding-right: 5px;
 }
 
-#opcgtjhotk .gt_stub_row_group {
+#ycomoakquo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -813,15 +791,15 @@ Download completed!</code></pre>
   vertical-align: top;
 }
 
-#opcgtjhotk .gt_row_group_first td {
+#ycomoakquo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#opcgtjhotk .gt_row_group_first th {
+#ycomoakquo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#opcgtjhotk .gt_summary_row {
+#ycomoakquo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -831,16 +809,16 @@ Download completed!</code></pre>
   padding-right: 5px;
 }
 
-#opcgtjhotk .gt_first_summary_row {
+#ycomoakquo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#opcgtjhotk .gt_first_summary_row.thick {
+#ycomoakquo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#opcgtjhotk .gt_last_summary_row {
+#ycomoakquo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -850,7 +828,7 @@ Download completed!</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#opcgtjhotk .gt_grand_summary_row {
+#ycomoakquo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -860,7 +838,7 @@ Download completed!</code></pre>
   padding-right: 5px;
 }
 
-#opcgtjhotk .gt_first_grand_summary_row {
+#ycomoakquo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -870,7 +848,7 @@ Download completed!</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#opcgtjhotk .gt_last_grand_summary_row_top {
+#ycomoakquo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -880,11 +858,11 @@ Download completed!</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#opcgtjhotk .gt_striped {
+#ycomoakquo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#opcgtjhotk .gt_table_body {
+#ycomoakquo .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #D9D9D9;
@@ -893,7 +871,7 @@ Download completed!</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#opcgtjhotk .gt_footnotes {
+#ycomoakquo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -907,7 +885,7 @@ Download completed!</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#opcgtjhotk .gt_footnote {
+#ycomoakquo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -916,7 +894,7 @@ Download completed!</code></pre>
   padding-right: 5px;
 }
 
-#opcgtjhotk .gt_sourcenotes {
+#ycomoakquo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -930,7 +908,7 @@ Download completed!</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#opcgtjhotk .gt_sourcenote {
+#ycomoakquo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -938,72 +916,72 @@ Download completed!</code></pre>
   padding-right: 5px;
 }
 
-#opcgtjhotk .gt_left {
+#ycomoakquo .gt_left {
   text-align: left;
 }
 
-#opcgtjhotk .gt_center {
+#ycomoakquo .gt_center {
   text-align: center;
 }
 
-#opcgtjhotk .gt_right {
+#ycomoakquo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#opcgtjhotk .gt_font_normal {
+#ycomoakquo .gt_font_normal {
   font-weight: normal;
 }
 
-#opcgtjhotk .gt_font_bold {
+#ycomoakquo .gt_font_bold {
   font-weight: bold;
 }
 
-#opcgtjhotk .gt_font_italic {
+#ycomoakquo .gt_font_italic {
   font-style: italic;
 }
 
-#opcgtjhotk .gt_super {
+#ycomoakquo .gt_super {
   font-size: 65%;
 }
 
-#opcgtjhotk .gt_footnote_marks {
+#ycomoakquo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#opcgtjhotk .gt_asterisk {
+#ycomoakquo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#opcgtjhotk .gt_indent_1 {
+#ycomoakquo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#opcgtjhotk .gt_indent_2 {
+#ycomoakquo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#opcgtjhotk .gt_indent_3 {
+#ycomoakquo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#opcgtjhotk .gt_indent_4 {
+#ycomoakquo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#opcgtjhotk .gt_indent_5 {
+#ycomoakquo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#opcgtjhotk .katex-display {
+#ycomoakquo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#opcgtjhotk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ycomoakquo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1032,141 +1010,141 @@ Variable name
 </thead>
 <tbody class="gt_table_body">
 <tr class="gt_group_heading_row odd">
-<th colspan="5" id="Synthea; demographics_1" class="gt_group_heading" data-quarto-table-cell-role="th" style="background-color: #E9E9E9; font-family: Arial; font-size: 10; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8" scope="colgroup">Synthea; demographics_1</th>
+<th colspan="5" id="GiBleed; demographics_1" class="gt_group_heading" data-quarto-table-cell-role="th" style="background-color: #E9E9E9; font-family: Arial; font-size: 10; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8" scope="colgroup">GiBleed; demographics_1</th>
 </tr>
 <tr class="gt_row_group_first even">
-<td class="gt_row gt_left" headers="Synthea; demographics_1  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Initial qualifying events</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_left" headers="GiBleed; demographics_1  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Initial qualifying events</td>
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">2,694</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">2,694</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">0</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Synthea; demographics_1  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Non-missing sex</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_left" headers="GiBleed; demographics_1  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Non-missing sex</td>
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">2,694</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">2,694</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">0</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Synthea; demographics_1  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Sex requirement: Female</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_left" headers="GiBleed; demographics_1  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Sex requirement: Female</td>
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,373</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,373</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,321</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">1,321</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Synthea; demographics_1  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Non-missing year of birth</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_left" headers="GiBleed; demographics_1  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Non-missing year of birth</td>
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,373</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,373</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">0</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Synthea; demographics_1  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Age requirement: 18 to 60</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_left" headers="GiBleed; demographics_1  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Age requirement: 18 to 60</td>
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,373</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,373</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">0</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Synthea; demographics_1  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Prior observation requirement: 365 days</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_left" headers="GiBleed; demographics_1  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Prior observation requirement: 365 days</td>
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,373</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,373</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">0</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_1  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_1  [header_name]Variable name
 [header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
 </tr>
 <tr class="gt_group_heading_row even">
-<th colspan="5" id="Synthea; demographics_2" class="gt_group_heading" data-quarto-table-cell-role="th" style="background-color: #E9E9E9; font-family: Arial; font-size: 10; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8" scope="colgroup">Synthea; demographics_2</th>
+<th colspan="5" id="GiBleed; demographics_2" class="gt_group_heading" data-quarto-table-cell-role="th" style="background-color: #E9E9E9; font-family: Arial; font-size: 10; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8" scope="colgroup">GiBleed; demographics_2</th>
 </tr>
 <tr class="gt_row_group_first odd">
-<td class="gt_row gt_left" headers="Synthea; demographics_2  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Initial qualifying events</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_left" headers="GiBleed; demographics_2  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Initial qualifying events</td>
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">2,694</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">2,694</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">0</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Synthea; demographics_2  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Non-missing sex</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_left" headers="GiBleed; demographics_2  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Non-missing sex</td>
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">2,694</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">2,694</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">0</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Synthea; demographics_2  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Sex requirement: Male</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_left" headers="GiBleed; demographics_2  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Sex requirement: Male</td>
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,321</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,321</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,373</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">1,373</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Synthea; demographics_2  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Non-missing year of birth</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_left" headers="GiBleed; demographics_2  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Non-missing year of birth</td>
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,321</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,321</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">0</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Synthea; demographics_2  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Age requirement: 18 to 60</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_left" headers="GiBleed; demographics_2  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Age requirement: 18 to 60</td>
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,321</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,321</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">0</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Synthea; demographics_2  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Prior observation requirement: 365 days</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_left" headers="GiBleed; demographics_2  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Prior observation requirement: 365 days</td>
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,321</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">1,321</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">0</td>
-<td class="gt_row gt_right" headers="Synthea; demographics_2  [header_name]Variable name
+<td class="gt_row gt_right" headers="GiBleed; demographics_2  [header_name]Variable name
 [header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
 </tr>
 </tbody>
@@ -1189,11 +1167,10 @@ Variable name
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">drugCodes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">drugCodes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
 <span>  <span class="st">"diclofenac"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1124300L</span><span class="op">)</span>,</span>
 <span>  <span class="st">"acetaminophen"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1125315L</span>, <span class="fl">1127078L</span>, <span class="fl">1127433L</span>, <span class="fl">19133768L</span>, <span class="fl">40162522L</span>, <span class="fl">40229134L</span>, <span class="fl">40231925L</span><span class="op">)</span></span>
-<span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/newCodelist.html">newCodelist</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section><section id="concept-based---example-1" class="slide level2 incremental:FALSE"><h2>Concept based - Example</h2>
@@ -1202,13 +1179,13 @@ Variable name
 </ol>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">medications</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/conceptCohort.html">conceptCohort</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">medications</span> <span class="op">&lt;-</span> <span class="fu">conceptCohort</span><span class="op">(</span></span>
 <span>  cdm <span class="op">=</span> <span class="va">cdm</span>, </span>
 <span>  conceptSet <span class="op">=</span> <span class="va">drugCodes</span>, </span>
 <span>  name <span class="op">=</span> <span class="st">"medications"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/settings.html">settings</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">medications</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">settings</span><span class="op">(</span>x <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">medications</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
   cohort_definition_id cohort_name   cdm_version vocabulary_version
@@ -1228,23 +1205,23 @@ Variable name
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
-<div id="qxqpeybnbj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qxqpeybnbj table {
+<div id="dgzubhkunz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dgzubhkunz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qxqpeybnbj thead, #qxqpeybnbj tbody, #qxqpeybnbj tfoot, #qxqpeybnbj tr, #qxqpeybnbj td, #qxqpeybnbj th {
+#dgzubhkunz thead, #dgzubhkunz tbody, #dgzubhkunz tfoot, #dgzubhkunz tr, #dgzubhkunz td, #dgzubhkunz th {
   border-style: none;
 }
 
-#qxqpeybnbj p {
+#dgzubhkunz p {
   margin: 0;
   padding: 0;
 }
 
-#qxqpeybnbj .gt_table {
+#dgzubhkunz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1270,12 +1247,12 @@ Variable name
   border-left-color: #D9D9D9;
 }
 
-#qxqpeybnbj .gt_caption {
+#dgzubhkunz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qxqpeybnbj .gt_title {
+#dgzubhkunz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1287,7 +1264,7 @@ Variable name
   border-bottom-width: 0;
 }
 
-#qxqpeybnbj .gt_subtitle {
+#dgzubhkunz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1299,7 +1276,7 @@ Variable name
   border-top-width: 0;
 }
 
-#qxqpeybnbj .gt_heading {
+#dgzubhkunz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1311,13 +1288,13 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#qxqpeybnbj .gt_bottom_border {
+#dgzubhkunz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qxqpeybnbj .gt_col_headings {
+#dgzubhkunz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1332,7 +1309,7 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#qxqpeybnbj .gt_col_heading {
+#dgzubhkunz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1352,7 +1329,7 @@ Variable name
   overflow-x: hidden;
 }
 
-#qxqpeybnbj .gt_column_spanner_outer {
+#dgzubhkunz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1364,15 +1341,15 @@ Variable name
   padding-right: 4px;
 }
 
-#qxqpeybnbj .gt_column_spanner_outer:first-child {
+#dgzubhkunz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qxqpeybnbj .gt_column_spanner_outer:last-child {
+#dgzubhkunz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qxqpeybnbj .gt_column_spanner {
+#dgzubhkunz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1384,11 +1361,11 @@ Variable name
   width: 100%;
 }
 
-#qxqpeybnbj .gt_spanner_row {
+#dgzubhkunz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qxqpeybnbj .gt_group_heading {
+#dgzubhkunz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1414,7 +1391,7 @@ Variable name
   text-align: left;
 }
 
-#qxqpeybnbj .gt_empty_group_heading {
+#dgzubhkunz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1429,15 +1406,15 @@ Variable name
   vertical-align: middle;
 }
 
-#qxqpeybnbj .gt_from_md > :first-child {
+#dgzubhkunz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qxqpeybnbj .gt_from_md > :last-child {
+#dgzubhkunz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qxqpeybnbj .gt_row {
+#dgzubhkunz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1456,7 +1433,7 @@ Variable name
   overflow-x: hidden;
 }
 
-#qxqpeybnbj .gt_stub {
+#dgzubhkunz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1469,7 +1446,7 @@ Variable name
   padding-right: 5px;
 }
 
-#qxqpeybnbj .gt_stub_row_group {
+#dgzubhkunz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1483,15 +1460,15 @@ Variable name
   vertical-align: top;
 }
 
-#qxqpeybnbj .gt_row_group_first td {
+#dgzubhkunz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qxqpeybnbj .gt_row_group_first th {
+#dgzubhkunz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qxqpeybnbj .gt_summary_row {
+#dgzubhkunz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1501,16 +1478,16 @@ Variable name
   padding-right: 5px;
 }
 
-#qxqpeybnbj .gt_first_summary_row {
+#dgzubhkunz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qxqpeybnbj .gt_first_summary_row.thick {
+#dgzubhkunz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qxqpeybnbj .gt_last_summary_row {
+#dgzubhkunz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1520,7 +1497,7 @@ Variable name
   border-bottom-color: #D3D3D3;
 }
 
-#qxqpeybnbj .gt_grand_summary_row {
+#dgzubhkunz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1530,7 +1507,7 @@ Variable name
   padding-right: 5px;
 }
 
-#qxqpeybnbj .gt_first_grand_summary_row {
+#dgzubhkunz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1540,7 +1517,7 @@ Variable name
   border-top-color: #D3D3D3;
 }
 
-#qxqpeybnbj .gt_last_grand_summary_row_top {
+#dgzubhkunz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1550,11 +1527,11 @@ Variable name
   border-bottom-color: #D3D3D3;
 }
 
-#qxqpeybnbj .gt_striped {
+#dgzubhkunz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qxqpeybnbj .gt_table_body {
+#dgzubhkunz .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #D9D9D9;
@@ -1563,7 +1540,7 @@ Variable name
   border-bottom-color: #D3D3D3;
 }
 
-#qxqpeybnbj .gt_footnotes {
+#dgzubhkunz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1577,7 +1554,7 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#qxqpeybnbj .gt_footnote {
+#dgzubhkunz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1586,7 +1563,7 @@ Variable name
   padding-right: 5px;
 }
 
-#qxqpeybnbj .gt_sourcenotes {
+#dgzubhkunz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1600,7 +1577,7 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#qxqpeybnbj .gt_sourcenote {
+#dgzubhkunz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1608,72 +1585,72 @@ Variable name
   padding-right: 5px;
 }
 
-#qxqpeybnbj .gt_left {
+#dgzubhkunz .gt_left {
   text-align: left;
 }
 
-#qxqpeybnbj .gt_center {
+#dgzubhkunz .gt_center {
   text-align: center;
 }
 
-#qxqpeybnbj .gt_right {
+#dgzubhkunz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qxqpeybnbj .gt_font_normal {
+#dgzubhkunz .gt_font_normal {
   font-weight: normal;
 }
 
-#qxqpeybnbj .gt_font_bold {
+#dgzubhkunz .gt_font_bold {
   font-weight: bold;
 }
 
-#qxqpeybnbj .gt_font_italic {
+#dgzubhkunz .gt_font_italic {
   font-style: italic;
 }
 
-#qxqpeybnbj .gt_super {
+#dgzubhkunz .gt_super {
   font-size: 65%;
 }
 
-#qxqpeybnbj .gt_footnote_marks {
+#dgzubhkunz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qxqpeybnbj .gt_asterisk {
+#dgzubhkunz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qxqpeybnbj .gt_indent_1 {
+#dgzubhkunz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qxqpeybnbj .gt_indent_2 {
+#dgzubhkunz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qxqpeybnbj .gt_indent_3 {
+#dgzubhkunz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qxqpeybnbj .gt_indent_4 {
+#dgzubhkunz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qxqpeybnbj .gt_indent_5 {
+#dgzubhkunz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qxqpeybnbj .katex-display {
+#dgzubhkunz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qxqpeybnbj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dgzubhkunz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1810,10 +1787,10 @@ Variable name
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">cdm</span><span class="op">$</span><span class="va">medications</span>, <span class="st">"cohort_codelist"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">cdm</span><span class="op">$</span><span class="va">medications</span>, <span class="st">"cohort_codelist"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A query:  ?? x 4
-# Database: DuckDB 1.5.5 [unknown@Linux 6.17.0-1022-azure:R 4.6.1//home/runner/work/OHDSI-UK-2026-Training/OHDSI-UK-2026-Training/Databases/GiBleed.duckdb]
+# Database: DuckDB 1.5.5 [unknown@Linux 6.17.0-1022-azure:R 4.6.1//tmp/Rtmpu0okBt/file202c7ee02d69.duckdb]
   cohort_definition_id codelist_name concept_id codelist_type
                  &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;        
 1                    1 acetaminophen    1125315 index event  
@@ -1829,37 +1806,16 @@ Variable name
 </div>
 </section></section><section><section id="your-turn" class="title-slide slide level1 center"><h1>✏️ Your turn!</h1>
 
-</section><section id="get-started-create-the-cdm_reference-object" class="slide level2"><h2>Get Started: Create the cdm_reference object</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load relevant packages</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu.github.io/CDMConnector/">CDMConnector</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu.github.io/CodelistGenerator/">CodelistGenerator</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ohdsi.github.io/CohortConstructor/">CohortConstructor</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu.github.io/CohortCharacteristics/">CohortCharacteristics</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r.duckdb.org/">duckdb</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com">gt</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span>drv <span class="op">=</span> <span class="fu"><a href="https://r.duckdb.org/reference/duckdb.html">duckdb</a></span><span class="op">(</span>dbdir <span class="op">=</span> <span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"Databases"</span>, <span class="st">"delphi.duckdb"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://darwin-eu.github.io/CDMConnector/reference/cdmFromCon.html">cdmFromCon</a></span><span class="op">(</span></span>
-<span>  con <span class="op">=</span> <span class="va">con</span>,</span>
-<span>  cdmSchema <span class="op">=</span> <span class="st">"main"</span>,</span>
-<span>  writeSchema <span class="op">=</span> <span class="st">"results"</span>,</span>
-<span>  writePrefix <span class="op">=</span> <span class="st">"cc_"</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 </section><section id="exercise-1---base-cohorts" class="slide level2"><h2>✏️ Exercise 1 - Base cohorts</h2>
 <div style="margin-bottom: 15px;">
 
 </div>
-<p><strong>Create a base cohort table named <code>base_conditions_cohort</code> that has two cohorts: Rheumatoid Arthritis (RA) and Pneumonia. Use the codelist below.</strong></p>
+<p><strong>Create a base cohort table named <code>base_conditions_cohort</code> that has two cohorts: Rheumatoid Arthritis (RA) and Pneumonia. Summarise cohort counts and attrition. Use the codelist below.</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">codes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">codes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
 <span>  <span class="st">"ra"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">80809L</span><span class="op">)</span>,</span>
 <span>  <span class="st">"pneumonia"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">255848L</span><span class="op">)</span></span>
-<span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/newCodelist.html">newCodelist</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div style="margin-bottom: 20px;">
 
@@ -1867,20 +1823,20 @@ Variable name
 <details><summary>
 💡 Click to see solution
 </summary><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">codes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">codes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
 <span>  <span class="st">"ra"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">80809L</span><span class="op">)</span>,</span>
-<span>  <span class="st">"pneumonia"</span>            <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">255848L</span><span class="op">)</span></span>
-<span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/newCodelist.html">newCodelist</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="st">"pneumonia"</span><span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">255848L</span><span class="op">)</span></span>
+<span><span class="op">)</span> </span>
 <span></span>
-<span><span class="va">cdm</span><span class="op">$</span><span class="va">base_conditions_cohort</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/conceptCohort.html">conceptCohort</a></span><span class="op">(</span>cdm <span class="op">=</span> <span class="va">cdm</span>, conceptSet <span class="op">=</span> <span class="va">codes</span>, name <span class="op">=</span> <span class="st">"base_conditions_cohort"</span><span class="op">)</span></span>
+<span><span class="va">cdm</span><span class="op">$</span><span class="va">base_conditions_cohort</span> <span class="op">&lt;-</span> <span class="fu">conceptCohort</span><span class="op">(</span>cdm <span class="op">=</span> <span class="va">cdm</span>, conceptSet <span class="op">=</span> <span class="va">codes</span>, name <span class="op">=</span> <span class="st">"base_conditions_cohort"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://darwin-eu.github.io/CohortCharacteristics/reference/summariseCohortCount.html">summariseCohortCount</a></span><span class="op">(</span>cohort <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">base_conditions_cohort</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://darwin-eu.github.io/CohortCharacteristics/reference/tableCohortCount.html">tableCohortCount</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">summariseCohortCount</span><span class="op">(</span>cohort <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">base_conditions_cohort</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">tableCohortCount</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">summariseCohortAttrition</span><span class="op">(</span>cohort <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">base_conditions_cohort</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">tableCohortAttrition</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</details><p><em>Move to the next slide to see the cohort attrition</em></p>
-</section><section id="exercise-1---base-cohorts-1" class="slide level2"><h2>✏️ Exercise 1 - Base cohorts</h2>
-
-<img data-src="exercise_1.png" width="796" class="r-stretch"></section></section><section><section id="requirements-and-filtering" class="title-slide slide level1 center"><h1>Requirements and Filtering</h1>
+</details></section></section><section><section id="requirements-and-filtering" class="title-slide slide level1 center"><h1>Requirements and Filtering</h1>
 
 </section><section id="functions-to-apply-requirements-and-filter" class="slide level2"><h2>Functions to apply requirements and filter</h2>
 <div style="margin-bottom: 10px;">
@@ -1892,11 +1848,11 @@ Variable name
 <li class="fragment">
 <p>On demographics</p>
 <ul>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/requireDemographics.html">requireDemographics()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/requireAge.html">requireAge()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/requireSex.html">requireSex()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/requirePriorObservation.html">requirePriorObservation()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/requireFutureObservation.html">requireFutureObservation()</a></code></p></li>
+<li class="fragment"><p><code>requireDemographics()</code></p></li>
+<li class="fragment"><p><code>requireAge()</code></p></li>
+<li class="fragment"><p><code>requireSex()</code></p></li>
+<li class="fragment"><p><code>requirePriorObservation()</code></p></li>
+<li class="fragment"><p><code>requireFutureObservation()</code></p></li>
 </ul>
 </li>
 </ul>
@@ -1907,9 +1863,9 @@ Variable name
 <li class="fragment">
 <p>On cohort entries</p>
 <ul>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/requireIsFirstEntry.html">requireIsFirstEntry()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/requireIsLastEntry.html">requireIsLastEntry()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/requireIsEntry.html">requireIsEntry()</a></code></p></li>
+<li class="fragment"><p><code>requireIsFirstEntry()</code></p></li>
+<li class="fragment"><p><code>requireIsLastEntry()</code></p></li>
+<li class="fragment"><p><code>requireIsEntry()</code></p></li>
 </ul>
 </li>
 </ul>
@@ -1918,9 +1874,9 @@ Variable name
 <li class="fragment">
 <p>Require presence or absence based on other cohorts, concepts, and tables</p>
 <ul>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/requireCohortIntersect.html">requireCohortIntersect()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/requireConceptIntersect.html">requireConceptIntersect()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/requireTableIntersect.html">requireTableIntersect()</a></code></p></li>
+<li class="fragment"><p><code>requireCohortIntersect()</code></p></li>
+<li class="fragment"><p><code>requireConceptIntersect()</code></p></li>
+<li class="fragment"><p><code>requireTableIntersect()</code></p></li>
 </ul>
 </li>
 </ul>
@@ -1931,9 +1887,9 @@ Variable name
 <li class="fragment">
 <p>Other</p>
 <ul>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/requireInDateRange.html">requireInDateRange()</a></code></p></li>
+<li class="fragment"><p><code>requireInDateRange()</code></p></li>
 <li class="fragment"><p><code>requireMincohortCount()</code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/requireDuration.html">requireDuration()</a></code></p></li>
+<li class="fragment"><p><code>requireDuration()</code></p></li>
 </ul>
 </li>
 </ul>
@@ -1955,9 +1911,9 @@ Variable name
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">medications_requirement</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">medications</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/requireIsFirstEntry.html">requireIsFirstEntry</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"medications_requirement"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/requireDemographics.html">requireDemographics</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">medications_requirement</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">medications</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">requireIsFirstEntry</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"medications_requirement"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">requireDemographics</span><span class="op">(</span></span>
 <span>    ageRange <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    sex <span class="op">=</span> <span class="st">"Female"</span>, </span>
 <span>    minPriorObservation <span class="op">=</span> <span class="fl">30</span>,</span>
@@ -1972,23 +1928,23 @@ Variable name
 <p><strong>Attrition Acetaminophen</strong></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="svswzhaifw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#svswzhaifw table {
+<div id="ccwkwmccku" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ccwkwmccku table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#svswzhaifw thead, #svswzhaifw tbody, #svswzhaifw tfoot, #svswzhaifw tr, #svswzhaifw td, #svswzhaifw th {
+#ccwkwmccku thead, #ccwkwmccku tbody, #ccwkwmccku tfoot, #ccwkwmccku tr, #ccwkwmccku td, #ccwkwmccku th {
   border-style: none;
 }
 
-#svswzhaifw p {
+#ccwkwmccku p {
   margin: 0;
   padding: 0;
 }
 
-#svswzhaifw .gt_table {
+#ccwkwmccku .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2014,12 +1970,12 @@ Variable name
   border-left-color: #D9D9D9;
 }
 
-#svswzhaifw .gt_caption {
+#ccwkwmccku .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#svswzhaifw .gt_title {
+#ccwkwmccku .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2031,7 +1987,7 @@ Variable name
   border-bottom-width: 0;
 }
 
-#svswzhaifw .gt_subtitle {
+#ccwkwmccku .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2043,7 +1999,7 @@ Variable name
   border-top-width: 0;
 }
 
-#svswzhaifw .gt_heading {
+#ccwkwmccku .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2055,13 +2011,13 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#svswzhaifw .gt_bottom_border {
+#ccwkwmccku .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#svswzhaifw .gt_col_headings {
+#ccwkwmccku .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2076,7 +2032,7 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#svswzhaifw .gt_col_heading {
+#ccwkwmccku .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2096,7 +2052,7 @@ Variable name
   overflow-x: hidden;
 }
 
-#svswzhaifw .gt_column_spanner_outer {
+#ccwkwmccku .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2108,15 +2064,15 @@ Variable name
   padding-right: 4px;
 }
 
-#svswzhaifw .gt_column_spanner_outer:first-child {
+#ccwkwmccku .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#svswzhaifw .gt_column_spanner_outer:last-child {
+#ccwkwmccku .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#svswzhaifw .gt_column_spanner {
+#ccwkwmccku .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2128,11 +2084,11 @@ Variable name
   width: 100%;
 }
 
-#svswzhaifw .gt_spanner_row {
+#ccwkwmccku .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#svswzhaifw .gt_group_heading {
+#ccwkwmccku .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2158,7 +2114,7 @@ Variable name
   text-align: left;
 }
 
-#svswzhaifw .gt_empty_group_heading {
+#ccwkwmccku .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2173,15 +2129,15 @@ Variable name
   vertical-align: middle;
 }
 
-#svswzhaifw .gt_from_md > :first-child {
+#ccwkwmccku .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#svswzhaifw .gt_from_md > :last-child {
+#ccwkwmccku .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#svswzhaifw .gt_row {
+#ccwkwmccku .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2200,7 +2156,7 @@ Variable name
   overflow-x: hidden;
 }
 
-#svswzhaifw .gt_stub {
+#ccwkwmccku .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2213,7 +2169,7 @@ Variable name
   padding-right: 5px;
 }
 
-#svswzhaifw .gt_stub_row_group {
+#ccwkwmccku .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2227,15 +2183,15 @@ Variable name
   vertical-align: top;
 }
 
-#svswzhaifw .gt_row_group_first td {
+#ccwkwmccku .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#svswzhaifw .gt_row_group_first th {
+#ccwkwmccku .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#svswzhaifw .gt_summary_row {
+#ccwkwmccku .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2245,16 +2201,16 @@ Variable name
   padding-right: 5px;
 }
 
-#svswzhaifw .gt_first_summary_row {
+#ccwkwmccku .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#svswzhaifw .gt_first_summary_row.thick {
+#ccwkwmccku .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#svswzhaifw .gt_last_summary_row {
+#ccwkwmccku .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2264,7 +2220,7 @@ Variable name
   border-bottom-color: #D3D3D3;
 }
 
-#svswzhaifw .gt_grand_summary_row {
+#ccwkwmccku .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2274,7 +2230,7 @@ Variable name
   padding-right: 5px;
 }
 
-#svswzhaifw .gt_first_grand_summary_row {
+#ccwkwmccku .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2284,7 +2240,7 @@ Variable name
   border-top-color: #D3D3D3;
 }
 
-#svswzhaifw .gt_last_grand_summary_row_top {
+#ccwkwmccku .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2294,11 +2250,11 @@ Variable name
   border-bottom-color: #D3D3D3;
 }
 
-#svswzhaifw .gt_striped {
+#ccwkwmccku .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#svswzhaifw .gt_table_body {
+#ccwkwmccku .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #D9D9D9;
@@ -2307,7 +2263,7 @@ Variable name
   border-bottom-color: #D3D3D3;
 }
 
-#svswzhaifw .gt_footnotes {
+#ccwkwmccku .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2321,7 +2277,7 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#svswzhaifw .gt_footnote {
+#ccwkwmccku .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2330,7 +2286,7 @@ Variable name
   padding-right: 5px;
 }
 
-#svswzhaifw .gt_sourcenotes {
+#ccwkwmccku .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2344,7 +2300,7 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#svswzhaifw .gt_sourcenote {
+#ccwkwmccku .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2352,72 +2308,72 @@ Variable name
   padding-right: 5px;
 }
 
-#svswzhaifw .gt_left {
+#ccwkwmccku .gt_left {
   text-align: left;
 }
 
-#svswzhaifw .gt_center {
+#ccwkwmccku .gt_center {
   text-align: center;
 }
 
-#svswzhaifw .gt_right {
+#ccwkwmccku .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#svswzhaifw .gt_font_normal {
+#ccwkwmccku .gt_font_normal {
   font-weight: normal;
 }
 
-#svswzhaifw .gt_font_bold {
+#ccwkwmccku .gt_font_bold {
   font-weight: bold;
 }
 
-#svswzhaifw .gt_font_italic {
+#ccwkwmccku .gt_font_italic {
   font-style: italic;
 }
 
-#svswzhaifw .gt_super {
+#ccwkwmccku .gt_super {
   font-size: 65%;
 }
 
-#svswzhaifw .gt_footnote_marks {
+#ccwkwmccku .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#svswzhaifw .gt_asterisk {
+#ccwkwmccku .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#svswzhaifw .gt_indent_1 {
+#ccwkwmccku .gt_indent_1 {
   text-indent: 5px;
 }
 
-#svswzhaifw .gt_indent_2 {
+#ccwkwmccku .gt_indent_2 {
   text-indent: 10px;
 }
 
-#svswzhaifw .gt_indent_3 {
+#ccwkwmccku .gt_indent_3 {
   text-indent: 15px;
 }
 
-#svswzhaifw .gt_indent_4 {
+#ccwkwmccku .gt_indent_4 {
   text-indent: 20px;
 }
 
-#svswzhaifw .gt_indent_5 {
+#ccwkwmccku .gt_indent_5 {
   text-indent: 25px;
 }
 
-#svswzhaifw .katex-display {
+#ccwkwmccku .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#svswzhaifw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ccwkwmccku div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2561,8 +2517,8 @@ Variable name
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">medications_requirement</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">medications_requirement</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/requireTableIntersect.html">requireTableIntersect</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">medications_requirement</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">medications_requirement</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">requireTableIntersect</span><span class="op">(</span></span>
 <span>    tableName <span class="op">=</span> <span class="st">"visit_occurrence"</span>,</span>
 <span>    indexDate <span class="op">=</span> <span class="st">"cohort_start_date"</span>,</span>
 <span>    window <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>,</span>
@@ -2577,23 +2533,23 @@ Variable name
 <p><strong>Attrition Acetaminophen</strong></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="gddtucxchj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gddtucxchj table {
+<div id="lsxuoozeaq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lsxuoozeaq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gddtucxchj thead, #gddtucxchj tbody, #gddtucxchj tfoot, #gddtucxchj tr, #gddtucxchj td, #gddtucxchj th {
+#lsxuoozeaq thead, #lsxuoozeaq tbody, #lsxuoozeaq tfoot, #lsxuoozeaq tr, #lsxuoozeaq td, #lsxuoozeaq th {
   border-style: none;
 }
 
-#gddtucxchj p {
+#lsxuoozeaq p {
   margin: 0;
   padding: 0;
 }
 
-#gddtucxchj .gt_table {
+#lsxuoozeaq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2619,12 +2575,12 @@ Variable name
   border-left-color: #D9D9D9;
 }
 
-#gddtucxchj .gt_caption {
+#lsxuoozeaq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gddtucxchj .gt_title {
+#lsxuoozeaq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2636,7 +2592,7 @@ Variable name
   border-bottom-width: 0;
 }
 
-#gddtucxchj .gt_subtitle {
+#lsxuoozeaq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2648,7 +2604,7 @@ Variable name
   border-top-width: 0;
 }
 
-#gddtucxchj .gt_heading {
+#lsxuoozeaq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2660,13 +2616,13 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#gddtucxchj .gt_bottom_border {
+#lsxuoozeaq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gddtucxchj .gt_col_headings {
+#lsxuoozeaq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2681,7 +2637,7 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#gddtucxchj .gt_col_heading {
+#lsxuoozeaq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2701,7 +2657,7 @@ Variable name
   overflow-x: hidden;
 }
 
-#gddtucxchj .gt_column_spanner_outer {
+#lsxuoozeaq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2713,15 +2669,15 @@ Variable name
   padding-right: 4px;
 }
 
-#gddtucxchj .gt_column_spanner_outer:first-child {
+#lsxuoozeaq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gddtucxchj .gt_column_spanner_outer:last-child {
+#lsxuoozeaq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gddtucxchj .gt_column_spanner {
+#lsxuoozeaq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2733,11 +2689,11 @@ Variable name
   width: 100%;
 }
 
-#gddtucxchj .gt_spanner_row {
+#lsxuoozeaq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gddtucxchj .gt_group_heading {
+#lsxuoozeaq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2763,7 +2719,7 @@ Variable name
   text-align: left;
 }
 
-#gddtucxchj .gt_empty_group_heading {
+#lsxuoozeaq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2778,15 +2734,15 @@ Variable name
   vertical-align: middle;
 }
 
-#gddtucxchj .gt_from_md > :first-child {
+#lsxuoozeaq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gddtucxchj .gt_from_md > :last-child {
+#lsxuoozeaq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gddtucxchj .gt_row {
+#lsxuoozeaq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2805,7 +2761,7 @@ Variable name
   overflow-x: hidden;
 }
 
-#gddtucxchj .gt_stub {
+#lsxuoozeaq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2818,7 +2774,7 @@ Variable name
   padding-right: 5px;
 }
 
-#gddtucxchj .gt_stub_row_group {
+#lsxuoozeaq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2832,15 +2788,15 @@ Variable name
   vertical-align: top;
 }
 
-#gddtucxchj .gt_row_group_first td {
+#lsxuoozeaq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gddtucxchj .gt_row_group_first th {
+#lsxuoozeaq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gddtucxchj .gt_summary_row {
+#lsxuoozeaq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2850,16 +2806,16 @@ Variable name
   padding-right: 5px;
 }
 
-#gddtucxchj .gt_first_summary_row {
+#lsxuoozeaq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gddtucxchj .gt_first_summary_row.thick {
+#lsxuoozeaq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gddtucxchj .gt_last_summary_row {
+#lsxuoozeaq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2869,7 +2825,7 @@ Variable name
   border-bottom-color: #D3D3D3;
 }
 
-#gddtucxchj .gt_grand_summary_row {
+#lsxuoozeaq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2879,7 +2835,7 @@ Variable name
   padding-right: 5px;
 }
 
-#gddtucxchj .gt_first_grand_summary_row {
+#lsxuoozeaq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2889,7 +2845,7 @@ Variable name
   border-top-color: #D3D3D3;
 }
 
-#gddtucxchj .gt_last_grand_summary_row_top {
+#lsxuoozeaq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2899,11 +2855,11 @@ Variable name
   border-bottom-color: #D3D3D3;
 }
 
-#gddtucxchj .gt_striped {
+#lsxuoozeaq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gddtucxchj .gt_table_body {
+#lsxuoozeaq .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #D9D9D9;
@@ -2912,7 +2868,7 @@ Variable name
   border-bottom-color: #D3D3D3;
 }
 
-#gddtucxchj .gt_footnotes {
+#lsxuoozeaq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2926,7 +2882,7 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#gddtucxchj .gt_footnote {
+#lsxuoozeaq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2935,7 +2891,7 @@ Variable name
   padding-right: 5px;
 }
 
-#gddtucxchj .gt_sourcenotes {
+#lsxuoozeaq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2949,7 +2905,7 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#gddtucxchj .gt_sourcenote {
+#lsxuoozeaq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2957,72 +2913,72 @@ Variable name
   padding-right: 5px;
 }
 
-#gddtucxchj .gt_left {
+#lsxuoozeaq .gt_left {
   text-align: left;
 }
 
-#gddtucxchj .gt_center {
+#lsxuoozeaq .gt_center {
   text-align: center;
 }
 
-#gddtucxchj .gt_right {
+#lsxuoozeaq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gddtucxchj .gt_font_normal {
+#lsxuoozeaq .gt_font_normal {
   font-weight: normal;
 }
 
-#gddtucxchj .gt_font_bold {
+#lsxuoozeaq .gt_font_bold {
   font-weight: bold;
 }
 
-#gddtucxchj .gt_font_italic {
+#lsxuoozeaq .gt_font_italic {
   font-style: italic;
 }
 
-#gddtucxchj .gt_super {
+#lsxuoozeaq .gt_super {
   font-size: 65%;
 }
 
-#gddtucxchj .gt_footnote_marks {
+#lsxuoozeaq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gddtucxchj .gt_asterisk {
+#lsxuoozeaq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gddtucxchj .gt_indent_1 {
+#lsxuoozeaq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gddtucxchj .gt_indent_2 {
+#lsxuoozeaq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gddtucxchj .gt_indent_3 {
+#lsxuoozeaq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gddtucxchj .gt_indent_4 {
+#lsxuoozeaq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gddtucxchj .gt_indent_5 {
+#lsxuoozeaq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gddtucxchj .katex-display {
+#lsxuoozeaq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gddtucxchj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lsxuoozeaq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3173,12 +3129,12 @@ Variable name
 </section><section id="exercise-2---requirement-and-filtering" class="slide level2"><h2>✏️ Exercise 2 - Requirement and filtering</h2>
 <p><strong>Create a new cohort named “study_cohort” by applying the following criteria to the base conditions cohort:</strong></p>
 <ul>
-<li class="fragment"><p>For all cohorts, require that records start between January 1, 1990, and December 31, 2011.</p></li>
+<li class="fragment"><p>For all cohorts, require that records start after January 1, 1990.</p></li>
 <li class="fragment"><p>For the Rheumatoid Arthritis cohort, exclude patients with a history of osteoarthritis prior to or on the day of diagnosis.</p></li>
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">osteoarthritisCodes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"osteoarthritis"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">80180L</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/newCodelist.html">newCodelist</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">osteoarthritisCodes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"osteoarthritis"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">80180L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div style="margin-bottom: 20px;">
 
@@ -3188,14 +3144,14 @@ Variable name
 <details><summary>
 💡 Click to see solution
 </summary><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">osteoarthritisCodes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"osteoarthritis"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">80180L</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/newCodelist.html">newCodelist</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">osteoarthritisCodes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"osteoarthritis"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">80180L</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">cdm</span><span class="op">$</span><span class="va">study_cohort</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">base_conditions_cohort</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/requireInDateRange.html">requireInDateRange</a></span><span class="op">(</span></span>
-<span>    dateRange <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1990-01-01"</span>, <span class="st">"2011-12-31"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="fu">requireInDateRange</span><span class="op">(</span></span>
+<span>    dateRange <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1990-01-01"</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    name <span class="op">=</span> <span class="st">"study_cohort"</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/requireConceptIntersect.html">requireConceptIntersect</a></span><span class="op">(</span></span>
+<span>  <span class="fu">requireConceptIntersect</span><span class="op">(</span></span>
 <span>    conceptSet <span class="op">=</span> <span class="va">osteoarthritisCodes</span>,</span>
 <span>    cohortId <span class="op">=</span> <span class="st">"ra"</span>,</span>
 <span>    window <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -3203,14 +3159,12 @@ Variable name
 <span>    name <span class="op">=</span> <span class="st">"study_cohort"</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://darwin-eu.github.io/CohortCharacteristics/reference/summariseCohortAttrition.html">summariseCohortAttrition</a></span><span class="op">(</span>cohort <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">study_cohort</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://darwin-eu.github.io/CohortCharacteristics/reference/tableCohortAttrition.html">tableCohortAttrition</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">summariseCohortAttrition</span><span class="op">(</span>cohort <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">study_cohort</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">tableCohortAttrition</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</details><p><em>Move to the next slide to see the cohort attrition</em></p>
+</details>
 </div>
-</section><section id="exercise-2---requirement-and-filtering-1" class="slide level2"><h2>✏️ Exercise 2 - Requirement and filtering</h2>
-
-<img data-src="exercise_2.png" width="983" class="r-stretch"></section></section><section><section id="update-cohort-entry-and-exit" class="title-slide slide level1 center"><h1>Update cohort entry and exit</h1>
+</section></section><section><section id="update-cohort-entry-and-exit" class="title-slide slide level1 center"><h1>Update cohort entry and exit</h1>
 
 </section><section id="functions-to-update-cohort-start-and-end-dates" class="slide level2"><h2>Functions to update cohort start and end dates</h2>
 <div style="margin-bottom: 10px;">
@@ -3222,10 +3176,10 @@ Variable name
 <li class="fragment">
 <p>Cohort exit</p>
 <ul>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/exitAtObservationEnd.html">exitAtObservationEnd()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/exitAtDeath.html">exitAtDeath()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/exitAtFirstDate.html">exitAtFirstDate()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/exitAtLastDate.html">exitAtLastDate()</a></code></p></li>
+<li class="fragment"><p><code>exitAtObservationEnd()</code></p></li>
+<li class="fragment"><p><code>exitAtDeath()</code></p></li>
+<li class="fragment"><p><code>exitAtFirstDate()</code></p></li>
+<li class="fragment"><p><code>exitAtLastDate()</code></p></li>
 </ul>
 </li>
 </ul>
@@ -3236,8 +3190,8 @@ Variable name
 <li class="fragment">
 <p>Cohort entry</p>
 <ul>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/entryAtFirstDate.html">entryAtFirstDate()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/entryAtLastDate.html">entryAtLastDate()</a></code></p></li>
+<li class="fragment"><p><code>entryAtFirstDate()</code></p></li>
+<li class="fragment"><p><code>entryAtLastDate()</code></p></li>
 </ul>
 </li>
 </ul>
@@ -3246,9 +3200,9 @@ Variable name
 <li class="fragment">
 <p>Trim start and end dates</p>
 <ul>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/trimDemographics.html">trimDemographics()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/trimToDateRange.html">trimToDateRange()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/trimDuration.html">trimDuration()</a></code></p></li>
+<li class="fragment"><p><code>trimDemographics()</code></p></li>
+<li class="fragment"><p><code>trimToDateRange()</code></p></li>
+<li class="fragment"><p><code>trimDuration()</code></p></li>
 </ul>
 </li>
 </ul>
@@ -3259,9 +3213,9 @@ Variable name
 <li class="fragment">
 <p>Pad start and end dates</p>
 <ul>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/padCohortDate.html">padCohortDate()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/padCohortEnd.html">padCohortEnd()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/padCohortStart.html">padCohortStart()</a></code></p></li>
+<li class="fragment"><p><code>padCohortDate()</code></p></li>
+<li class="fragment"><p><code>padCohortEnd()</code></p></li>
+<li class="fragment"><p><code>padCohortStart()</code></p></li>
 </ul>
 </li>
 </ul>
@@ -3282,8 +3236,8 @@ Variable name
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">medications_trimmed</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">medications</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/trimDemographics.html">trimDemographics</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">medications_trimmed</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">medications</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">trimDemographics</span><span class="op">(</span></span>
 <span>    ageRange <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">40</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    minPriorObservation <span class="op">=</span> <span class="fl">365</span>,</span>
 <span>    name <span class="op">=</span> <span class="st">"medications_trimmed"</span></span>
@@ -3296,23 +3250,23 @@ Variable name
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="jmenptdwyk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jmenptdwyk table {
+<div id="jjdmrclvrv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jjdmrclvrv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jmenptdwyk thead, #jmenptdwyk tbody, #jmenptdwyk tfoot, #jmenptdwyk tr, #jmenptdwyk td, #jmenptdwyk th {
+#jjdmrclvrv thead, #jjdmrclvrv tbody, #jjdmrclvrv tfoot, #jjdmrclvrv tr, #jjdmrclvrv td, #jjdmrclvrv th {
   border-style: none;
 }
 
-#jmenptdwyk p {
+#jjdmrclvrv p {
   margin: 0;
   padding: 0;
 }
 
-#jmenptdwyk .gt_table {
+#jjdmrclvrv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3338,12 +3292,12 @@ Variable name
   border-left-color: #D9D9D9;
 }
 
-#jmenptdwyk .gt_caption {
+#jjdmrclvrv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jmenptdwyk .gt_title {
+#jjdmrclvrv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3355,7 +3309,7 @@ Variable name
   border-bottom-width: 0;
 }
 
-#jmenptdwyk .gt_subtitle {
+#jjdmrclvrv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3367,7 +3321,7 @@ Variable name
   border-top-width: 0;
 }
 
-#jmenptdwyk .gt_heading {
+#jjdmrclvrv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3379,13 +3333,13 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#jmenptdwyk .gt_bottom_border {
+#jjdmrclvrv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jmenptdwyk .gt_col_headings {
+#jjdmrclvrv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3400,7 +3354,7 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#jmenptdwyk .gt_col_heading {
+#jjdmrclvrv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3420,7 +3374,7 @@ Variable name
   overflow-x: hidden;
 }
 
-#jmenptdwyk .gt_column_spanner_outer {
+#jjdmrclvrv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3432,15 +3386,15 @@ Variable name
   padding-right: 4px;
 }
 
-#jmenptdwyk .gt_column_spanner_outer:first-child {
+#jjdmrclvrv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jmenptdwyk .gt_column_spanner_outer:last-child {
+#jjdmrclvrv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jmenptdwyk .gt_column_spanner {
+#jjdmrclvrv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3452,11 +3406,11 @@ Variable name
   width: 100%;
 }
 
-#jmenptdwyk .gt_spanner_row {
+#jjdmrclvrv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jmenptdwyk .gt_group_heading {
+#jjdmrclvrv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3482,7 +3436,7 @@ Variable name
   text-align: left;
 }
 
-#jmenptdwyk .gt_empty_group_heading {
+#jjdmrclvrv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3497,15 +3451,15 @@ Variable name
   vertical-align: middle;
 }
 
-#jmenptdwyk .gt_from_md > :first-child {
+#jjdmrclvrv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jmenptdwyk .gt_from_md > :last-child {
+#jjdmrclvrv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jmenptdwyk .gt_row {
+#jjdmrclvrv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3524,7 +3478,7 @@ Variable name
   overflow-x: hidden;
 }
 
-#jmenptdwyk .gt_stub {
+#jjdmrclvrv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3537,7 +3491,7 @@ Variable name
   padding-right: 5px;
 }
 
-#jmenptdwyk .gt_stub_row_group {
+#jjdmrclvrv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3551,15 +3505,15 @@ Variable name
   vertical-align: top;
 }
 
-#jmenptdwyk .gt_row_group_first td {
+#jjdmrclvrv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jmenptdwyk .gt_row_group_first th {
+#jjdmrclvrv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jmenptdwyk .gt_summary_row {
+#jjdmrclvrv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3569,16 +3523,16 @@ Variable name
   padding-right: 5px;
 }
 
-#jmenptdwyk .gt_first_summary_row {
+#jjdmrclvrv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jmenptdwyk .gt_first_summary_row.thick {
+#jjdmrclvrv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jmenptdwyk .gt_last_summary_row {
+#jjdmrclvrv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3588,7 +3542,7 @@ Variable name
   border-bottom-color: #D3D3D3;
 }
 
-#jmenptdwyk .gt_grand_summary_row {
+#jjdmrclvrv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3598,7 +3552,7 @@ Variable name
   padding-right: 5px;
 }
 
-#jmenptdwyk .gt_first_grand_summary_row {
+#jjdmrclvrv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3608,7 +3562,7 @@ Variable name
   border-top-color: #D3D3D3;
 }
 
-#jmenptdwyk .gt_last_grand_summary_row_top {
+#jjdmrclvrv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3618,11 +3572,11 @@ Variable name
   border-bottom-color: #D3D3D3;
 }
 
-#jmenptdwyk .gt_striped {
+#jjdmrclvrv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jmenptdwyk .gt_table_body {
+#jjdmrclvrv .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #D9D9D9;
@@ -3631,7 +3585,7 @@ Variable name
   border-bottom-color: #D3D3D3;
 }
 
-#jmenptdwyk .gt_footnotes {
+#jjdmrclvrv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3645,7 +3599,7 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#jmenptdwyk .gt_footnote {
+#jjdmrclvrv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3654,7 +3608,7 @@ Variable name
   padding-right: 5px;
 }
 
-#jmenptdwyk .gt_sourcenotes {
+#jjdmrclvrv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3668,7 +3622,7 @@ Variable name
   border-right-color: #D3D3D3;
 }
 
-#jmenptdwyk .gt_sourcenote {
+#jjdmrclvrv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3676,72 +3630,72 @@ Variable name
   padding-right: 5px;
 }
 
-#jmenptdwyk .gt_left {
+#jjdmrclvrv .gt_left {
   text-align: left;
 }
 
-#jmenptdwyk .gt_center {
+#jjdmrclvrv .gt_center {
   text-align: center;
 }
 
-#jmenptdwyk .gt_right {
+#jjdmrclvrv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jmenptdwyk .gt_font_normal {
+#jjdmrclvrv .gt_font_normal {
   font-weight: normal;
 }
 
-#jmenptdwyk .gt_font_bold {
+#jjdmrclvrv .gt_font_bold {
   font-weight: bold;
 }
 
-#jmenptdwyk .gt_font_italic {
+#jjdmrclvrv .gt_font_italic {
   font-style: italic;
 }
 
-#jmenptdwyk .gt_super {
+#jjdmrclvrv .gt_super {
   font-size: 65%;
 }
 
-#jmenptdwyk .gt_footnote_marks {
+#jjdmrclvrv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jmenptdwyk .gt_asterisk {
+#jjdmrclvrv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jmenptdwyk .gt_indent_1 {
+#jjdmrclvrv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jmenptdwyk .gt_indent_2 {
+#jjdmrclvrv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jmenptdwyk .gt_indent_3 {
+#jjdmrclvrv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jmenptdwyk .gt_indent_4 {
+#jjdmrclvrv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jmenptdwyk .gt_indent_5 {
+#jjdmrclvrv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jmenptdwyk .katex-display {
+#jjdmrclvrv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jmenptdwyk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jjdmrclvrv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3859,9 +3813,6 @@ Variable name
 </section><section id="exercise-3---update-cohort-entry-and-exit" class="slide level2"><h2>✏️ Exercise 3 - Update cohort entry and exit</h2>
 <p><strong>1)</strong> <strong>Since Rheumatoid Arthritis is a chronic condition, define its cohort exit so patients remain in the cohort from first diagnostic date to the end of the patient’s observation.</strong></p>
 <div class="fragment">
-<p><strong>2)</strong> <strong>For Pneumonia, assume the infection lasts for two months from the diagnosis day, thereby update the cohort end date to be exactly 60 days after the cohort start.</strong></p>
-</div>
-<div class="fragment">
 <p>👉<em>Use the <code>cohortId</code> argument to choose which cohort to modify.</em></p>
 </div>
 <div class="fragment">
@@ -3871,720 +3822,24 @@ Variable name
 <details><summary>
 💡 Click to see solution
 </summary><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">study_cohort</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">study_cohort</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/exitAtObservationEnd.html">exitAtObservationEnd</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">study_cohort</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">study_cohort</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">exitAtObservationEnd</span><span class="op">(</span></span>
 <span>    cohortId <span class="op">=</span> <span class="st">"ra"</span>,</span>
 <span>    persistAcrossObservationPeriods <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    name <span class="op">=</span> <span class="st">"study_cohort"</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/padCohortDate.html">padCohortDate</a></span><span class="op">(</span></span>
-<span>    days <span class="op">=</span> <span class="fl">60</span>,</span>
-<span>    cohortDate <span class="op">=</span> <span class="st">"cohort_end_date"</span>,</span>
-<span>    cohortId <span class="op">=</span> <span class="st">"pneumonia"</span>,</span>
-<span>    name <span class="op">=</span> <span class="st">"study_cohort"</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://darwin-eu.github.io/CohortCharacteristics/reference/summariseCohortAttrition.html">summariseCohortAttrition</a></span><span class="op">(</span>cohort <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">study_cohort</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://darwin-eu.github.io/CohortCharacteristics/reference/tableCohortAttrition.html">tableCohortAttrition</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">summariseCohortAttrition</span><span class="op">(</span>cohort <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">study_cohort</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">tableCohortAttrition</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</details><p><em>Move to the next slide to see the attrition.</em></p>
+</details>
 </div>
-</section><section id="exercise-3---update-cohort-entry-and-exit-1" class="slide level2"><h2>✏️ Exercise 3 - Update cohort entry and exit</h2>
-
-<img data-src="exercise_3.png" width="1166" class="r-stretch"></section></section><section><section id="transformation-and-combination" class="title-slide slide level1 center"><h1>Transformation and Combination</h1>
-
-</section><section id="functions-for-cohort-transformation-and-combination" class="slide level2"><h2>Functions for Cohort Transformation and Combination</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li class="fragment">
-<p>Split cohorts</p>
-<ul>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/yearCohorts.html">yearCohorts()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/stratifyCohorts.html">stratifyCohorts()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/timeWindowCohorts.html">timeWindowCohorts()</a></code></p></li>
-</ul>
-</li>
-</ul>
-<div style="margin-bottom: 10x;">
-
-</div>
-<ul>
-<li class="fragment">
-<p>Combine cohorts</p>
-<ul>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/unionCohorts.html">unionCohorts()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/intersectCohorts.html">intersectCohorts()</a></code></p></li>
-</ul>
-</li>
-</ul>
-<div style="margin-bottom: 10x;">
-
-</div>
-<ul>
-<li class="fragment">
-<p>Filter cohorts</p>
-<ul>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/subsetCohorts.html">subsetCohorts()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/sampleCohorts.html">sampleCohorts()</a></code></p></li>
-</ul>
-</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<ul>
-<li class="fragment">
-<p>Match cohorts</p>
-<ul>
-<li class="fragment"><code><a href="https://ohdsi.github.io/CohortConstructor/reference/matchCohorts.html">matchCohorts()</a></code></li>
-</ul>
-</li>
-</ul>
-<div style="margin-bottom: 10x;">
-
-</div>
-<ul>
-<li class="fragment">
-<p>Concatenate entries</p>
-<ul>
-<li class="fragment"><code><a href="https://ohdsi.github.io/CohortConstructor/reference/collapseCohorts.html">collapseCohorts()</a></code></li>
-</ul>
-</li>
-</ul>
-<div style="margin-bottom: 10px;">
-
-</div>
-<ul>
-<li class="fragment">
-<p>Copy and rename cohorts</p>
-<ul>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/renameCohort.html">renameCohort()</a></code></p></li>
-<li class="fragment"><p><code><a href="https://ohdsi.github.io/CohortConstructor/reference/copyCohorts.html">copyCohorts()</a></code></p></li>
-</ul>
-</li>
-</ul>
-</div></div>
-</section><section id="cohort-combinations---example" class="slide level2"><h2>Cohort combinations - Example</h2>
-<div style="margin-bottom: 10px;">
-
-</div>
-<ol type="1">
-<li class="fragment">Collapse drug exposures that are within a gap of 7 days.</li>
-</ol>
-<div class="fragment">
-<p><img data-src="collapse.png"></p>
-</div>
-</section><section id="cohort-combinations---example-1" class="slide level2"><h2>Cohort combinations - Example</h2>
-<div style="margin-bottom: 10px;">
-
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">medications_collapsed</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">medications</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/collapseCohorts.html">collapseCohorts</a></span><span class="op">(</span>gap <span class="op">=</span> <span class="fl">7</span>, name <span class="op">=</span> <span class="st">"medications_collapsed"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="kjgmvmutvw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kjgmvmutvw table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#kjgmvmutvw thead, #kjgmvmutvw tbody, #kjgmvmutvw tfoot, #kjgmvmutvw tr, #kjgmvmutvw td, #kjgmvmutvw th {
-  border-style: none;
-}
-
-#kjgmvmutvw p {
-  margin: 0;
-  padding: 0;
-}
-
-#kjgmvmutvw .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 3px;
-  border-top-color: #D9D9D9;
-  border-right-style: solid;
-  border-right-width: 3px;
-  border-right-color: #D9D9D9;
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: #D9D9D9;
-  border-left-style: solid;
-  border-left-width: 3px;
-  border-left-color: #D9D9D9;
-}
-
-#kjgmvmutvw .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#kjgmvmutvw .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#kjgmvmutvw .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#kjgmvmutvw .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#kjgmvmutvw .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kjgmvmutvw .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#kjgmvmutvw .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#kjgmvmutvw .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#kjgmvmutvw .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#kjgmvmutvw .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#kjgmvmutvw .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#kjgmvmutvw .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#kjgmvmutvw .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#kjgmvmutvw .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#kjgmvmutvw .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#kjgmvmutvw .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#kjgmvmutvw .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#kjgmvmutvw .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kjgmvmutvw .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#kjgmvmutvw .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#kjgmvmutvw .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#kjgmvmutvw .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kjgmvmutvw .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#kjgmvmutvw .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#kjgmvmutvw .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kjgmvmutvw .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kjgmvmutvw .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#kjgmvmutvw .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kjgmvmutvw .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#kjgmvmutvw .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 3px;
-  border-top-color: #D9D9D9;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kjgmvmutvw .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#kjgmvmutvw .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kjgmvmutvw .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#kjgmvmutvw .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kjgmvmutvw .gt_left {
-  text-align: left;
-}
-
-#kjgmvmutvw .gt_center {
-  text-align: center;
-}
-
-#kjgmvmutvw .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#kjgmvmutvw .gt_font_normal {
-  font-weight: normal;
-}
-
-#kjgmvmutvw .gt_font_bold {
-  font-weight: bold;
-}
-
-#kjgmvmutvw .gt_font_italic {
-  font-style: italic;
-}
-
-#kjgmvmutvw .gt_super {
-  font-size: 65%;
-}
-
-#kjgmvmutvw .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#kjgmvmutvw .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#kjgmvmutvw .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#kjgmvmutvw .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#kjgmvmutvw .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#kjgmvmutvw .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#kjgmvmutvw .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#kjgmvmutvw .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#kjgmvmutvw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-<table class="gt_table caption-top" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="gt_col_headings gt_spanner_row header">
-<th rowspan="2" id="Reason" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-family: Arial; font-size: 10; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;" scope="col">Reason</th>
-<th colspan="4" id="spanner-[header_name]Variable name
-[header_level]number_records" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="text-align: center; background-color: #D9D9D9; font-family: Arial; font-size: 10; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;" scope="colgroup"><div class="gt_column_spanner">
-Variable name
-</div></th>
-</tr>
-<tr class="gt_col_headings even">
-<th id="[header_name]Variable-name-[header_level]number_records" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-family: Arial; font-size: 10; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;" scope="col">number_records</th>
-<th id="[header_name]Variable-name-[header_level]number_subjects" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-family: Arial; font-size: 10; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;" scope="col">number_subjects</th>
-<th id="[header_name]Variable-name-[header_level]excluded_records" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-family: Arial; font-size: 10; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;" scope="col">excluded_records</th>
-<th id="[header_name]Variable-name-[header_level]excluded_subjects" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-family: Arial; font-size: 10; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;" scope="col">excluded_subjects</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="gt_group_heading_row odd">
-<th colspan="5" id="acetaminophen" class="gt_group_heading" data-quarto-table-cell-role="th" style="background-color: #E9E9E9; font-family: Arial; font-size: 10; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8" scope="colgroup">acetaminophen</th>
-</tr>
-<tr class="gt_row_group_first even">
-<td class="gt_row gt_left" headers="acetaminophen  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Initial qualifying events</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">14,205</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">2,679</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">0</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="acetaminophen  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Record in observation</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">14,205</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">2,679</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">0</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="acetaminophen  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Not missing record date</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">14,205</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">2,679</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">0</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="acetaminophen  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Merge overlapping records</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">13,908</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">2,679</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">297</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="acetaminophen  Reason" style="text-align: left; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">Collapse cohort with a gap of 7 days.</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]number_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">13,899</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]number_subjects" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">2,679</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]excluded_records" style="text-align: right; font-family: Arial; font-size: 10; border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8; background-color: rgba(255,255,255,0);">9</td>
-<td class="gt_row gt_right" headers="acetaminophen  [header_name]Variable name
-[header_level]excluded_subjects" style="text-align: right; font-family: Arial; font-size: 10; background-color: rgba(255,255,255,0); border-left-width: 1px; border-left-style: solid; border-left-color: #c8c8c8; border-right-width: 1px; border-right-style: solid; border-right-color: #c8c8c8; border-top-width: 1px; border-top-style: solid; border-top-color: #c8c8c8; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #c8c8c8;">0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section><section id="cohort-combinations---example-2" class="slide level2"><h2>Cohort combinations - Example</h2>
-<div style="margin-bottom: 10px;">
-
-</div>
-<ol start="2" type="1">
-<li class="fragment">Create a new cohort that contains people who had an exposure to both <strong>diclofenac and acetaminophen</strong> at the same time.</li>
-</ol>
-<div class="fragment">
-<p><img data-src="intersect.png"></p>
-</div>
-</section><section id="cohort-combinations---example-3" class="slide level2"><h2>Cohort combinations - Example</h2>
-<div style="margin-bottom: 10px;">
-
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">intersection</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">medications_collapsed</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/intersectCohorts.html">intersectCohorts</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"intersection"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/settings.html">settings</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">intersection</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 5
-  cohort_definition_id cohort_name                gap acetaminophen diclofenac
-                 &lt;int&gt; &lt;chr&gt;                    &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
-1                    1 acetaminophen_diclofenac     0             1          1</code></pre>
-</div>
-</div>
-</section></section><section><section id="your-turn-3" class="title-slide slide level1 center"><h1>✏️ Your turn!</h1>
-
-</section><section id="exercise-4---transformation-and-combination" class="slide level2"><h2>✏️ Exercise 4 - Transformation and Combination</h2>
-<p><strong>Create a third cohort containing patients with Pneumonia who have Rheumatoid Arthritis at the same time. The final cohort table should keep all original cohorts plus the new intersection cohort.</strong></p>
-<div class="fragment">
-<div style="margin-bottom: 15px;">
-
-</div>
-<p><strong>Finally, rename cohorts so they are called “pneumonia”, “rheumatoid_arthritis”, and “pneumonia_and_rheumatoid_arthritis”.</strong></p>
-<div style="margin-bottom: 20px;">
-
-</div>
-</div>
-<div class="fragment">
-<details><summary>
-💡 Click to see solution
-</summary><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">study_cohort</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">study_cohort</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/intersectCohorts.html">intersectCohorts</a></span><span class="op">(</span></span>
-<span>    keepOriginalCohorts <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    name <span class="op">=</span> <span class="st">"study_cohort"</span>,</span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>   <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/renameCohort.html">renameCohort</a></span><span class="op">(</span></span>
-<span>    newCohortName <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"aki"</span>, <span class="st">"ckd"</span>, <span class="st">"aki_ckd"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://darwin-eu.github.io/CohortCharacteristics/reference/summariseCohortAttrition.html">summariseCohortAttrition</a></span><span class="op">(</span>cohort <span class="op">=</span> <span class="va">cdm</span><span class="op">$</span><span class="va">study_cohort</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://darwin-eu.github.io/CohortCharacteristics/reference/tableCohortAttrition.html">tableCohortAttrition</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</details><p><em>Move to the next slide to see the attrition.</em></p>
-</div>
-</section><section id="exercise-4---transformation-and-combination-1" class="slide level2"><h2>✏️ Exercise 4 - Transformation and Combination</h2>
-
-<img data-src="exercise_4.png" width="1166" class="r-stretch"></section><section id="cohortconstructor" class="slide level2"><h2>CohortConstructor</h2>
+</section><section id="cohortconstructor" class="slide level2"><h2>CohortConstructor</h2>
 <div style="display: flex; align-items: center; justify-content: space-between;">
 <div style="flex: 1;">
 <p>👉 <a href="https://ohdsi.github.io/CohortConstructor/"><strong>Packages website</strong></a><br>
 👉 <a href="https://cran.r-project.org/package=CohortConstructor"><strong>CRAN link</strong></a><br>
 👉 <a href="https://cran.r-project.org/web/packages/CohortConstructor/CohortConstructor"><strong>Manual</strong></a></p>
-<p>📧 <a href="mailto:nuria.mercadebesora@ndorms.ox.ac.uk">nuria.mercadebesora@ndorms.ox.ac.uk</a></p>
 </div>
 <div style="flex: 1; text-align: center;">
 <p><img src="https://github.com/OHDSI/CohortConstructor/blob/main/man/figures/logo.png?raw=true" width="600"></p>
