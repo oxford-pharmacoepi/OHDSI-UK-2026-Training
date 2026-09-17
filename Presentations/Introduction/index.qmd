@@ -293,9 +293,16 @@ If you are familiarised with [tidyverse](https://www.tidyverse.org/) you can use
 ```{r}
 cdm$drug_exposure |>
   group_by(drug_concept_id) |>
+  summarise(number_persons = n_distinct(person_id))
+```
+
+## How does this work?
+
+```{r}
+cdm$drug_exposure |>
+  group_by(drug_concept_id) |>
   summarise(number_persons = n_distinct(person_id)) |>
-  collect() |>
-  arrange(desc(number_persons))
+  show_query()
 ```
 
 ## Database name
