@@ -47,6 +47,21 @@ options(width = 200)
 
 -   Vignettes with further information can be found in the package [website](https://ohdsi.github.io/CohortConstructor/index.html){.link}.
 
+## Set up
+
+```{r echo=FALSE, message=FALSE}
+library(omock)
+library(CDMConnector)
+library(CohortConstructor)
+library(CohortCharacteristics)
+library(dplyr)
+library(duckdb)
+library(dplyr)
+library(gt)
+cdm <- omock::mockCdmFromDataset(datasetName = "GiBleed",
+                          source = "duckdb")
+```
+
 # OMOP Cohorts in R
 
 ## OMOP Cohorts in R
@@ -68,25 +83,10 @@ options(width = 200)
 ## OMOP Cohorts in R
 
 ```{r, echo=FALSE, message=FALSE}
-library(CDMConnector)
-library(CodelistGenerator)
-library(CohortConstructor)
-library(CohortCharacteristics)
-library(dplyr)
-
-requireEunomia()
-
-con <- DBI::dbConnect(duckdb::duckdb(), dbdir = eunomiaDir())
-cdm <- cdmFromCon(
-  con, 
-  cdmSchema = "main", 
-  writeSchema = "main",
-  writePrefix = "my_study_"
-)
-
 cdm$cohort <- conceptCohort(
   cdm = cdm, 
-  conceptSet = list("viral_sinusitis" = 40481087L, "viral_pharyngitis" = 4112343L), 
+  conceptSet = list("viral_sinusitis" = 40481087L, 
+                    "viral_pharyngitis" = 4112343L), 
   name = "cohort"
 )
 ```
@@ -178,7 +178,7 @@ attr(cdm$cohort, "cohort_codelist")
 ::::: bulletbox
 :::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
-**Update cohort entry and exit** *Adjusting entry and exit dates to align with study periods, observation windows, or key events.*
+**Update cohort entry and exit** *Adjusting entry and exit dates to align with study periods, observation windows, or key events.* 
 :::
 ::::
 :::::
@@ -191,7 +191,8 @@ attr(cdm$cohort, "cohort_codelist")
 ::::: bulletbox
 :::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
-**Transformation and Combination** *Merging, stratifying, collapsing, matching, or intersecting cohorts.*
+**Transformation and Combination** *Merging, stratifying, collapsing, matching, or intersecting cohorts.* 
+(Not covered today)
 :::
 ::::
 :::::
@@ -228,25 +229,8 @@ attr(cdm$cohort, "cohort_codelist")
 ## Create the cdm_reference object
 
 ```{r, message=FALSE}
-# Load relevant packages
-library(CDMConnector)
-library(CodelistGenerator)
-library(CohortConstructor)
-library(CohortCharacteristics)
-library(duckdb)
-library(DBI)
-library(dplyr)
-library(gt)
-library(here)
-
-con <- dbConnect(drv = duckdb(dbdir = here("Databases", "GiBleed.duckdb")))
-
-cdm <- cdmFromCon(
-  con = con,
-  cdmSchema = "main",
-  writeSchema = "results",
-  writePrefix = "cc_"
-)
+cdm <- omock::mockCdmFromDataset(datasetName = "GiBleed",
+                          source = "duckdb")
 ```
 
 ## Demographics based - Example
@@ -321,8 +305,7 @@ Let's create a cohort of medications that contains two drugs: diclofenac, and ac
 drugCodes <- list(
   "diclofenac" = c(1124300L),
   "acetaminophen" = c(1125315L, 1127078L, 1127433L, 19133768L, 40162522L, 40229134L, 40231925L)
-) |>
-  newCodelist()
+)
 ```
 
 ## Concept based - Example {.incremental:FALSE}
@@ -375,41 +358,18 @@ attr(cdm$medications, "cohort_codelist")
 
 # ✏️ Your turn!
 
-## Get Started: Create the cdm_reference object
-
-```{r, message=FALSE, eval=FALSE}
-# Load relevant packages
-library(CDMConnector)
-library(CodelistGenerator)
-library(CohortConstructor)
-library(CohortCharacteristics)
-library(duckdb)
-library(DBI)
-library(dplyr)
-library(gt)
-library(here)
-
-con <- dbConnect(drv = duckdb(dbdir = here("Databases", "delphi.duckdb")))
-cdm <- cdmFromCon(
-  con = con,
-  cdmSchema = "main",
-  writeSchema = "results",
-  writePrefix = "cc_"
-)
-```
-
 ## ✏️ Exercise 1 - Base cohorts
 
 ::: {style="margin-bottom: 15px;"}
 :::
 
-**Create a base cohort table named `base_conditions_cohort` that has two cohorts: Rheumatoid Arthritis (RA) and Pneumonia. Use the codelist below.**
+**Create a base cohort table named `base_conditions_cohort` that has two cohorts: Rheumatoid Arthritis (RA) and Pneumonia. Summarise cohort counts and attrition. Use the codelist below.**
 
 ```{r, eval=FALSE}
 codes <- list(
   "ra" = c(80809L),
   "pneumonia" = c(255848L)
-) |> newCodelist()
+) 
 ```
 
 ::: {style="margin-bottom: 20px;"}
@@ -422,24 +382,20 @@ codes <- list(
 ```{r, eval=FALSE}
 codes <- list(
   "ra" = c(80809L),
-  "pneumonia"            = c(255848L)
-) |> newCodelist()
+  "pneumonia"= c(255848L)
+) 
 
 cdm$base_conditions_cohort <- conceptCohort(cdm = cdm, conceptSet = codes, name = "base_conditions_cohort")
 
 summariseCohortCount(cohort = cdm$base_conditions_cohort) |> 
   tableCohortCount()
+
+summariseCohortAttrition(cohort = cdm$base_conditions_cohort) |> 
+  tableCohortAttrition()
 ```
 
 </details>
 
-*Move to the next slide to see the cohort attrition*
-
-## ✏️ Exercise 1 - Base cohorts
-
-```{r, echo=FALSE}
-knitr::include_graphics(here::here("Presentations", "CohortConstructor", "exercise_1.png"))
-```
 
 # Requirements and Filtering
 
@@ -583,14 +539,14 @@ tableCohortAttrition(
 
 **Create a new cohort named "study_cohort" by applying the following criteria to the base conditions cohort:**
 
--   For all cohorts, require that records start between January 1, 1990, and December 31, 2011.
+-   For all cohorts, require that records start after January 1, 1990.
 
 -   For the Rheumatoid Arthritis cohort, exclude patients with a history of osteoarthritis prior to or on the day of diagnosis.
 
 . . .
 
 ```{r, eval=FALSE}
-osteoarthritisCodes <- list("osteoarthritis" = c(80180L)) |> newCodelist()
+osteoarthritisCodes <- list("osteoarthritis" = c(80180L))
 ```
 
 ::: {style="margin-bottom: 20px;"}
@@ -603,11 +559,11 @@ osteoarthritisCodes <- list("osteoarthritis" = c(80180L)) |> newCodelist()
 <summary>💡 Click to see solution</summary>
 
 ```{r, eval=FALSE}
-osteoarthritisCodes <- list("osteoarthritis" = c(80180L)) |> newCodelist()
+osteoarthritisCodes <- list("osteoarthritis" = c(80180L))
 
 cdm$study_cohort <- cdm$base_conditions_cohort |>
   requireInDateRange(
-    dateRange = as.Date(c("1990-01-01", "2011-12-31")),
+    dateRange = as.Date(c("1990-01-01", NA)),
     name = "study_cohort"
   ) |>
   requireConceptIntersect(
@@ -623,14 +579,6 @@ summariseCohortAttrition(cohort = cdm$study_cohort) |>
 ```
 
 </details>
-
-*Move to the next slide to see the cohort attrition*
-
-## ✏️ Exercise 2 - Requirement and filtering
-
-```{r, echo=FALSE}
-knitr::include_graphics(here::here("Presentations", "CohortConstructor", "exercise_2.png"))
-```
 
 # Update cohort entry and exit
 
@@ -730,10 +678,6 @@ tableCohortAttrition(
 
 . . .
 
-**2)** **For Pneumonia, assume the infection lasts for two months from the diagnosis day, thereby update the cohort end date to be exactly 60 days after the cohort start.**
-
-. . .
-
 👉*Use the `cohortId` argument to choose which cohort to modify.*
 
 . . .
@@ -751,12 +695,6 @@ cdm$study_cohort <- cdm$study_cohort |>
     cohortId = "ra",
     persistAcrossObservationPeriods = TRUE,
     name = "study_cohort"
-  ) |>
-  padCohortDate(
-    days = 60,
-    cohortDate = "cohort_end_date",
-    cohortId = "pneumonia",
-    name = "study_cohort"
   )
 
 summariseCohortAttrition(cohort = cdm$study_cohort) |>
@@ -764,170 +702,6 @@ summariseCohortAttrition(cohort = cdm$study_cohort) |>
 ```
 
 </details>
-
-*Move to the next slide to see the attrition.*
-
-## ✏️ Exercise 3 - Update cohort entry and exit
-
-```{r, echo=FALSE}
-knitr::include_graphics(here::here("Presentations", "CohortConstructor", "exercise_3.png"))
-```
-
-# Transformation and Combination
-
-## Functions for Cohort Transformation and Combination
-
-::::::::: columns
-::::: {.column width="50%"}
--   Split cohorts
-
-    -   `yearCohorts()`
-
-    -   `stratifyCohorts()`
-
-    -   `timeWindowCohorts()`
-
-::: {style="margin-bottom: 10x;"}
-:::
-
--   Combine cohorts
-
-    -   `unionCohorts()`
-
-    -   `intersectCohorts()`
-
-::: {style="margin-bottom: 10x;"}
-:::
-
--   Filter cohorts
-
-    -   `subsetCohorts()`
-
-    -   `sampleCohorts()`
-:::::
-
-::::: {.column width="50%"}
--   Match cohorts
-
-    -   `matchCohorts()`
-
-::: {style="margin-bottom: 10x;"}
-:::
-
--   Concatenate entries
-
-    -   `collapseCohorts()`
-
-::: {style="margin-bottom: 10px;"}
-:::
-
--   Copy and rename cohorts
-
-    -   `renameCohort()`
-
-    -   `copyCohorts()`
-:::::
-:::::::::
-
-## Cohort combinations - Example
-
-::: {style="margin-bottom: 10px;"}
-:::
-
-1)  Collapse drug exposures that are within a gap of 7 days.
-
-. . .
-
-![](collapse.png)
-
-## Cohort combinations - Example
-
-::: {style="margin-bottom: 10px;"}
-:::
-
-```{r}
-cdm$medications_collapsed <- cdm$medications |>
-  collapseCohorts(gap = 7, name = "medications_collapsed")
-```
-
-```{r, echo=FALSE}
-result <- cdm$medications_collapsed |> 
-  summariseCohortAttrition(cohortId = 1) 
-tableCohortAttrition(
-  result = result,
-  groupColumn = c("cohort_name"),
-  hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
-)
-```
-
-## Cohort combinations - Example
-
-::: {style="margin-bottom: 10px;"}
-:::
-
-2)  Create a new cohort that contains people who had an exposure to both **diclofenac and acetaminophen** at the same time.
-
-. . .
-
-![](intersect.png)
-
-## Cohort combinations - Example
-
-::: {style="margin-bottom: 10px;"}
-:::
-
-```{r}
-cdm$intersection <- cdm$medications_collapsed |>
-  intersectCohorts(name = "intersection")
-
-settings(x = cdm$intersection)
-```
-
-# ✏️ Your turn!
-
-## ✏️ Exercise 4 - Transformation and Combination
-
-**Create a third cohort containing patients with Pneumonia who have Rheumatoid Arthritis at the same time. The final cohort table should keep all original cohorts plus the new intersection cohort.**
-
-. . .
-
-::: {style="margin-bottom: 15px;"}
-:::
-
-**Finally, rename cohorts so they are called "pneumonia", "rheumatoid_arthritis", and "pneumonia_and_rheumatoid_arthritis".**
-
-::: {style="margin-bottom: 20px;"}
-:::
-
-. . .
-
-<details>
-
-<summary>💡 Click to see solution</summary>
-
-```{r, eval=FALSE}
-cdm$study_cohort <- cdm$study_cohort |>
-  intersectCohorts(
-    keepOriginalCohorts = TRUE,
-    name = "study_cohort",
-  ) |>
-   renameCohort(
-    newCohortName = c("aki", "ckd", "aki_ckd")
-  )
-
-summariseCohortAttrition(cohort = cdm$study_cohort) |>
-  tableCohortAttrition() 
-```
-
-</details>
-
-*Move to the next slide to see the attrition.*
-
-## ✏️ Exercise 4 - Transformation and Combination
-
-```{r, echo=FALSE}
-knitr::include_graphics(here::here("Presentations", "CohortConstructor", "exercise_4.png"))
-```
 
 ## CohortConstructor
 
@@ -937,7 +711,6 @@ knitr::include_graphics(here::here("Presentations", "CohortConstructor", "exerci
 👉 [**CRAN link**](https://cran.r-project.org/package=CohortConstructor)\
 👉 [**Manual**](https://cran.r-project.org/web/packages/CohortConstructor/CohortConstructor)
 
-📧 <a href="mailto:nuria.mercadebesora@ndorms.ox.ac.uk">nuria.mercadebesora\@ndorms.ox.ac.uk</a>
 :::
 
 ::: {style="flex: 1; text-align: center;"}
