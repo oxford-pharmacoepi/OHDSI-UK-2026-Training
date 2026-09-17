@@ -29,11 +29,23 @@ editor: visual
 
     ![](images/clipboard-518358167.png){width="1393"}
 
+## Software
+
+-   We have a group website [website](https://oxford-pharmacoepi.github.io/Oxinfer/packages/summary.html){.link}
+
+    ![](images/clipboard-2171972641.png){width="980"}
+
 ## Summer school
 
 -   We have a summer school [website](https://www.ndorms.ox.ac.uk/study/courses/real-world-data-epidemiology){.link}
 
 ![](images/clipboard-3603179093.png){fig-align="center" width="711"}
+
+## HERON-UK
+
+-   We co-ordinate HERON-UK [website](https://heron-uk.github.io/heron-uk/){.link}.
+
+![](images/clipboard-1378047558.png)
 
 ## Feedback
 
