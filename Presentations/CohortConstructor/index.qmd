@@ -711,7 +711,6 @@ summariseCohortAttrition(cohort = cdm$study_cohort) |>
 👉 [**CRAN link**](https://cran.r-project.org/package=CohortConstructor)\
 👉 [**Manual**](https://cran.r-project.org/web/packages/CohortConstructor/CohortConstructor)
 
-📧 <a href="mailto:nuria.mercadebesora@ndorms.ox.ac.uk">nuria.mercadebesora\@ndorms.ox.ac.uk</a>
 :::
 
 ::: {style="flex: 1; text-align: center;"}
