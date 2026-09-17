@@ -15,6 +15,7 @@
 - [**CohortConstructor**](CohortConstructor/index.qmd)
 - [**CohortCharacteristics**](CohortCharacteristics/index.qmd)
 - [**PhenotypeR**](PhenotypeR/index.qmd)
+- [**Closing**](Closing/index.qmd)
 
 ## Closing
 

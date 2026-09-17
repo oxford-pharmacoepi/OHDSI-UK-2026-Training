@@ -1,0 +1,44 @@
+---
+title: "Closing"
+format:
+  revealjs: 
+    theme: [simple, ../../styleSS25.scss]
+    incremental: false   
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    margin: 0.07
+    code-link: true
+    code-line-numbers: false
+    height: 900
+    width: 1600
+    footer: |
+      <div style="position: relative; width: 100%;">
+        <div style="text-align: center; font-weight: 500;">OHDSI-UK 2026 Training</div>
+        <div style="position: fixed; top: 20px; right: 20px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Presentations</a></div>
+      </div>
+execute:
+  echo: true
+  eval: true
+editor: visual
+---
+
+## Book
+
+-   We have a free book [website](https://ohdsi.github.io/Tidy-R-programming-with-OMOP/){.link}
+
+    ![](images/clipboard-518358167.png){width="1393"}
+
+## Summer school
+
+-   We have a summer school [website](https://www.ndorms.ox.ac.uk/study/courses/real-world-data-epidemiology){.link}
+
+![](images/clipboard-3603179093.png){fig-align="center" width="711"}
+
+## Feedback
+
+-   Please provide feedback [website](https://forms.cloud.microsoft/e/jUsYJnAUhQ){.link}
+
+![](images/clipboard-2260744284.png){fig-align="center" width="400"}
+
+# Thank you
